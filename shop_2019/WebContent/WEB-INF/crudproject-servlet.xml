@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xmlns:p="http://www.springframework.org/schema/p"  
+  xmlns:context="http://www.springframework.org/schema/context"  
+  xsi:schemaLocation="http://www.springframework.org/schema/beans   
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+  http://www.springframework.org/schema/context   
+  http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- definition name과 setViewName()를 연결  -->
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"></property>
+	</bean>
+	
+	<!-- tiles 설정 파일의 위치를 API에 전달  123-->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list><value>/WEB-INF/tiles_def.xml</value></list>
+		</property>
+	</bean>
+	
+</beans> 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SqlMapAccount">
+	<typeAlias alias="user" type="com.yena.shop.model.User" />	
+	
+	<!-- 회원가입  -->
+	<insert id="insertUser" parameterClass="user">
+		INSERT INTO USER
+			(ID
+			,PASS_WD
+			,NAME
+			,EMAIL
+			,BIRTH
+			,GENDER
+			,TEL
+			,ADULT_YN
+			,REG_DTM
+			,UPD_DTM
+			,USE_YN) 
+			VALUES
+			(
+				#id#,      
+				#pass_wd#, 
+				#name#,    
+				#email#,   
+				#birth#,   
+				#gender#,  
+				#tel#,     
+				#adult_yn#,
+				#reg_dtm#, 
+				#upd_dtm#, 
+				#use_yn#
+			)		
+	</insert>	
+</sqlMap>

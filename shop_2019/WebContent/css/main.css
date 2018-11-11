@@ -1,0 +1,13 @@
+#menu_layout, #body_layout{
+	width:100%;
+}
+
+
+#menu_layout{
+	height:150px;
+	max-height: 150px;
+}
+
+#login_{
+	float:right;
+}
