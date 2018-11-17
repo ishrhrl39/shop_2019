@@ -7,7 +7,7 @@
 <tiles-definitions>
 <!-- 	<definition name="blank_layout" template="/WEB-INF/jsp/layout/blank.jsp"> -->
 <!-- 		<put-attribute name="title">SHOP</put-attribute> -->
-<!-- 		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" /> -->
+<!-- 	<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" /> -->
 <!-- 	</definition> -->
 	
 	<definition name="layout" template="/WEB-INF/jsp/layout/layout.jsp">
