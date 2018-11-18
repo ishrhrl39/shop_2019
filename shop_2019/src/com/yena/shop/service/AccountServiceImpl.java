@@ -1,5 +1,8 @@
 package com.yena.shop.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.yena.shop.dao.AccountDao;
 import com.yena.shop.model.User;
 
@@ -21,6 +24,16 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public int duplCheckId(String id) {
 		return accountDao.duplCheckId(id);
+	}
+	
+	@Override
+	public List selectUser(Map map) {
+		return accountDao.selectUser(map);
+	}
+
+	@Override
+	public int selectTotalUserCount() {
+		return accountDao.selectTotalUserCount();
 	}
 
 }

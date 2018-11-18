@@ -39,5 +39,33 @@
 		SELECT COUNT(ID) AS CNT FROM USER WHERE ID = #id#
 	</select>	
 	
+	<!-- 회원 목록 조회 -->
+	<select id="selectUser" parameterClass="map" resultClass="user">
+		SELECT
+			ID
+			,PASS_WD
+			,NAME
+			,EMAIL
+			,BIRTH
+			,GENDER
+			,TEL
+			,ADULT_YN
+			,REG_DTM
+			,UPD_DTM
+			,USE_YN
+		FROM USER
+			WHERE 1=1
+			<isNotNull property="LIMIT">
+				LIMIT #LIMIT#
+			</isNotNull>
+			<isNotNull property="OFFSET">
+				OFFSET #OFFSET#
+			</isNotNull>
+			
+	</select>
 	
+	<!-- 회원 전체 개수 조회 -->
+	<select id="selectTotalUserCount" resultClass="int">
+		SELECT COUNT(*) AS CNT FROM USER 
+	</select>
 </sqlMap>

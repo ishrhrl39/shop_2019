@@ -1,5 +1,8 @@
 package com.yena.shop.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
@@ -26,6 +29,16 @@ public class AccountDaoImpl extends SqlMapClientDaoSupport implements AccountDao
 	public int duplCheckId(String id) {
 		System.out.println(id);
 		return (int)getSqlMapClientTemplate().queryForObject(namespace+"duplCheckId", id);
+	}
+	
+	@Override
+	public List selectUser(Map map) {
+		return getSqlMapClientTemplate().queryForList(namespace + "selectUser", map);
+	}
+
+	@Override
+	public int selectTotalUserCount() {
+		return (int) getSqlMapClientTemplate().queryForObject(namespace + "selectTotalUserCount");
 	}
 
 }
