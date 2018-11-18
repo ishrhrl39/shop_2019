@@ -7,8 +7,14 @@
 <tiles-definitions>
 <!-- 	<definition name="blank_layout" template="/WEB-INF/jsp/layout/blank.jsp"> -->
 <!-- 		<put-attribute name="title">SHOP</put-attribute> -->
-<!-- 	<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" /> -->
+<!-- 		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" /> -->
 <!-- 	</definition> -->
+	
+	<definition name="admin_layout" template="/WEB-INF/jsp/layout/admin_layout.jsp">
+		<put-attribute name="title">SHOP Administrator</put-attribute>
+		<put-attribute name="menu" value="/WEB-INF/jsp/admin/menu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/main.jsp" />
+	</definition>
 	
 	<definition name="layout" template="/WEB-INF/jsp/layout/layout.jsp">
 		<put-attribute name="title">SHOP</put-attribute>
@@ -19,7 +25,22 @@
 	<definition name="main" extends="layout">
 	</definition>
 	
+	<!-- 관리자 페이지 -->
+	<definition name="admin_main" extends="admin_layout">
+	</definition>
+	
+	<!-- 관리자 사용자목록관리 페이지 -->
+	<definition name="admin_user" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/account_list.jsp" />
+	</definition>
+	
+	
+	<!-- 회원가입 -->
 	<definition name="join" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/account/join.jsp" />
+	</definition>
+	
+	<definition name="joinSuccess" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/account/joinSuccess.jsp" />
 	</definition>
 </tiles-definitions>
