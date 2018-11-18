@@ -42,5 +42,5 @@
 	
 	<definition name="joinSuccess" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/account/joinSuccess.jsp" />
-	</definition>
+	</definition> 
 </tiles-definitions>
