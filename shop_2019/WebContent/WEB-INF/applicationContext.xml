@@ -119,5 +119,5 @@
 	<bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView">
 	</bean>
 	
-	
+	<import resource="/conf/admin/admin-applicationContext.xml"/>
 </beans>

@@ -45,10 +45,6 @@
     <filter-name>request Encoding</filter-name>
     <servlet-name>crudproject</servlet-name>
   </filter-mapping>
-  <context-param>
-    <param-name>log4jConfigLocation</param-name>
-    <param-value>WEB-INF/conf/log4j.properties</param-value>
-  </context-param>
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
