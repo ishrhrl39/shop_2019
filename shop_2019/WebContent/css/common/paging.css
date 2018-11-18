@@ -1,0 +1,10 @@
+#paging a{
+	text-decoration: none;
+	padding: 7px;
+	border: 1px solid #EAEAEA;
+	color:#393939;
+}
+
+#paging a:hover{
+	background-color:#EAEAEA;
+}

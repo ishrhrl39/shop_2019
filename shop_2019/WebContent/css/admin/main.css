@@ -1,0 +1,24 @@
+body{
+	font-family: 나눔고딕,NanumGothic,돋움,Dotum;
+}
+
+#leftMenu{
+	list-style: none;
+	padding:0px;
+	text-align: center;
+}
+
+#leftMenu li{
+	padding:5px;
+}
+
+#leftMenu li:hover{
+	background-color: #EAEAEA;
+}
+
+#leftMenu li a{
+	font-size:14px;
+	color:#505050;
+	font-weight: bold;
+	text-decoration: none;
+}

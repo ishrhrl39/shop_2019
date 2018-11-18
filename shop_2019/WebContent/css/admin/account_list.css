@@ -1,0 +1,13 @@
+#accountList th{
+	text-align: center;
+	background-color: #404040;
+	color: white;
+}
+
+#accountList td{
+	text-align: center;
+}
+
+#accountList tfood td{
+	background-color: #fff;
+} 
