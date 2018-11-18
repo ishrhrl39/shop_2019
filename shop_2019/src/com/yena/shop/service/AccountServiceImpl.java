@@ -11,9 +11,16 @@ public class AccountServiceImpl implements AccountService {
 		this.accountDao = accountDao;
 	}
 
+	// 회원 가입
 	@Override
 	public void insertUser(User user) {
 		accountDao.insertUser(user);
+	}
+
+	// 아이디 중복 체크
+	@Override
+	public int duplCheckId(String id) {
+		return accountDao.duplCheckId(id);
 	}
 
 }

@@ -32,5 +32,12 @@
 				#upd_dtm#, 
 				#use_yn#
 			)		
-	</insert>	
+	</insert>
+	
+	<!-- 아이디 중복체크  -->
+	<select id="duplCheckId" parameterClass="java.lang.String" resultClass="int">
+		SELECT COUNT(ID) AS CNT FROM USER WHERE ID = #id#
+	</select>	
+	
+	
 </sqlMap>

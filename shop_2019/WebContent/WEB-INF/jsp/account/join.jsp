@@ -7,20 +7,24 @@
 	</head>
 	<body>
 		<form id="joinForm" action="/account/join.do">
-		<input type="hidden" name="cmd" value="inserUser">
+		<input type="hidden" id="checkId" value="N"/>
+		<input type="hidden" name="cmd" value="insertUser">
 			<table>
 				<tbody>
 					<tr>
 						<td><input type="text" id="name" name="name" placeholder="이름"/></td>
 					</tr>
 					<tr>
-						<td><input type="text" id="id" name="id" placeholder="아이디"/></td>
+						<td>
+							<input type="text" id="id" name="id" placeholder="아이디"/>
+							<button type="button" id="duplCheckIdBtn" class="common_btn">중복확인</button>
+						</td>
 					</tr>
 					<tr>
-						<td><input type="text" id="pass_wd" name="pass_wd" placeholder="비밀번호"/></td>
+						<td><input type="password" id="pass_wd" name="pass_wd" placeholder="비밀번호"/></td>
 					</tr>
 					<tr>
-						<td><input type="text" id="repass_wd" name="repass_wd" placeholder="비밀번호 확인"/></td>
+						<td><input type="password" id="repass_wd" name="repass_wd" placeholder="비밀번호 확인"/></td>
 					</tr>
 					<tr>
 						<td><input type="text" id="email" name="email" placeholder="이메일"/></td>
@@ -37,15 +41,15 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="radio"  id="gender" name ="gender" value="f" checked/>여
-							<input type="radio"  id="gender" name ="gender" value="m"/>남
+							<input type="radio"  class="gender" name ="gender" value="f" checked/>여
+							<input type="radio"  class="gender" name ="gender" value="m"/>남
 						</td>
 					</tr>
 					<tr>
 						<td><input type="text" id="tel" name="tel" placeholder="휴대폰번호"/></td>
 					</tr>
 					<tr>
-						<td><input type="checkbox" id="mustcheck" name ="mustcheck" value="Y"/>만 19세 이상입니다.(필수)</td>
+						<td><input type="checkbox" id="adult_yn" name ="adult_yn" value="Y"/>만 19세 이상입니다.</td>
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -57,12 +61,12 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="checkbox" id="fullagree" />전체동의
+							<input type="checkbox" id="fullagree" value="Y"/>전체동의
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="checkbox" id="useable"/>이용악관
+							<input type="checkbox" id="useable" />이용악관
 							<input type="checkbox" id="personalable"/>개인정보 수집 이용 안내
 						</td>
 					</tr>

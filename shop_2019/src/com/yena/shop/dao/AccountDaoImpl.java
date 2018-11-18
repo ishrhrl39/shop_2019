@@ -15,9 +15,17 @@ public class AccountDaoImpl extends SqlMapClientDaoSupport implements AccountDao
 
 	private String namespace = "SqlMapAccount.";
 		
+	// 회원 가입
 	@Override
 	public void insertUser(User user) {
 		getSqlMapClientTemplate().insert(namespace+"insertUser", user);
+	}
+
+	// 아이디 중복 체크
+	@Override
+	public int duplCheckId(String id) {
+		System.out.println(id);
+		return (int)getSqlMapClientTemplate().queryForObject(namespace+"duplCheckId", id);
 	}
 
 }
