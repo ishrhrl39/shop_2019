@@ -1,0 +1,12 @@
+.common_btn{
+	padding: 4px 9px;
+	color:white;
+	border-radius: 3px;
+	background-color: #393939;
+	font-size:13px;
+	border-width:0px;
+}
+
+.common_btn:hover{
+	background-color:#4e4e4e;
+}
