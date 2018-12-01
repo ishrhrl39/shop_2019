@@ -76,7 +76,7 @@
 		<property name="mappings">
 			<value>
 				/index.do = IndexController
-				/account/join.do = AccountController
+				
 			</value>
 		</property>
 	</bean>
@@ -94,22 +94,7 @@
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	</bean>
 	
-	<!-- 회원관리  -->
-	<bean id="AccountController" class="com.yena.shop.controller.AccountController">
-	    <property name="methodNameResolver" ref="methodNameResolver" />
-	    <property name="accountService" ref="AccountService" />
-	</bean>
-
-<!-- Service -->	
-	<!-- 회원관리  -->
-	<bean id="AccountService" class="com.yena.shop.service.AccountServiceImpl">
-		<property name="accountDao" ref="AccountDao" />
-	</bean>
-
- <!-- Dao -->	 
-	<!-- 회원관리  -->	 
-	<bean id="AccountDao" class="com.yena.shop.dao.AccountDaoImpl">
-	</bean>
+	
 	
 	<!-- ========================= JSON ========================= -->
 	<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
@@ -120,4 +105,5 @@
 	</bean>
 	
 	<import resource="/conf/admin/admin-applicationContext.xml"/>
+	<import resource="/conf/account/account-applicationContext.xml"/>
 </beans>
