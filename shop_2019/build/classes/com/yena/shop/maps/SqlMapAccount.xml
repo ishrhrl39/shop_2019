@@ -39,5 +39,92 @@
 		SELECT COUNT(ID) AS CNT FROM USER WHERE ID = #id#
 	</select>	
 	
+	<!-- 회원 목록 조회 -->
+	<select id="selectUser" parameterClass="map" resultClass="user">
+		SELECT
+			ID
+			,PASS_WD
+			,NAME
+			,EMAIL
+			,BIRTH
+			,GENDER
+			,TEL
+			,ADULT_YN
+			,REG_DTM
+			,UPD_DTM
+			,USE_YN
+		FROM USER
+			WHERE 1=1
+			<isNotNull property="searchColumn">
+				AND 
+				<isEqual property="searchColumn" compareValue="id">
+					ID LIKE CONCAT ('%',#searchValue#, '%')
+				</isEqual>
+				<isEqual property="searchColumn" compareValue="name">
+					NAME LIKE CONCAT ('%',#searchValue#, '%')
+				</isEqual>
+				<isEqual property="searchColumn" compareValue="email">
+					EMAIL LIKE CONCAT ('%',#searchValue#, '%')
+				</isEqual>
+				<isEqual property="searchColumn" compareValue="tel">
+					TEL LIKE CONCAT ('%',#searchValue#, '%')
+				</isEqual>
+			</isNotNull>
+			<isNull property="searchColumn">
+				ORDER BY REG_DTM DESC
+				<isNotNull property="LIMIT">
+					LIMIT #LIMIT#
+				</isNotNull>
+				<isNotNull property="OFFSET">
+					OFFSET #OFFSET#
+				</isNotNull>
+			</isNull>
+	</select>
 	
+	<!-- 회원 전체 개수 조회 -->
+	<select id="selectTotalUserCount" parameterClass="map" resultClass="int">
+		SELECT 
+			COUNT(*) AS CNT 
+		FROM USER 
+			WHERE 1=1
+			<isNotNull property="searchColumn">
+				AND 
+				<isEqual property="searchColumn" compareValue="id">
+					ID LIKE CONCAT ('%',#searchValue#, '%')
+				</isEqual>
+				<isEqual property="searchColumn" compareValue="name">
+					NAME LIKE CONCAT ('%',#searchValue#, '%')
+				</isEqual>
+				<isEqual property="searchColumn" compareValue="email">
+					EMAIL LIKE CONCAT ('%',#searchValue#, '%')
+				</isEqual>
+				<isEqual property="searchColumn" compareValue="tel">
+					TEL LIKE CONCAT ('%',#searchValue#, '%')
+				</isEqual>
+			</isNotNull>
+	</select>
+	
+	<!-- 회원 정보 조회 -->
+	<select id="selectUserOne" parameterClass="user" resultClass="user">
+		SELECT 
+			ID
+			,NAME
+			,EMAIL
+			,BIRTH
+			,GENDER
+			,TEL
+			,ADULT_YN
+			,REG_DTM
+			,UPD_DTM
+			,USE_YN
+		FROM
+			USER
+		WHERE 1=1
+			<isNotNull property="id">
+				AND ID = #id#
+			</isNotNull>
+			<isNotNull property="pass_wd">
+				AND PASS_WD = #pass_wd#
+			</isNotNull>
+	</select>
 </sqlMap>

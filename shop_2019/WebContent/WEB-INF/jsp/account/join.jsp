@@ -12,22 +12,22 @@
 			<table>
 				<tbody>
 					<tr>
-						<td><input type="text" id="name" name="name" placeholder="이름"/></td>
+						<td><input type="text" id="name" name="name" maxlength="20" placeholder="이름"/></td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" id="id" name="id" placeholder="아이디"/>
+							<input type="text" id="id" name="id" maxlength="50" placeholder="아이디"/>
 							<button type="button" id="duplCheckIdBtn" class="common_btn">중복확인</button>
 						</td>
 					</tr>
 					<tr>
-						<td><input type="password" id="pass_wd" name="pass_wd" placeholder="비밀번호"/></td>
+						<td><input type="password" id="pass_wd" name="pass_wd" maxlength="50" placeholder="비밀번호"/></td>
 					</tr>
 					<tr>
-						<td><input type="password" id="repass_wd" name="repass_wd" placeholder="비밀번호 확인"/></td>
+						<td><input type="password" id="repass_wd" name="repass_wd" maxlength="50" placeholder="비밀번호 확인"/></td>
 					</tr>
 					<tr>
-						<td><input type="text" id="email" name="email" placeholder="이메일"/></td>
+						<td><input type="text" id="email" name="email" maxlength="25" placeholder="이메일"/></td>
 					</tr>
 					<tr>
 						<td>
@@ -41,12 +41,12 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="radio"  class="gender" name ="gender" value="f" checked/>여
-							<input type="radio"  class="gender" name ="gender" value="m"/>남
+							<input type="radio"  name ="gender" value="f" checked/>여
+							<input type="radio"  name ="gender" value="m"/>남
 						</td>
 					</tr>
 					<tr>
-						<td><input type="text" id="tel" name="tel" placeholder="휴대폰번호"/></td>
+						<td><input type="text" id="tel" name="tel" maxlength="11" placeholder="휴대폰번호"/></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" id="adult_yn" name ="adult_yn" value="Y"/>만 19세 이상입니다.</td>

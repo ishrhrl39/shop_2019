@@ -8,7 +8,7 @@
 	<body>
 		<div id="top_menu">
 			<a href="/admin/index.do">관리자 페이지</a>
-			<a href="/login/login.do">로그인</a>
+			<a href="/account/login.do">로그인</a>
 			<a href="/account/join.do">회원가입</a>
 		</div>
 	</body>

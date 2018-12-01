@@ -11,3 +11,15 @@
 #accountList tfood td{
 	background-color: #fff;
 } 
+
+#searchColumn{
+	width:120px;
+}
+#searchValue{
+	width:200px;
+	margin-left:10px;
+}
+
+#searchLayout table td{
+	padding:3px;
+}

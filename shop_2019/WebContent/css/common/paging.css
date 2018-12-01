@@ -8,3 +8,9 @@
 #paging a:hover{
 	background-color:#EAEAEA;
 }
+
+#paging .pagingIcon{
+	font-size:11px;
+	color:#6f6f6f;
+	background-color:#EAEAEA;
+}

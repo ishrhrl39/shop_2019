@@ -6,6 +6,7 @@ import java.util.Map;
 public class PagingMap{
 	Map pagingMap = new HashMap();
 	
+	
 	/**
 	 * 페이징 제한 페이지개수를 설정
 	 * @param limit
@@ -142,5 +143,9 @@ public class PagingMap{
 	 */
 	public int getDataCount(){
 		return pagingMap.get("DATA_CNT") == null ? 0 : Integer.parseInt(pagingMap.get("DATA_CNT").toString());
+	}
+	
+	public void put(String key, Object value){
+		pagingMap.put(key, value);
 	}
 }

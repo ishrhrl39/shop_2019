@@ -1,59 +1,42 @@
 $(document).ready(function() {
-	setDate();
-	$("#joinBtn").click(function() {
-		join();
+	$("#searchBtn").click(function(){
+		search();
+	});
+	
+	$("#searchValue").keydown(function(key){
+		if(key.keyCode == 13){
+			search();
+			return false;
+		}
 	});
 });
 
-// 날짜 불러오기
-function setDate() {
-	var dt = new Date();
-	var year = dt.getFullYear();
-	var month = dt.getMonth() + 1;
-	var date = dt.getDate();
 
-	var optionY = "";
-	for ( var i = year - 50; i <= year; i++) {
-		if (year == i) {
-			optionY += "<option value='" + i + "' selected>";
-		} else {
-			optionY += "<option value='" + i + "'>";
-		}
-		optionY += i;
-		optionY += "</option>";
-
-	}
-	$("#year").html(optionY);
-
-	var optionM = "";
-	for ( var i = 1; i <= 12; i++) {
-		if (month == i) {
-			optionM += "<option value='" + i + "' selected>";
-		} else {
-			optionM += "<option value='" + i + "'>";
-		}
-		optionM += i;
-		optionM += "</option>";
-
-	}
-	$("#month").html(optionM);
-
-	var optionD = "";
-	for ( var i = 1; i <= 31; i++) {
-		if (date == i) {
-			optionD += "<option value='" + i + "' selected>";
-		} else {
-			optionD += "<option value='" + i + "'>";
-		}
-		optionD += i;
-		optionD += "</option>";
-
-	}
-	$("#date").html(optionD);
+function openUserDetail(id){
+    window.open("/admin/user.do?id=" + id, 'popup', "toolbar=no,location=no,directories=no,status=no,menubar=no,width=550px,height=440,resizable=yes,scrollbars=auto");
 }
 
-// 회원가입
-function join() {
-	$("#joinForm").submit();
-
+// 회원 검색
+function search(){
+	if($("#searchValue").val() == ''){
+		alert('검색어를 입력하십시오.');
+		return;
+	}
+	$("#mode").val("S");
+	$.ajax({
+		type: "POST",
+		url: "/admin/userList.do?cmd=selectUserCount",
+		dataType: "json",
+		data : $("#adminAccountForm").serialize(),
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		success: function(data){
+			if(Number(data.count) >= 100){
+				if(confirm("검색 대상자가 " + data.count + "건입니다. 검색하시겠습니까?")){
+					$("#adminAccountForm").submit();
+				}
+			}else{
+				$("#adminAccountForm").submit();
+			}
+		}
+	});
 }

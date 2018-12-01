@@ -37,8 +37,13 @@ public class AccountDaoImpl extends SqlMapClientDaoSupport implements AccountDao
 	}
 
 	@Override
-	public int selectTotalUserCount() {
-		return (int) getSqlMapClientTemplate().queryForObject(namespace + "selectTotalUserCount");
+	public int selectTotalUserCount(Map map) {
+		return (int) getSqlMapClientTemplate().queryForObject(namespace + "selectTotalUserCount", map);
+	}
+	
+	@Override
+	public User selectUserOne(User user){
+		return (User) getSqlMapClientTemplate().queryForObject(namespace + "selectUserOne", user);
 	}
 
 }

@@ -25,7 +25,8 @@
 		<property name="mappings">
 			<value>
 				/admin/index.do = AdminIndexController
-				/admin/userList.do = AdminUserController
+				/admin/userList.do = AdminUserListController
+				/admin/user.do = AdminUserController
 			</value>
 		</property>
 	</bean>
@@ -34,10 +35,14 @@
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	</bean>
 	
+	<bean id="AdminUserListController" class="com.yena.shop.admin.controller.AdminUserListController">
+	    <property name="methodNameResolver" ref="methodNameResolver" />
+	    <property name="accountService" ref="AccountService" />
+	    <property name="pageLimit" value="${admin.account.page.limit}" />
+	</bean>
+	
 	<bean id="AdminUserController" class="com.yena.shop.admin.controller.AdminUserController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	    <property name="accountService" ref="AccountService" />
 	</bean>
-	
-	
 </beans>

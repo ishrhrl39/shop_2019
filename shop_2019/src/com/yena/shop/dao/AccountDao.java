@@ -14,5 +14,8 @@ public interface AccountDao {
 	
 	public List selectUser(Map map);
 	
-	public int selectTotalUserCount();
+	public int selectTotalUserCount(Map map);
+	
+	// 회원 정보조회
+	public User selectUserOne(User user);
 }
