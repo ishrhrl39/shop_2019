@@ -126,5 +126,14 @@
 			<isNotNull property="pass_wd">
 				AND PASS_WD = #pass_wd#
 			</isNotNull>
+			<isNotNull property="tel">
+				AND TEL = #tel#
+			</isNotNull>
+			<isNotNull property="name">
+				AND NAME = #name#
+			</isNotNull>
+			<isNotNull property="name">
+				AND BIRTH = #birth#
+			</isNotNull>
 	</select>
 </sqlMap>

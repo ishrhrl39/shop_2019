@@ -83,11 +83,50 @@ public class AccountController extends MultiActionController{
 		return mav;
 	}
 	
+	// 아이디, 비밀번호 찾기 화면
+	public ModelAndView findlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return new ModelAndView("findInfo");
+	}
+		
+	// 아이디 찾기
+	public ModelAndView findId(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String secretKey = Aria.getSecretKey();
+		Aria.setCharset("UTF-8");
+		String name = StringUtils.defaultString(request.getParameter("name"), "");
+		String birth = StringUtils.defaultString(request.getParameter("birth"), "");
+		String tel = StringUtils.defaultString(request.getParameter("tel"), "");
+		
+		User user = new User();
+		user.setBirth(birth);
+		user.setName(Aria.encrypt(name,secretKey));
+		user.setTel(tel);
+		
+		user = accountService.selectUserOne(user);
+		
+		if(user == null){
+			mav.addObject("result", false);
+		}else{
+			mav.addObject("result", true);
+			mav.addObject("user", user);
+		}
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	// 아이디, 비밀번호 보여주는 화면
+	public ModelAndView findSuccess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String id = StringUtils.defaultString(request.getParameter("id"), "");
+		mav.addObject("id", id);
+		mav.setViewName("findSuccess");
+		return mav;
+	}
 	
 	
 	public static void main(String[] args) throws Exception {
 		String secretKey = Aria.getSecretKey();
 		Aria.setCharset("UTF-8");
-		System.out.println(Aria.decrypt("950B3939FB3F235B694B72C75A50ED0F", secretKey));
+		System.out.println(Aria.decrypt("518CDF386541F6541BACC823FC7ECBA4", secretKey));
 	}
 }
