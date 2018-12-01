@@ -57,6 +57,14 @@
 	<definition name="login" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/account/login.jsp" />
 	</definition> 
+
+	<!-- 아이디 및 비밀번호 찾기   -->
+	<definition name="findInfo" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/account/findInfo.jsp" />
+	</definition> 
 	
-	
+	<!-- 아이디 및 비밀번호 값 보기  -->
+	<definition name="findSuccess" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/account/findSuccess.jsp" />
+	</definition>
 </tiles-definitions>

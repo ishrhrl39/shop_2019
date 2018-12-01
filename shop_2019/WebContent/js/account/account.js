@@ -25,6 +25,16 @@ $(document).ready(function() {
 	$("#id").keyup(function(){ 
 		$("#checkId").val("N");
 	});
+	
+	// 아이디 찾기
+	$("#findId").click(function(){
+		findId();
+	});
+	
+	// 로그인 페이지로 이동
+	$("#login").click(function(){
+		location.href = "/account/login.do";
+	});
 
 });
 
@@ -86,7 +96,7 @@ function duplCheckId(){
 	
 	$.ajax({
 		type: "POST",
-		url: "join.do?cmd=duplCheckId",
+		url: "account.do?cmd=duplCheckId",
 		dataType: "json",
 		data : "id="+id,
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -164,5 +174,41 @@ function join(){
 			alert("패스워드가 동일하지 않습니다.");
 		}
 	}
+}
+
+// 아이디 찾기 
+function findId(){
+	var name = $("#name").val();
+	var birth = $("#birth").val();
+	var tel = $("#tel").val();
+	
+	// 유효성 체크
+	if(name == "" || name.length == 0){
+		alert("이름을 입력하세요");
+		return;
+	}else if(birth == "" || birth.length == 0){
+		alert("생년월일을 입력하세요");
+		return;
+	}else if(tel == "" || tel.length == 0){
+		alert("휴대폰 번호를 입력하세요");
+		return;
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "account.do?cmd=findId",
+		dataType: "json",
+		data : $("#findForm").serialize(),
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		success: function(data){
+			var user = data.user;
+			if(data.result==false){
+				alert("아이디를 찾을 수 없습니다.");
+			}else{
+				location.href ="/account/account.do?cmd=findSuccess&id="+user.id;
+			}
+			
+		}
+	});
 }
 

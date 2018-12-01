@@ -24,7 +24,7 @@
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
-				/account/join.do = AccountController
+				/account/account.do = AccountController
 				/account/login.do = LoginController
 			</value>
 		</property>
@@ -40,6 +40,7 @@
 	<bean id="LoginController" class="com.yena.shop.controller.LoginController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	    <property name="accountService" ref="AccountService" />
+	    <property name="sessionTimeout" value="${session.timeout}" />
 	</bean>
 	
 	<!-- Service -->	
