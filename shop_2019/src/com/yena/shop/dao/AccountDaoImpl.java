@@ -47,4 +47,8 @@ public class AccountDaoImpl extends SqlMapClientDaoSupport implements AccountDao
 		return (User) getSqlMapClientTemplate().queryForObject(namespace + "selectUserOne", user);
 	}
 
+	// 회원 정보수정
+	public int updateUser(User user){
+		return getSqlMapClientTemplate().update(namespace + "updateUser", user);
+	}
 }

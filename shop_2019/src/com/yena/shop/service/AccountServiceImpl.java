@@ -1,5 +1,6 @@
 package com.yena.shop.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -52,5 +53,10 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public User selectUserOne(User user){
 		return accountDao.selectUserOne(user);
+	}
+	
+	// 회원 정보수정
+	public int updateUser(User user){
+		return accountDao.updateUser(user);
 	}
 }

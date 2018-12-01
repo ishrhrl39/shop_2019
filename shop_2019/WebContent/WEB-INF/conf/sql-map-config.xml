@@ -11,5 +11,6 @@
 	</transactionManager>
 	
 	<sqlMap resource="com/yena/shop/maps/SqlMapAccount.xml"/>
+	<sqlMap resource="com/yena/shop/maps/SqlMapLoginLog.xml"/>
 	 
 </sqlMapConfig>

@@ -18,4 +18,7 @@ public interface AccountDao {
 	
 	// 회원 정보조회
 	public User selectUserOne(User user);
+	
+	// 회원 정보수정
+	public int updateUser(User user);
 }

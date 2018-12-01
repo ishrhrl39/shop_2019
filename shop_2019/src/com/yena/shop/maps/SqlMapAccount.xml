@@ -127,4 +127,17 @@
 				AND PASS_WD = #pass_wd#
 			</isNotNull>
 	</select>
+	
+	<update id="updateUser" parameterClass="user">
+		UPDATE
+			USER
+		SET			
+			<isNotNull property="pass_wd">PASS_WD = #pass_wd#,</isNotNull>
+			<isNotNull property="email">EMAIL = #email#,</isNotNull>
+			<isNotNull property="tel">TEL = #tel#,</isNotNull>
+			<isNotNull property="use_yn">USE_YN = #use_yn#,</isNotNull>
+			UPD_DTM = DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')
+		WHERE
+			ID = #id#
+	</update>
 </sqlMap>

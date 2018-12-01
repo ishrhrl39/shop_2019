@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SqlMapLoginLog">
+	<typeAlias alias="loginLog" type="com.yena.shop.model.LoginLog" />	
+	
+	<!-- 회원가입  -->
+	<insert id="insertLoginLog" parameterClass="loginLog">
+		INSERT INTO LOGINLOG
+			(ID
+			,LOGIN_DT
+			,LOGIN_TM) 
+			VALUES
+			(
+				#id#,      
+				DATE_FORMAT(NOW(), '%Y%m%d'), 
+				DATE_FORMAT(NOW(), '%H%i%s')    
+			)		
+	</insert>
+	
+	<!-- 회원 목록 조회 -->
+	<select id="selectLoginLog" parameterClass="map" resultClass="loginLog">
+		SELECT
+			ID
+			,LOGIN_DT
+			,LOGIN_TM
+		FROM LOGINLOG
+			WHERE 1=1
+			<isNull property="searchColumn">
+				ORDER BY LOGIN_DT DESC, LOGIN_TM DESC
+				<isNotNull property="LIMIT">
+					LIMIT #LIMIT#
+				</isNotNull>
+				<isNotNull property="OFFSET">
+					OFFSET #OFFSET#
+				</isNotNull>
+			</isNull>
+	</select>
+	
+	<!-- 회원 전체 개수 조회 -->
+	<select id="selectTotalLoginLogCount" parameterClass="map" resultClass="int">
+		SELECT 
+			COUNT(*) AS CNT 
+		FROM LOGINLOG 
+	</select>
+</sqlMap>

@@ -41,17 +41,27 @@
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	    <property name="accountService" ref="AccountService" />
 	</bean>
-
-<!-- Service -->	
+	
+	<!-- Service -->	
 	<!-- 회원관리  -->
 	<bean id="AccountService" class="com.yena.shop.service.AccountServiceImpl">
 		<property name="accountDao" ref="AccountDao" />
 	</bean>
+	
+	<!-- 로그인 이력 -->
+	<bean id="loginLogService" class="com.yena.shop.service.LoginLogServiceImpl">
+		<property name="loginLogDao" ref="loginLogDao" />
+	</bean>
 
-<!-- Dao -->	 
+	<!-- Dao -->	 
 	<!-- 회원관리  -->	 
 	<bean id="AccountDao" class="com.yena.shop.dao.AccountDaoImpl">
 	</bean>
+	
+	<!-- 로그인 이력 -->
+	<bean id="loginLogDao" class="com.yena.shop.dao.LoginLogDaoImpl">
+	</bean>
+	
 	
 	
 </beans>

@@ -44,7 +44,12 @@
 		<table id="accountList" class="table table-striped table-hover table-bordered">
 			<thead>
 				<tr>
-					<th>&nbsp;</th>
+					<th>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default" id="deleteBtn">탈퇴</button>
+							<button type="button" class="btn btn-warning" id="useYesBtn">사용</button>
+						</div>
+					</th>
 					<th>아이디</th>
 					<th>이름</th>
 					<th>이메일</th>
@@ -97,7 +102,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="11">
+					<td colspan="11" align="center">
 						<c:choose>
 							<c:when test="${mode != 'S' }">
 								<div id="paging">

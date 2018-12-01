@@ -27,6 +27,7 @@
 				/admin/index.do = AdminIndexController
 				/admin/userList.do = AdminUserListController
 				/admin/user.do = AdminUserController
+				/admin/loginLog.do = AdminLoginLogController
 			</value>
 		</property>
 	</bean>
@@ -44,5 +45,11 @@
 	<bean id="AdminUserController" class="com.yena.shop.admin.controller.AdminUserController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	    <property name="accountService" ref="AccountService" />
+	</bean>
+	
+	<bean id="AdminLoginLogController" class="com.yena.shop.admin.controller.AdminLoginLogController">
+		<property name="methodNameResolver" ref="methodNameResolver" />
+	    <property name="pageLimit" value="${admin.account.page.limit}" />
+	    <property name="loginLogService" ref="loginLogService" />
 	</bean>
 </beans>

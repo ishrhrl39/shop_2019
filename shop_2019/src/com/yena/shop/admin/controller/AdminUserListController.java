@@ -9,6 +9,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import com.yena.shop.model.User;
 import com.yena.shop.service.AccountService;
 import com.yena.shop.util.PagingMap;
 
@@ -64,4 +65,35 @@ public class AdminUserListController extends MultiActionController{
 		mav.setViewName("jsonView");
 		return mav;
 	}
+	
+	public ModelAndView deleteUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String[] userList = request.getParameterValues("user");
+		for(String userId : userList){
+			if(!userId.equals("")){
+				User user = new User();
+				user.setId(userId);
+				user.setUse_yn("n");
+				accountService.updateUser(user);
+			}
+		}
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	public ModelAndView useYesUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String[] userList = request.getParameterValues("user");
+		for(String userId : userList){
+			if(!userId.equals("")){
+				User user = new User();
+				user.setId(userId);
+				user.setUse_yn("y");
+				accountService.updateUser(user);
+			}
+		}
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
 }

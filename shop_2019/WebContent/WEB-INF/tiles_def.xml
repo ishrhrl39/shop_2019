@@ -5,10 +5,10 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-<!-- 	<definition name="blank_layout" template="/WEB-INF/jsp/layout/blank.jsp"> -->
-<!-- 		<put-attribute name="title">SHOP</put-attribute> -->
-<!-- 		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" /> -->
-<!-- 	</definition> -->
+ 	<definition name="blank_layout" template="/WEB-INF/jsp/layout/blank.jsp"> 
+ 		<put-attribute name="title">SHOP</put-attribute>
+ 		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
+ 	</definition>
 	
 	<definition name="admin_layout" template="/WEB-INF/jsp/layout/admin_layout.jsp">
 		<put-attribute name="title">SHOP Administrator</put-attribute>
@@ -34,6 +34,15 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/account_list.jsp" />
 	</definition>
 	
+	<definition name="admin_user_popup" extends="blank_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/account_popup.jsp" />
+	</definition>
+	
+	<!-- 로그인 이력 -->
+	<definition name="admin_login_log" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_login_log.jsp" />
+	</definition>
+	
 	<!-- 회원가입 -->
 	<definition name="join" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/account/join.jsp" />
@@ -48,4 +57,6 @@
 	<definition name="login" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/account/login.jsp" />
 	</definition> 
+	
+	
 </tiles-definitions>
