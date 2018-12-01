@@ -24,6 +24,7 @@
         <property name="locations">
         	<list><!--  -->
         		<value>WEB-INF/conf/jdbc.properties</value>
+        		<value>WEB-INF/conf/application.properties</value>
         	</list>
         </property>
     </bean>
