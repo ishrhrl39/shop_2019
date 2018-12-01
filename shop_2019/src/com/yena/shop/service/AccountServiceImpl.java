@@ -29,8 +29,8 @@ public class AccountServiceImpl implements AccountService {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List selectUser(Map map) {
-		List list = accountDao.selectUser(map);
+	public List<User> selectUser(Map map) {
+		List<User> list = accountDao.selectUser(map);
 		for(int i=0; i<list.size(); i++){
 			User user = (User) list.get(i);
 			try {
@@ -48,6 +48,7 @@ public class AccountServiceImpl implements AccountService {
 		return accountDao.selectTotalUserCount(map);
 	}
 
+	// 회원 정보조회
 	@Override
 	public User selectUserOne(User user){
 		return accountDao.selectUserOne(user);

@@ -12,10 +12,11 @@ public interface AccountService {
 	// 아이디 중복 체크
 	public int duplCheckId(String id);
 	
-	public List selectUser(Map map);
+	public List<User> selectUser(Map map);
 	
 	public int selectTotalUserCount(Map map);
 	
 	// 회원 정보조회
 	public User selectUserOne(User user);
+
 }
