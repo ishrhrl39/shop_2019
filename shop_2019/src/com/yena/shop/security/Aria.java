@@ -1173,7 +1173,7 @@ public class Aria {
   }
   public static void main(String ar[]){
 	  String plainText = "신승철";
-	  String encText = "AD9907088A9FF26CB7832257958E089F";
+	  String encText = "21009646B3BEF5CB63FC55FF51F71F5E";
 	  System.out.println(encrypt(plainText));
 	  try {
 		System.out.println(decrypt(encText));

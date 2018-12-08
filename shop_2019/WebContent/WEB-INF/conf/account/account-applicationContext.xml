@@ -34,6 +34,7 @@
 	<bean id="AccountController" class="com.yena.shop.controller.AccountController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	    <property name="accountService" ref="AccountService" />
+	    <property name="loginLinkUrl" value="${login.link.url}" />
 	</bean>
 	
 	<!-- 로그인 -->

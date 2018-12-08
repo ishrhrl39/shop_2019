@@ -31,6 +31,11 @@ $(document).ready(function() {
 		findId();
 	});
 	
+	// 비밀번ㅌ호 찾기
+	$("#findPwd").click(function(){
+		findPwd();
+	});
+	
 	// 로그인 페이지로 이동
 	$("#login").click(function(){
 		location.href = "/account/login.do";
@@ -60,10 +65,14 @@ function setDate() {
 
 	var optionM = "";
 	for ( var i = 1; i <= 12; i++) {
+		var m = i;
+		if((i + "").length == 1){
+			m = "0" + i;
+		}
 		if (month == i) {
-			optionM += "<option value='" + i + "' selected>";
+			optionM += "<option value='" + m + "' selected>";
 		} else {
-			optionM += "<option value='" + i + "'>";
+			optionM += "<option value='" + m + "'>";
 		}
 		optionM += i;
 		optionM += "</option>";
@@ -73,12 +82,16 @@ function setDate() {
 
 	var optionD = "";
 	for ( var i = 1; i <= 31; i++) {
-		if (date == i) {
-			optionD += "<option value='" + i + "' selected>";
-		} else {
-			optionD += "<option value='" + i + "'>";
+		var d = i;
+		if((i + "").length == 1){
+			d = "0" + i;
 		}
-		optionD += i;
+		if (date == i) {
+			optionD += "<option value='" + d + "' selected>";
+		} else {
+			optionD += "<option value='" + d + "'>";
+		}
+		optionD += d;
 		optionD += "</option>";
 
 	}
@@ -135,7 +148,7 @@ function join(){
 		alert("비밀번호를 입력하세요");
 		return;
 	}else if(!passwordRules.test(pass_wd)){
-		alert("비밀번호는 숫자와 영문자 조합으로 10~15자리를 사용해야 합니다.");
+		alert("비밀번호는 숫자와 영문자 조합으로 8~15자리를 사용해야 합니다.");
 		return;
 	}else if( repass_wd == "" || repass_wd.length == 0){
 		alert("비밀번호 확인을 입력하세요");
@@ -198,12 +211,13 @@ function findId(){
 		type: "POST",
 		url: "account.do?cmd=findId",
 		dataType: "json",
-		data : $("#findForm").serialize(),
+		data : $("#findIdForm").serialize(),
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		success: function(data){
 			var user = data.user;
 			if(data.result==false){
 				alert("아이디를 찾을 수 없습니다.");
+				return;
 			}else{
 				location.href ="/account/account.do?cmd=findSuccess&id="+user.id;
 			}
@@ -211,4 +225,44 @@ function findId(){
 		}
 	});
 }
+
+//비밀번호 찾기 
+function findPwd(){
+	var id = $("#id").val();
+	var email = $("#email").val();
+	
+	// 유효성 체크
+	if(id == "" || id.length == 0){
+		alert("이름을 입력하세요");
+		return;
+	}else if(email == "" || email.length == 0){
+		alert("생년월일을 입력하세요");
+		return;
+	}
+	
+	// 발송중 문구
+	$("#confirming").show();
+	
+	$.ajax({
+		type: "POST",
+		url: "account.do?cmd=findPwd",
+		dataType: "json",
+		data : $("#findPwdForm").serialize(),
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		success: function(data){
+			var email = data.email;
+			if(data.result==false){
+				alert("해당하는 아이디 또는 이메일이 존재하지 않습니다.");
+				return;
+			}else{
+				if(data.send == true){
+					$("#confirming").hide();
+					$("#confirmed").show();
+					alert("입력하신"+email+"로 이메일을 발송하였습니다.");
+				}
+			}
+		}
+	});
+}
+
 

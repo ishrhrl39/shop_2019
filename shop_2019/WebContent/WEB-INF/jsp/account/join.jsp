@@ -6,7 +6,7 @@
 		<script type="text/javascript" src="/js/account/account.js"></script>
 	</head>
 	<body>
-		<form id="joinForm" action="/account/join.do">
+		<form id="joinForm" action="/account/account.do">
 		<input type="hidden" id="checkId" value="N"/>
 		<input type="hidden" name="cmd" value="insertUser">
 			<table>
