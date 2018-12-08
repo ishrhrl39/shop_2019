@@ -1,0 +1,23 @@
+.form_select th{
+	background-color:gray;
+	color:white;
+	font-weight: normal;
+	padding:3px;
+}
+
+.form_select td{
+	padding:3px;
+}
+
+.form_select td select{
+	border: 1px solid #EAEAEA;
+	width:250px;
+}
+
+
+#search{
+	background-image: url('/images/common/search.png');
+	background-repeat: no-repeat;
+	padding-left:30px;
+}
+

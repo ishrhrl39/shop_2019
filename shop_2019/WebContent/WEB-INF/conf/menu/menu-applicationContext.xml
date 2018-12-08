@@ -24,40 +24,21 @@
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
-				/admin/index.do = AdminIndexController
-				/admin/userList.do = AdminUserListController
-				/admin/user.do = AdminUserController
-				/admin/loginLog.do = AdminLoginLogController
-				/admin/menu.do = MenuSysController
 			</value>
 		</property>
 	</bean>
 	
-	<bean id="AdminIndexController" class="com.yena.shop.admin.controller.AdminIndexController">
-	    <property name="methodNameResolver" ref="methodNameResolver" />
-	</bean>
 	
-	<bean id="AdminUserListController" class="com.yena.shop.admin.controller.AdminUserListController">
-	    <property name="methodNameResolver" ref="methodNameResolver" />
-	    <property name="accountService" ref="AccountService" />
-	    <property name="pageLimit" value="${admin.account.page.limit}" />
-	</bean>
 	
-	<bean id="AdminUserController" class="com.yena.shop.admin.controller.AdminUserController">
-	    <property name="methodNameResolver" ref="methodNameResolver" />
-	    <property name="accountService" ref="AccountService" />
-	</bean>
 	
-	<!-- 로그인 이력 관리 -->
-	<bean id="AdminLoginLogController" class="com.yena.shop.admin.controller.AdminLoginLogController">
-		<property name="methodNameResolver" ref="methodNameResolver" />
-	    <property name="pageLimit" value="${admin.account.page.limit}" />
-	    <property name="loginLogService" ref="loginLogService" />
+	<!-- Service -->	
+	<!-- 메뉴관리  -->
+	<bean id="menuService" class="com.yena.shop.service.MenuServiceImpl">
+		<property name="menuDao" ref="menuDao" />
 	</bean>
-	
-	<!-- 메뉴 카테고리 관리 -->
-	<bean id="MenuSysController" class="com.yena.shop.admin.controller.MenuSysController">
-		<property name="methodNameResolver" ref="methodNameResolver" />
-		<property name="menuService" ref="menuService" />
+
+	<!-- Dao -->	 
+	<!-- 메뉴관리  -->	 
+	<bean id="menuDao" class="com.yena.shop.dao.MenuDaoImpl">
 	</bean>
 </beans>

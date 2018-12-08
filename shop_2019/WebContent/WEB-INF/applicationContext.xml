@@ -107,4 +107,5 @@
 	
 	<import resource="/conf/admin/admin-applicationContext.xml"/>
 	<import resource="/conf/account/account-applicationContext.xml"/>
+	<import resource="/conf/menu/menu-applicationContext.xml"/>
 </beans>

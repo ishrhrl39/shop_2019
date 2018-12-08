@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SqlMapMenu">
+	<typeAlias alias="Menu" type="com.yena.shop.model.Menu" />	
+	
+	<!-- 그룹메뉴 등록  -->
+	<insert id="insertMenu" parameterClass="Menu">
+		INSERT INTO MENU
+			(
+				MENU_CD,
+				MENU_NM,
+				REG_DTM,
+				UPD_DTM,
+				ORDER_NO
+			) 
+			VALUES
+			(
+				#menu_cd#,      
+				#menu_nm#, 
+				DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
+				DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
+				#order_no#
+			)		
+	</insert>
+	
+	<!-- 회원 목록 조회 -->
+	<select id="selectMenu" resultClass="Menu">
+		SELECT
+			MENU_CD,
+			MENU_NM,
+			REG_DTM,
+			UPD_DTM,
+			ORDER_NO
+		FROM MENU
+			ORDER BY MENU_CD ASC
+	</select>
+	
+	<!-- 회원 정보 조회 -->
+	<select id="selectMenuOne" parameterClass="Menu" resultClass="Menu">
+		SELECT 
+			MENU_CD,
+			MENU_NM,
+			REG_DTM,
+			UPD_DTM,
+			ORDER_NO
+		FROM
+			MENU
+		WHERE
+			1=1
+			<isNotEqual property="menu_cd" compareValue="0">
+				AND MENU_CD = #menu_cd#
+			</isNotEqual>
+			<isNotNull property="menu_nm">
+				AND MENU_NM = #menu_nm#
+			</isNotNull>
+			ORDER BY MENU_CD DESC LIMIT 1
+	</select>
+	
+	<update id="updateMenu" parameterClass="Menu">
+		UPDATE
+			MENU
+		SET			
+			MENU_NM = #menu_nm#,
+			UPD_DTM = DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
+			ORDER_NO = #order_no#
+		WHERE
+			MENU_CD=#menu_cd#
+	</update>
+	
+	<delete id="deleteMenu" parameterClass="int">
+		DELETE	FROM
+			MENU
+				WHERE MENU_CD=#menu_cd# 
+	</delete>
+</sqlMap>

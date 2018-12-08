@@ -10,7 +10,7 @@
 			<li><a href='/admin/index.do'>메인 페이지</a></li>
 			<li><a href='/admin/userList.do'>회원 목록</a></li>
 			<li><a href='/admin/loginLog.do'>로그인 이력</a></li>
-			<li><a href='#'>메뉴 관리</a></li>
+			<li><a href='/admin/menu.do'>메뉴 관리</a></li>
 		</ul>
 	</body>
 </html>

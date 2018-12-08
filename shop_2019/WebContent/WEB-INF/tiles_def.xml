@@ -29,18 +29,24 @@
 	<definition name="admin_main" extends="admin_layout">
 	</definition>
 	
-	<!-- 관리자 사용자목록관리 페이지 -->
+	<!-- 관리자 - 사용자목록관리 페이지 -->
 	<definition name="admin_user" extends="admin_layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/account_list.jsp" />
 	</definition>
 	
+	<!-- 관리자 - 계정정보확인 -->
 	<definition name="admin_user_popup" extends="blank_layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/account_popup.jsp" />
 	</definition>
 	
-	<!-- 로그인 이력 -->
+	<!-- 관리자 - 로그인 이력 -->
 	<definition name="admin_login_log" extends="admin_layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_login_log.jsp" />
+	</definition>
+	
+	<!-- 관리자 - 메뉴 카테고리 관리 -->
+	<definition name="admin_menu" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_menu.jsp" />
 	</definition>
 	
 	<!-- 회원가입 -->
