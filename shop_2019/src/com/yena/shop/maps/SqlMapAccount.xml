@@ -138,7 +138,6 @@
 			<isNotNull property="email">
 				AND EMAIL = #email#
 			</isNotNull>
-			
 	</select>
 	
 	<!-- 회원정보 수정  -->

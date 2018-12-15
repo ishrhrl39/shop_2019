@@ -10,6 +10,7 @@
  		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
  	</definition>
 	
+	<!-- 관리자 레이아웃  -->
 	<definition name="admin_layout" template="/WEB-INF/jsp/layout/admin_layout.jsp">
 		<put-attribute name="title">SHOP Administrator</put-attribute>
 		<put-attribute name="menu" value="/WEB-INF/jsp/admin/menu.jsp" />
@@ -23,6 +24,13 @@
 	</definition>
 
 	<definition name="main" extends="layout">
+	</definition>
+	
+	<!-- 마이페이지 레이아웃  -->
+	<definition name="mypage_layout" template="/WEB-INF/jsp/layout/mypage_layout.jsp">
+		<put-attribute name="title">SHOP Mypage</put-attribute>
+		<put-attribute name="menu" value="/WEB-INF/jsp/mypage/menu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/main.jsp" />
 	</definition>
 	
 	<!-- 관리자 페이지 -->
@@ -73,4 +81,21 @@
 	<definition name="findSuccess" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/account/findSuccess.jsp" />
 	</definition>
+	
+	<!-- 마이페이지 - 내 정보 관리 -->
+	<definition name="myInfo" extends="mypage_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myInfo.jsp" />
+	</definition>
+	
+	<!-- 비밀번호 변경   -->
+	<definition name="pwdUpdatePage" extends="mypage_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/pwdUpdatePage.jsp" />
+	</definition>
+	
+	
+	<!-- 마이페이지 - 장바구니 -->
+	<definition name="shopBasket" extends="mypage_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/shopBasket.jsp" />
+	</definition>
+	
 </tiles-definitions>
