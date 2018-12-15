@@ -14,6 +14,7 @@
 						<a href="/admin/index.do">관리자 페이지</a>
 					</c:if>
 					<a href="/account/login.do?cmd=logout">로그아웃</a>
+					<a href="/mypage/myInfo.do?cmd=list">마이페이지</a>
 				</c:when>
 				<c:otherwise>
 					<a href="/account/login.do">로그인</a>
