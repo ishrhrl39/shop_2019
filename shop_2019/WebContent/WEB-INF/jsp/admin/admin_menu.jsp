@@ -14,63 +14,88 @@
 		<input type="hidden" id="menuCd" name="menuCd" />	
 		<input type="hidden" id="orderNo" name="orderNo" />
 		
-		<table class="form_select">
+		<table>
 			<tr>
-				<th colspan="2">
-					그룹 메뉴
-				</th>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="text" class="form-control" name="search" id="search"  maxlength="25" placeHolder="메뉴를 검색하세요." />
+				<td>
+					<table class="form_select">
+						<tr>
+							<th colspan="2">
+								그룹 메뉴
+							</th>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="text" class="form-control" name="search" id="search"  maxlength="25" placeHolder="메뉴를 검색하세요." />
+							</td>
+						</tr>
+						<tr style="border:1px solid #BDBDBD;">
+							<td width="50%" valign="top">
+								<input type="text" class="form-control" name="menuNm" id="menuNm"  maxlength="25" placeHolder="메뉴명을 입력하십시오." />
+								<input type="text" class="form-control" name="link_url" id="link_url"  maxlength="100" placeHolder="URL을 입력하십시오." />
+							</td>
+							<td width="50%" valign="bottom">
+								<button type="button" class="btn btn-default" id="insertMenuBtn" >등록</button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<select size="20" id="menuList">
+									<c:forEach items="${menu_list }" var="menu">
+										<option value="${menu.menu_cd }" data-toggle="modal">${menu.menu_nm }</option>
+									</c:forEach>	
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td width="30%">
+								<button type="button" class="btn btn-primary" id="deleteMenuBtn" disabled="disabled">삭제</button>
+							</td>
+						</tr>
+					</table>
 				</td>
-			</tr>
-			<tr>
-				<td width="70%">
-					<input type="text" class="form-control" name="menuNm" id="menuNm"  maxlength="25" />
-				</td>
-				<td width="30%">
-					<button type="button" class="btn btn-default" id="insertMenuBtn" >등록</button>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<select size="20" id="menuList">
-						<c:forEach items="${menu_list }" var="menu">
-							<option value="${menu.menu_cd }" data-toggle="modal">${menu.menu_nm }</option>
-						</c:forEach>	
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td width="30%">
-					<button type="button" class="btn btn-primary" id="deleteMenuBtn" disabled="disabled">삭제</button>
+				<td valign="middle" align="center">
+					<button type="button" class="moveItemBtn" disabled="disabled" id="moveTopBtn">▲</button><br/>
+					<button type="button" class="moveItemBtn" disabled="disabled" id="moveBottomBtn">▼</button><br/>
+					<button type="button" class="btn btn-warning" data-dismiss="modal" id="saveOrder" disabled="disabled">순서 저장</button>
 				</td>
 			</tr>
 		</table>
 	</form>
 	
 	
-	<!-- Modal -->
+	<!-- 그룹메뉴 수정 팝업 -->
 	<div id="menuPopup" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Modal Header</h4>
-				</div>
-				<div class="modal-body">
-					<p>Some text in the modal.</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		<form action="#" id="menuUpdateFrm">
+			<input type="hidden" id="popup_menuCd" name="popup_menuCd" />
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">그룹메뉴명 수정</h4>
+					</div>
+					<div class="modal-body">
+						<table style="width:100%">
+							<tr>
+								<th>메뉴명</th>
+								<td><input type="text" id="popup_menuNm" name="popup_menuNm" maxlength="25" class="form-control" /></td>
+							</tr>
+							<tr>
+								<td colspan='2'>&nbsp;</td>
+							</tr>
+							<tr>
+								<th>URL</th>
+								<td><input type="text" id="popup_menuUrl" name="popup_menuUrl" maxlength="100" class="form-control" /></td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal" id="updateMenuNmBtn">수정</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
 				</div>
 			</div>
-
-		</div>
+		</form>
 	</div>
 </body>
 </html>

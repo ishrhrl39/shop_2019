@@ -11,7 +11,7 @@
 
 .form_select td select{
 	border: 1px solid #EAEAEA;
-	width:250px;
+	width:350px;
 }
 
 
@@ -21,3 +21,17 @@
 	padding-left:30px;
 }
 
+
+#link_url{
+	margin-top:3px;
+}
+
+.moveItemBtn{
+	margin-bottom:3px;
+	background-color: white;
+	border:1px solid #BDBDBD;
+}
+
+.moveItemBtn:disabled,.moveItemBtn[disabled]{
+	color:#efefef;
+}

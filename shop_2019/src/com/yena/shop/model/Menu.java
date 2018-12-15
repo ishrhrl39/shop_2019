@@ -6,8 +6,14 @@ public class Menu {
 	private String reg_dtm;		// 등록일자
 	private String upd_dtm;		// 수정일자
 	private int order_no;	// 메뉴 순서
+	private String link_url;
 	
-	
+	public String getLink_url() {
+		return link_url;
+	}
+	public void setLink_url(String link_url) {
+		this.link_url = link_url;
+	}
 	public int getOrder_no() {
 		return order_no;
 	}

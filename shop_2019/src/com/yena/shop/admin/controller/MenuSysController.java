@@ -38,6 +38,7 @@ public class MenuSysController extends MultiActionController{
 		Menu menu = new Menu();
 		menu.setMenu_nm(StringUtils.defaultString(request.getParameter("menuNm"), ""));
 		menu.setOrder_no(Integer.parseInt(StringUtils.defaultString(request.getParameter("orderNo"), "0")));
+		menu.setLink_url(StringUtils.defaultString(request.getParameter("link_url"), ""));
 		
 		menuService.insertMenu(menu);
 		mav.addObject("menu", menuService.selectMenuOne(menu));
@@ -55,4 +56,27 @@ public class MenuSysController extends MultiActionController{
 		return mav;
 	}
 	
+	
+	public ModelAndView updateMenu(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		Menu menu = new Menu();
+		menu.setMenu_nm(StringUtils.defaultString(request.getParameter("popup_menuNm"), ""));
+		menu.setMenu_cd(Integer.parseInt(StringUtils.defaultString(request.getParameter("popup_menuCd"), "0")));
+		menu.setLink_url(StringUtils.defaultString(request.getParameter("popup_menuUrl"), ""));
+		logger.info("update menu => " + menu.getMenu_cd());
+		menuService.updateMenu(menu);
+		mav.addObject("menu", menuService.selectMenuOne(menu));
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	public ModelAndView selectMenuOne(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		Menu menu = new Menu();
+		menu.setMenu_cd(Integer.parseInt(StringUtils.defaultString(request.getParameter("menu_cd"), "0")));
+		mav.addObject("menu", menuService.selectMenuOne(menu));
+		mav.setViewName("jsonView");
+		return mav;
+	}
 }

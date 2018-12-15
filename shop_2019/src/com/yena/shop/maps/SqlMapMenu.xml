@@ -12,6 +12,7 @@
 				MENU_NM,
 				REG_DTM,
 				UPD_DTM,
+				LINK_URL,
 				ORDER_NO
 			) 
 			VALUES
@@ -20,6 +21,7 @@
 				#menu_nm#, 
 				DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
 				DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
+				#link_url#,
 				#order_no#
 			)		
 	</insert>
@@ -31,9 +33,10 @@
 			MENU_NM,
 			REG_DTM,
 			UPD_DTM,
+			LINK_URL,
 			ORDER_NO
 		FROM MENU
-			ORDER BY MENU_CD ASC
+			ORDER BY ORDER_NO ASC
 	</select>
 	
 	<!-- 회원 정보 조회 -->
@@ -43,6 +46,7 @@
 			MENU_NM,
 			REG_DTM,
 			UPD_DTM,
+			LINK_URL,
 			ORDER_NO
 		FROM
 			MENU
@@ -54,16 +58,23 @@
 			<isNotNull property="menu_nm">
 				AND MENU_NM = #menu_nm#
 			</isNotNull>
-			ORDER BY MENU_CD DESC LIMIT 1
+			LIMIT 1
 	</select>
 	
 	<update id="updateMenu" parameterClass="Menu">
 		UPDATE
 			MENU
 		SET			
-			MENU_NM = #menu_nm#,
-			UPD_DTM = DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
-			ORDER_NO = #order_no#
+			<isNotNull property="menu_nm">
+				MENU_NM = #menu_nm#,
+			</isNotNull>
+			<isNotNull property="link_url">
+				LINK_URL = #link_url#,
+			</isNotNull>
+			<isNotNull property="order_no">
+				ORDER_NO = #order_no#,
+			</isNotNull>
+			UPD_DTM = DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')
 		WHERE
 			MENU_CD=#menu_cd#
 	</update>
