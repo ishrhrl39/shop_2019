@@ -2,6 +2,21 @@ $(document).ready(function(){
 	$("#login").click(function(){
 		login();
 	});
+	
+	
+	$("#id").focus();
+	
+	$("#id").keydown(function(key){
+		if(key.keyCode == 13){
+			login();
+		}
+	});
+	
+	$("#pass_wd").keydown(function(key){
+		if(key.keyCode == 13){
+			login();
+		}
+	});
 });
 
 // 로그인

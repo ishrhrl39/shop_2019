@@ -77,7 +77,6 @@
 		<property name="mappings">
 			<value>
 				/index.do = IndexController
-				
 			</value>
 		</property>
 	</bean>
@@ -93,6 +92,7 @@
 	
 	<bean id="IndexController" class="com.yena.shop.controller.IndexController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
+	    <property name="menuService" ref="menuService" />
 	</bean>
 	
 	

@@ -11,33 +11,42 @@
 			<table id="myTable">
 				<tbody>
 					<tr>
+						<th>아이디</th>
 						<td id="user_id">
 						</td>
 					</tr>
 					<tr>
+						<th>이름</th>
 						<td id="user_name">
 						</td>
 					</tr>
 					<tr>
+						<th>이메일</th>
 						<td>
 							<input type="text" id="user_email" name="user_email"  style="width:200px;"/>
 						</td>
 					</tr>
 					<tr>
+						<th>생년월일</th>
 						<td id="user_birth">
 						</td>
 					</tr>
 					<tr>
+						<th>연락처</th>
 						<td>
 							<input type="text" id="user_tel" name="user_tel" style="width:200px;"/>
 						</td>
 					</tr>
+					<tr>
+						<td colspan='2'>
+							<div id="updateLayout">
+								<button type="button" id="infoUpdateBtn">수정</button>
+								<button type="button" id="pwdUpdateUrlBtn">비밀번호 수정</button>
+							</div>
+						</td>
+					</tr>
 				</tbody>
 			</table>
-			<div id="updateLayout">
-				<button type="button" id="infoUpdateBtn">수정</button>
-				<button type="button" id="pwdUpdateUrlBtn">비밀번호 수정</button>
-			</div>
 		</form>
 	</body>
 </html>

@@ -9,8 +9,11 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" href="/css/button.css">
+		<link rel="stylesheet" href="/css/common/menu.css">
+		<link rel="stylesheet" href="/css/common/font-awesome.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="/js/common/function.js"></script>
 		<title><tiles:getAsString name="title"></tiles:getAsString></title>
 	</head>
 	<body>

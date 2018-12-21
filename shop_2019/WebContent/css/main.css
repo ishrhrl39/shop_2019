@@ -4,10 +4,29 @@
 
 
 #menu_layout{
-	height:150px;
-	max-height: 150px;
+	height:120px;
+	max-height: 120px;
 }
 
 #login_{
 	float:right;
+}
+
+#top_menu{
+	width:100%;
+	text-align: right;
+	margin-right:5px;
+	margin-top:10px;
+}
+
+#top_menu a{
+	border:1px solid #BDBDBD;
+	padding:4px;
+	color:gray;
+	text-decoration: none;
+	margin:0px 2px 0px 2px;
+}
+
+#top_menu a:hover{
+	background-color:#EEE;
 }

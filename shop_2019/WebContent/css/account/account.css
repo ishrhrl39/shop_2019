@@ -1,0 +1,32 @@
+.find_table{
+	width:50%;
+}
+
+.find_table td, .find_table th{
+	padding:3px;
+}
+
+.find_table thead td{
+	font-size:16px;
+	font-weight: bold;
+	border-bottom:4px solid #3b4453;
+}
+
+.find_table p{
+	font-size:12px;	
+}
+
+#account_table th{
+	width:15%;
+	padding:5px 5px 5px 20px;
+}
+
+#account_table td{
+	width:85%;
+	padding:5px;
+}
+
+#account_table th, #account_table td{
+	border:1px solid grey;
+}
+

@@ -1,5 +1,7 @@
 package com.yena.shop.model;
 
+import java.util.List;
+
 public class Menu {
 	private int menu_cd;	// 그룹메뉴ID
 	private String menu_nm;		//그룹메뉴명
@@ -7,7 +9,21 @@ public class Menu {
 	private String upd_dtm;		// 수정일자
 	private int order_no;	// 메뉴 순서
 	private String link_url;
+	private int sub_menu_count;	// 서브메뉴 개수
+	private List<SubMenu> subMenuList;	// 서브메뉴 리스트
 	
+	public List<SubMenu> getSubMenuList() {
+		return subMenuList;
+	}
+	public void setSubMenuList(List<SubMenu> subMenuList) {
+		this.subMenuList = subMenuList;
+	}
+	public int getSub_menu_count() {
+		return sub_menu_count;
+	}
+	public void setSub_menu_count(int sub_menu_count) {
+		this.sub_menu_count = sub_menu_count;
+	}
 	public String getLink_url() {
 		return link_url;
 	}

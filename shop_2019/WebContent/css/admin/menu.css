@@ -26,12 +26,17 @@
 	margin-top:3px;
 }
 
-.moveItemBtn{
+.moveItemBtn, .moveSubItemBtn{
 	margin-bottom:3px;
 	background-color: white;
 	border:1px solid #BDBDBD;
 }
 
 .moveItemBtn:disabled,.moveItemBtn[disabled]{
+	color:#efefef;
+}
+
+
+.moveSubItemBtn:disabled,.moveSubItemBtn[disabled]{
 	color:#efefef;
 }

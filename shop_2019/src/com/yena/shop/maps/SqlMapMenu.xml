@@ -3,6 +3,7 @@
 
 <sqlMap namespace="SqlMapMenu">
 	<typeAlias alias="Menu" type="com.yena.shop.model.Menu" />	
+	<typeAlias alias="SubMenu" type="com.yena.shop.model.SubMenu" />	
 	
 	<!-- 그룹메뉴 등록  -->
 	<insert id="insertMenu" parameterClass="Menu">
@@ -26,20 +27,74 @@
 			)		
 	</insert>
 	
-	<!-- 회원 목록 조회 -->
+	<!-- 서브메뉴 등록 -->
+	<insert id="insertSubMenu" parameterClass="SubMenu">
+		INSERT INTO SUBMENU
+			(
+				MENU_CD,
+				SUB_MENU_CD,
+				SUB_MENU_NM,
+				ORDER_NO,
+				USER_AUTH,
+				LINK_URL,
+				USE_YN,
+				REG_DTM,
+				UPD_DTM
+			) 
+			VALUES
+			(
+				#menu_cd#,
+				#sub_menu_cd#,
+				#sub_menu_nm#,
+				#order_no#,
+				#user_auth#,
+				#link_url#,
+				#use_yn#,
+				DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
+				DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')
+			)		
+	</insert>
+	
+	<!-- 그룹 메뉴 목록 조회 -->
 	<select id="selectMenu" resultClass="Menu">
 		SELECT
+			B.MENU_CD,
+			B.MENU_NM,
+			B.REG_DTM,
+			B.UPD_DTM,
+			B.LINK_URL,
+			B.ORDER_NO,
+			(SELECT COUNT(A.MENU_CD) FROM SUBMENU A WHERE A.MENU_CD=B.MENU_CD) AS SUB_MENU_COUNT
+		FROM MENU B
+			ORDER BY B.ORDER_NO ASC
+	</select>
+	
+	<!-- 서브 메뉴 목록 조회 -->
+	<select id="selectSubMenu" resultClass="SubMenu" parameterClass="int">
+		SELECT 
 			MENU_CD,
-			MENU_NM,
-			REG_DTM,
-			UPD_DTM,
+			SUB_MENU_CD,
+			SUB_MENU_NM,
+			ORDER_NO,
+			USER_AUTH,
 			LINK_URL,
-			ORDER_NO
-		FROM MENU
+			USE_YN,
+			REG_DTM,
+			UPD_DTM
+		FROM SUBMENU
+			WHERE MENU_CD = #menuCd#
 			ORDER BY ORDER_NO ASC
 	</select>
 	
-	<!-- 회원 정보 조회 -->
+	<!-- 서브메뉴 최대 코드값 조회 -->
+	<select id="selectMaxSubMenuCd" resultClass="int">
+		SELECT 
+			IFNULL(MAX(CAST(SUB_MENU_CD AS INT)), 0) AS SUB_MENU_CD
+		FROM  
+			SUBMENU
+	</select>
+	
+	<!-- 그룹 메뉴 정보 1개 조회 -->
 	<select id="selectMenuOne" parameterClass="Menu" resultClass="Menu">
 		SELECT 
 			MENU_CD,
@@ -61,6 +116,23 @@
 			LIMIT 1
 	</select>
 	
+	<!-- 서브 메뉴 정보 1개 조회 -->
+	<select id="selectSubMenuOne" parameterClass="SubMenu" resultClass="SubMenu">
+		SELECT 
+			MENU_CD,
+			SUB_MENU_CD,
+			SUB_MENU_NM,
+			ORDER_NO,
+			USER_AUTH,
+			LINK_URL,
+			USE_YN,
+			REG_DTM,
+			UPD_DTM
+		FROM SUBMENU
+			WHERE MENU_CD = #menu_cd#
+			AND SUB_MENU_CD = #sub_menu_cd# LIMIT 1
+	</select>
+	
 	<update id="updateMenu" parameterClass="Menu">
 		UPDATE
 			MENU
@@ -79,9 +151,36 @@
 			MENU_CD=#menu_cd#
 	</update>
 	
+	<!-- 서브메뉴 수정 -->
+	<update id="updateSubMenu" parameterClass="SubMenu">
+		UPDATE
+			SUBMENU
+		SET
+			<isNotNull property="sub_menu_nm">
+				SUB_MENU_NM = #sub_menu_nm#,
+			</isNotNull>
+			<isNotNull property="link_url">
+				LINK_URL = #link_url#,
+			</isNotNull>
+			<isNotNull property="order_no">
+				ORDER_NO = #order_no#,
+			</isNotNull>
+			UPD_DTM = DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')
+		WHERE
+			MENU_CD=#menu_cd#
+			AND SUB_MENU_CD = #sub_menu_cd#
+	</update>
+	
 	<delete id="deleteMenu" parameterClass="int">
 		DELETE	FROM
 			MENU
 				WHERE MENU_CD=#menu_cd# 
+	</delete>
+	
+	<delete id="deleteSubMenu" parameterClass="SubMenu">
+		DELETE FROM
+			SUBMENU
+				WHERE MENU_CD = #menu_cd#
+					AND SUB_MENU_CD = #sub_menu_cd# 
 	</delete>
 </sqlMap>
