@@ -17,6 +17,10 @@ $(document).ready(function(){
 			login();
 		}
 	});
+	
+	$("#joinUs").click(function(){
+		location.href = "/account/account.do";
+	});
 });
 
 // 로그인
