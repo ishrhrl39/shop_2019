@@ -24,29 +24,33 @@
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
-				/mypage/myInfo.do = MyPageController
-				/mypage/pwdUpdate.do = MyPageController
-				/mypage/drop.do = MyPageController
-<!-- 				/mypage/shopBasket.do = ShopBasketController -->
+				/tattoo/list.do = TattooController
+				/tattoo/preview.do = PreviewController
 			</value>
 		</property>
 	</bean>
 	
-	<!-- 마이페이지  - 내 정보관리-->
-	<bean id="MyPageController" class="com.yena.shop.controller.MyPageController">
+	<!-- 타투 상품 -->
+	<bean id="TattooController" class="com.yena.shop.tattoo.controller.TattooController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
- 	 	<property name="accountService" ref="AccountService" />
+	    <property name="tattooService" ref="tattooService" />
+	    <property name="imageUploadPath" value="${image.upload.path}" />
+	</bean>
+	
+	<!-- 타투 내용 미리보기 -->
+	<bean id="PreviewController" class="com.yena.shop.tattoo.controller.PreviewController">
+		<property name="methodNameResolver" ref="methodNameResolver" />
 	</bean>
 	
 	<!-- Service -->
-	<!-- 마이페이지 - 내 정보관리  -->	
-	<bean id="AccountService" class="com.yena.shop.service.AccountServiceImpl">
-		<property name="accountDao" ref="AccountDao" />
+	<!-- 타투 상품 관리  -->	
+	<bean id="tattooService" class="com.yena.shop.tattoo.service.TattooServiceImpl">
+		<property name="tattooDao" ref="tattooDao" />
 	</bean>
 	
 	<!-- Dao -->	
-	<!-- 마이페이지  - 내 정보관리-->	 
-	<bean id="AccountDao" class="com.yena.shop.dao.AccountDaoImpl">
+	<!-- 타투 상품 관리-->	 
+	<bean id="tattooDao" class="com.yena.shop.tattoo.dao.TattooDaoImpl">
 	</bean>
 	
 </beans>

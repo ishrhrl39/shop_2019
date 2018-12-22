@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SqlMapTattoo">
+	<typeAlias alias="Tattoo" type="com.yena.shop.tattoo.model.Tattoo" />	
+	
+	<!-- 타투 상품 등록  -->
+	<insert id="insertTattoo" parameterClass="Tattoo">
+		INSERT INTO TATTOO
+			(
+				ID,
+				NM,
+				GOODS,
+				IMAGE,
+				PRICE,
+				COLOR,
+				SALE,
+				SALE_START_DT,
+				SALE_END_DT,
+				CONTENT,
+				REG_DTM,
+				UPD_DTM,
+				DEL_YN
+			) 
+			VALUES
+			(
+				#id#,
+				#nm#,
+				#goods#,
+				#image#,
+				#price#,
+				#color#,
+				#sale#,
+				#sale_start_dt#,
+				#sale_end_dt#,
+				#content#,
+				DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
+				DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'),
+				'N'
+			)		
+	</insert>
+	
+	<!-- 타투 상품 수정  -->
+	<update id="updateTattoo" parameterClass="Tattoo">
+		UPDATE
+			TATTOO
+		SET
+			<isNotNull property="nm">
+				NM = #nm#,
+			</isNotNull>
+			<isNotNull property="image">
+				IMAGE = #image#,
+			</isNotNull>
+			<isNotNull property="price">
+				PRICE = #price#,
+			</isNotNull>
+			<isNotNull property="color">
+				COLOR = #color#,
+			</isNotNull>
+			<isNotNull property="sale">
+				SALE = #sale#,
+			</isNotNull>
+			<isNotNull property="sale_start_dt">
+				SALE_START_DT = #sale_start_dt#,
+			</isNotNull>
+			<isNotNull property="sale_end_dt">
+				SALE_END_DT = #sale_end_dt#,
+			</isNotNull>
+			<isNotNull property="content">
+				CONTENT = #content#,
+			</isNotNull>
+			<isNotNull property="del_yn">
+				DEL_YN = #del_yn#,
+			</isNotNull>
+			UPD_DTM = DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')
+		WHERE
+			ID = #id#
+	</update>
+	
+	<!-- 타투 상품 목록 조회 -->
+	<select id="selectTattooList" resultClass="Tattoo" parameterClass="java.util.HashMap">
+		SELECT
+			ID,
+			NM,
+			IMAGE,
+			PRICE,
+			COLOR,
+			SALE,
+			SALE_START_DT,
+			SALE_END_DT,
+			CONTENT,
+			REG_DTM,
+			UPD_DTM,
+			DEL_YN
+		FROM TATTOO 
+			WHERE
+				GOODS=#goods#
+			ORDER BY REG_DTM ASC
+	</select>
+	
+	<!-- 타투 상품 단품 상세보기 -->
+	<select id="selectTattooOne" resultClass="Tattoo" parameterClass="int">
+		SELECT
+			ID,
+			NM,
+			IMAGE,
+			PRICE,
+			COLOR,
+			SALE,
+			SALE_START_DT,
+			SALE_END_DT,
+			CONTENT,
+			REG_DTM,
+			UPD_DTM,
+			DEL_YN
+		FROM TATTOO 
+			WHERE
+				ID = #id#		
+	</select>
+</sqlMap>

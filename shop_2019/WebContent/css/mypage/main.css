@@ -1,24 +1,41 @@
-body{
-	font-family: 나눔고딕,NanumGothic,돋움,Dotum;
+#myTable{
+	width:40%;
 }
 
-#leftMenu{
-	list-style: none;
-	padding:0px;
-	text-align: center;
+#myTable th{
+	width:30%;
+	border:1px solid #EAEAEA;
+	padding:3px 0px 3px 20px;
 }
 
-#leftMenu li{
-	padding:5px;
+#myTable td{
+	border:1px solid #EAEAEA;
+	padding:3px;
 }
 
-#leftMenu li:hover{
+#withDraw_layout{
+	width: 50%;
+}
+
+#withDraw_layout #alert_message{
+	width: 100%;
+	text-align: left;
+	padding:4px;
 	background-color: #EAEAEA;
+	border:1px solid #BDBDBD;
+	margin: 20px 0 20px 0;
 }
 
-#leftMenu li a{
-	font-size:14px;
-	color:#505050;
-	font-weight: bold;
-	text-decoration: none;
+#withDraw_layout #accountCheckTable {
+	width:100%;
+}
+
+#withDraw_layout #accountCheckTable th{
+	padding: 4px 0px 4px 20px;
+	border:1px solid #BDBDBD;
+}
+
+#withDraw_layout #accountCheckTable td{
+	padding:4px;
+	border:1px solid #BDBDBD;	
 }

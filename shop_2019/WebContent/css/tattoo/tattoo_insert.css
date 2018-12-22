@@ -1,0 +1,24 @@
+#insertTattooLayout{
+	width:100%;
+}
+
+#insertTattooLayout #tattooTable{
+	width:50%;
+}
+
+#insertTattooLayout #tattooTable th{
+	width:20%;
+	padding:3px 3px 3px 20px;
+	border: 1px solid #EAEAEA;
+}
+
+#insertTattooLayout #tattooTable td{
+	width:80%;
+	padding:3px 3px 3px 10px;
+	border: 1px solid #EAEAEA;
+}
+
+#content{
+	width:100%;
+	height:250px;
+}

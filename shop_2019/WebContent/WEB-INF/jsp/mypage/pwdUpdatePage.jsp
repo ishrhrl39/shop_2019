@@ -6,20 +6,27 @@
 		<script type="text/javascript" src="/js/mypage/pwdUpdate.js"></script>
 	</head>
 	<body>
-		<table>
-			<tbody>
-				<tr>
-					<th>새 비밀번호  </th>
-					<td><input type="password" id="newPwd" name="newPwd"></td>
-				</tr>
-				<tr>
-					<th>새 비밀번호 확인  </th>
-					<td><input type="password" id="reNewPwd" name="reNewPwd"></td>
-				</tr>
-			</tbody>
-		</table>
-		<div id="updateLayout">
-			<button type="button" id="pwdUpdateBtn">비밀번호 수정</button>
-		</div >
+		<center>
+			<table  id="myTable">
+				<tbody>
+					<tr>
+						<th>새 비밀번호  </th>
+						<td><input type="password" id="newPwd" name="newPwd"></td>
+					</tr>
+					<tr>
+						<th>새 비밀번호 확인  </th>
+						<td><input type="password" id="reNewPwd" name="reNewPwd"></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<div id="updateLayout">
+								<button type="button" id="pwdUpdateBtn" class="btn btn-success">비밀번호 수정</button>
+								<button type="button" id="cancelPwdUpdateBtn" class="btn btn-default">닫기</button>
+							</div >
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
 	</body>
 </html>

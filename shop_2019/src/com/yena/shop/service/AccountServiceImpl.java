@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.yena.shop.dao.AccountDao;
 import com.yena.shop.model.User;
+import com.yena.shop.model.WithDrawLog;
 import com.yena.shop.security.Aria;
 
 public class AccountServiceImpl implements AccountService {
@@ -58,5 +59,17 @@ public class AccountServiceImpl implements AccountService {
 	// 회원 정보수정
 	public int updateUser(User user){
 		return accountDao.updateUser(user);
+	}
+
+	// 회원 탈퇴사유 조회
+	@Override
+	public List selectWithDraw() {
+		return accountDao.selectWithDraw();
+	}
+
+	// 회원 탈퇴사유 로그 남기기
+	@Override
+	public void insertWithdrawLog(WithDrawLog withDrawLog) {
+		accountDao.insertWithdrawLog(withDrawLog);
 	}
 }

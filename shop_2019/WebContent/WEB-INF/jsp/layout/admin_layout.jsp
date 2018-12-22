@@ -12,12 +12,16 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="/js/common/paging.js"></script>
+		<script src="/js/common/menu.js"></script>
 		<title><tiles:getAsString name="title"></tiles:getAsString></title>
 	</head>
 	<body>
 		<table class="table">
 			<tr>
-				<td width="15%"><tiles:insertAttribute name="menu"></tiles:insertAttribute></td>
+				<td width="15%" bgcolor="#1f2120">
+					<center><img src="/images/common/menu_icon.png"></center>
+					<tiles:insertAttribute name="menu"></tiles:insertAttribute>
+				</td>
 				<td width="85%"><tiles:insertAttribute name="body"></tiles:insertAttribute></td>
 			</tr>	
 		</table>

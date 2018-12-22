@@ -3,6 +3,10 @@ $(document).ready(function(){
 	$("#pwdUpdateBtn").click(function(){
 		pwdUpdate();
 	});
+	
+	$("#cancelPwdUpdateBtn").click(function(){
+		location.href = "/mypage/myInfo.do";
+	});
 });
 
 //비밀번호 수정

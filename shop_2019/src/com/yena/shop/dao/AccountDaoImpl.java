@@ -8,6 +8,8 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.yena.shop.model.User;
+import com.yena.shop.model.WithDraw;
+import com.yena.shop.model.WithDrawLog;
 
 public class AccountDaoImpl extends SqlMapClientDaoSupport implements AccountDao {
 	
@@ -50,5 +52,17 @@ public class AccountDaoImpl extends SqlMapClientDaoSupport implements AccountDao
 	// 회원 정보수정
 	public int updateUser(User user){
 		return getSqlMapClientTemplate().update(namespace + "updateUser", user);
+	}
+
+	// 회원 탈퇴사유 조회
+	@Override
+	public List selectWithDraw() {
+		return getSqlMapClientTemplate().queryForList(namespace + "selectWithDraw");
+	}
+
+	// 회원 탈퇴사유 로그 남기기
+	@Override
+	public void insertWithdrawLog(WithDrawLog withDrawLog) {
+		getSqlMapClientTemplate().insert(namespace + "insertWithdrawLog", withDrawLog);
 	}
 }

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.yena.shop.model.User;
+import com.yena.shop.model.WithDraw;
+import com.yena.shop.model.WithDrawLog;
 
 public interface AccountService {
 	// 회원 가입
@@ -22,4 +24,9 @@ public interface AccountService {
 	// 회원 정보수정
 	public int updateUser(User user);
 
+	// 회원 탈퇴사유 조회
+	public List selectWithDraw();
+	
+	// 회원 탈퇴사유 로그 남기기
+	public void insertWithdrawLog(WithDrawLog withDrawLog);
 }

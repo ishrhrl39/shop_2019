@@ -11,9 +11,12 @@
 		<link rel="stylesheet" href="/css/button.css">
 		<link rel="stylesheet" href="/css/common/menu.css">
 		<link rel="stylesheet" href="/css/common/font-awesome.css">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="/js/common/function.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 		<title><tiles:getAsString name="title"></tiles:getAsString></title>
 	</head>
 	<body>

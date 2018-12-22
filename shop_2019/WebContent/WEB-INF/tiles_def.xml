@@ -92,10 +92,32 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/pwdUpdatePage.jsp" />
 	</definition>
 	
-	
 	<!-- 마이페이지 - 장바구니 -->
 	<definition name="shopBasket" extends="mypage_layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/shopBasket.jsp" />
+	</definition>
+	
+	<!-- 마이페이지 - 회원탈퇴 -->
+	<definition name="account_drop" extends="mypage_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/account_drop.jsp" />
+	</definition>
+	
+	
+	
+	<!-- ############################# 타투 상품 ################################# -->
+	<!-- 타투 상품 리스트 -->
+	<definition name="tattoo_list" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/tattoo_list.jsp" />
+	</definition>
+	
+	<!-- 타투 상품 등록 -->
+	<definition name="tattoo_insert" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/tattoo_insert.jsp" />
+	</definition>
+	
+	<!-- 타투 상품 내용 미리보기 -->
+	<definition name="tattoo_preview" extends="blank_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/tattoo_preview.jsp" />
 	</definition>
 	
 </tiles-definitions>

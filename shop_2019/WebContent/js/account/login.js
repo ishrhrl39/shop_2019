@@ -43,8 +43,12 @@ function login(){
 				alert("아이디나 비밀번호가 틀렸습니다.");
 				return;
 			}else{
-				alert("로그인을 성공하였습니다.");
-				location.href = "/index.do";
+				if(data.message == "WITHDRAW"){
+					alert("탈퇴한 회원이므로 로그인이 불가능합니다.");
+				}else{
+					alert("로그인을 성공하였습니다.");
+					location.href = "/index.do";
+				}
 			}
 		}
 	});

@@ -61,23 +61,28 @@ public class LoginController extends MultiActionController{
 			mav.addObject("result", false);
 		}else{ // 아이디와 비밀번호 존재하면
 			mav.addObject("result", true);
-			HttpSession session = request.getSession();	// session 객체 가져오기
-			session.setAttribute("loginUser", object); // session에 담을 항목
-			session.setMaxInactiveInterval(sessionTimeout * (1000 * 60)); // session 유지시간 (30 * 1분)
+			if(object.getUse_yn().equalsIgnoreCase("n")) {
+				mav.addObject("message", "WITHDRAW");
+			}else {
+				mav.addObject("message", "SUCCESS");
+				HttpSession session = request.getSession();	// session 객체 가져오기
+				session.setAttribute("loginUser", object); // session에 담을 항목
+				session.setMaxInactiveInterval(sessionTimeout * (1000 * 60)); // session 유지시간 (30 * 1분)
+				
+				// 아이디 저장선택시, 쿠키저장
+				if(saveSession.equalsIgnoreCase("y")){
+					Cookie cookie = new Cookie("cookieId", user.getId());
+					cookie.setMaxAge(365*24*60*60);
+					response.addCookie(cookie);
+				}else{
+					Cookie[] cookies = request.getCookies();      // 요청정보로부터 쿠키를 가져온다.
+					if(cookies != null) {
+						for(int i = 0 ; i<cookies.length; i++){       // 쿠키 배열을 반복문으로 돌린다.
+							cookies[i].setMaxAge(0);                  // 특정 쿠키를 더 이상 사용하지 못하게 하기 위해서는 
 			
-			// 아이디 저장선택시, 쿠키저장
-			if(saveSession.equalsIgnoreCase("y")){
-				Cookie cookie = new Cookie("cookieId", user.getId());
-				cookie.setMaxAge(365*24*60*60);
-				response.addCookie(cookie);
-			}else{
-				Cookie[] cookies = request.getCookies();      // 요청정보로부터 쿠키를 가져온다.
-				if(cookies != null) {
-					for(int i = 0 ; i<cookies.length; i++){       // 쿠키 배열을 반복문으로 돌린다.
-						cookies[i].setMaxAge(0);                  // 특정 쿠키를 더 이상 사용하지 못하게 하기 위해서는 
-		
-						// 쿠키의 유효시간을 만료시킨다.
-						response.addCookie(cookies[i]);           // 해당 쿠키를 응답에 추가(수정)한다.
+							// 쿠키의 유효시간을 만료시킨다.
+							response.addCookie(cookies[i]);           // 해당 쿠키를 응답에 추가(수정)한다.
+						}
 					}
 				}
 			}

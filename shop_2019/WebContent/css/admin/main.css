@@ -1,24 +1,28 @@
 body{
-	font-family: ë‚˜ëˆ”ê³ ë”•,NanumGothic,ë‹ì›€,Dotum;
+	font-family: '¸¼Àº °íµñ','Malgun Gothic',³ª´®°íµñ,µ¸¿ò,Dotum,±¼¸²,Gulim,'Apple SD Gothic Neo',sans-serif;
 }
 
 #leftMenu{
 	list-style: none;
 	padding:0px;
 	text-align: center;
+	background-color:#1f2120;
+	height:1000px;
 }
 
 #leftMenu li{
 	padding:5px;
 }
 
-#leftMenu li:hover{
-	background-color: #EAEAEA;
+#leftMenu li a:hover{
+	color:#fff;
+	font-weight: bold;
 }
 
 #leftMenu li a{
 	font-size:14px;
-	color:#505050;
+	color:#a1958c;
 	font-weight: bold;
 	text-decoration: none;
 }
+
