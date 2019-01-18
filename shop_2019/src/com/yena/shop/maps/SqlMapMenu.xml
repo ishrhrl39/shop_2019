@@ -89,7 +89,7 @@
 	<!-- 서브메뉴 최대 코드값 조회 -->
 	<select id="selectMaxSubMenuCd" resultClass="int">
 		SELECT 
-			IFNULL(MAX(CAST(SUB_MENU_CD AS INT)), 0) AS SUB_MENU_CD
+			IFNULL(MAX(SUB_MENU_CD * 1), 0) AS SUB_MENU_CD
 		FROM  
 			SUBMENU
 	</select>

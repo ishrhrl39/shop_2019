@@ -2,7 +2,8 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="SqlMapTattoo">
-	<typeAlias alias="Tattoo" type="com.yena.shop.tattoo.model.Tattoo" />	
+	<typeAlias alias="Tattoo" type="com.yena.shop.tattoo.model.Tattoo" />
+	<typeAlias alias="Page" type="com.yena.shop.tattoo.model.Page" />	
 	
 	<!-- 타투 상품 등록  -->
 	<insert id="insertTattoo" parameterClass="Tattoo">
@@ -78,7 +79,7 @@
 	</update>
 	
 	<!-- 타투 상품 목록 조회 -->
-	<select id="selectTattooList" resultClass="Tattoo" parameterClass="java.util.HashMap">
+	<select id="selectTattooList" resultClass="Tattoo" parameterClass="Page">
 		SELECT
 			ID,
 			NM,
@@ -92,10 +93,27 @@
 			REG_DTM,
 			UPD_DTM,
 			DEL_YN
-		FROM TATTOO 
-			WHERE
-				GOODS=#goods#
+		FROM TATTOO
+			WHERE 
+			GOODS = #goods# 
+			<isEqual property="searchKey" compareValue="NM">
+				AND NM LIKE CONCAT(#searchValue#, '%')
+			</isEqual>
+			
 			ORDER BY REG_DTM ASC
+			LIMIT #limit# OFFSET #offset# 
+	</select>
+	
+	<!-- 타투 전체 개수  -->
+	<select id="selectTotalTattoo" resultClass="int" parameterClass="Page">
+		SELECT 
+		 	COUNT(*) AS CNT
+	 	  FROM TATTOO
+	 	  WHERE
+	 	  	GOODS = #goods# 
+			<isEqual property="searchKey" compareValue="NM">
+				AND NM LIKE CONCAT(#searchValue#, '%')
+			</isEqual>
 	</select>
 	
 	<!-- 타투 상품 단품 상세보기 -->

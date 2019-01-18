@@ -35,6 +35,7 @@
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	    <property name="tattooService" ref="tattooService" />
 	    <property name="imageUploadPath" value="${image.upload.path}" />
+	    <property name="pageLimit" value="${tattoo.account.page.limit}" />
 	</bean>
 	
 	<!-- 타투 내용 미리보기 -->

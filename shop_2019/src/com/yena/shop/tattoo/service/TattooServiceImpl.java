@@ -9,6 +9,7 @@ import com.yena.shop.model.User;
 import com.yena.shop.model.WithDrawLog;
 import com.yena.shop.security.Aria;
 import com.yena.shop.tattoo.dao.TattooDao;
+import com.yena.shop.tattoo.model.Page;
 import com.yena.shop.tattoo.model.Tattoo;
 
 public class TattooServiceImpl implements TattooService {
@@ -23,6 +24,12 @@ public class TattooServiceImpl implements TattooService {
 	public void insertTattoo(Tattoo tattoo) {
 		tattooDao.insertTattoo(tattoo);
 	}
+	
+	// 타투 전체 개수
+	@Override
+	public int selectTotalTattoo(Page pageVo) {
+		return tattooDao.selectTotalTattoo(pageVo);
+	}
 
 	// 타투 상품 수정
 	@Override
@@ -32,8 +39,8 @@ public class TattooServiceImpl implements TattooService {
 
 	// 타투 상품 목록 조회
 	@Override
-	public List selectTattooList(Map param) {
-		return tattooDao.selectTattooList(param);
+	public List selectTattooList(Page page) {
+		return tattooDao.selectTattooList(page);
 	}
 
 	// 타투 상품 단품 상세보기
@@ -41,4 +48,5 @@ public class TattooServiceImpl implements TattooService {
 	public Tattoo selectTattooOne(int id) {
 		return tattooDao.selectTattooOne(id);
 	}
+	
 }
