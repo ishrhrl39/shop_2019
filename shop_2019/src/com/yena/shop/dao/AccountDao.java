@@ -29,4 +29,6 @@ public interface AccountDao {
 	
 	// 회원 탈퇴사유 로그 남기기
 	public void insertWithdrawLog(WithDrawLog withDrawLog);
+	
+	public User findUserById(String id);
 }

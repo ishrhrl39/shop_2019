@@ -183,4 +183,9 @@
 			DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')
 		)
 	</insert>
+	
+	
+	<select id="findUserById" parameterClass="java.lang.String" resultClass="user">
+		SELECT * FROM USER WHERE ID = #id#
+	</select>
 </sqlMap>

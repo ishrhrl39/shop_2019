@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/css/account/login.css">
 	</head>
 	<body>
-		<form id="loginForm">
+		<form id="loginForm" action="/account/login.do?cmd=login" method="post">
 			<div>
 				<center>
 					<table>

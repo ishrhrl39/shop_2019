@@ -65,4 +65,8 @@ public class AccountDaoImpl extends SqlMapClientDaoSupport implements AccountDao
 	public void insertWithdrawLog(WithDrawLog withDrawLog) {
 		getSqlMapClientTemplate().insert(namespace + "insertWithdrawLog", withDrawLog);
 	}
+	
+	public User findUserById(String id) {
+		return (User) getSqlMapClientTemplate().queryForObject(namespace + "findUserById",id);
+	}
 }

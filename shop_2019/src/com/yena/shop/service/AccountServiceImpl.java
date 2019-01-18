@@ -72,4 +72,8 @@ public class AccountServiceImpl implements AccountService {
 	public void insertWithdrawLog(WithDrawLog withDrawLog) {
 		accountDao.insertWithdrawLog(withDrawLog);
 	}
+	
+	public User findUserById(String id) {
+		return accountDao.findUserById(id);
+	}
 }

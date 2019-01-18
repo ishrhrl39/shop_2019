@@ -11,6 +11,7 @@
 			<li><a href='/admin/userList.do'>회원 목록</a></li>
 			<li><a href='/admin/loginLog.do'>로그인 이력</a></li>
 			<li><a href='/admin/menu.do'>메뉴 관리</a></li>
+			<li><a href='/admin/tattooist.do'>타투담당자 관리</a></li>
 		</ul>
 	</body>
 </html>

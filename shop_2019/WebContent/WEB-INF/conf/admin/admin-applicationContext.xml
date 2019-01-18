@@ -29,6 +29,7 @@
 				/admin/user.do = AdminUserController
 				/admin/loginLog.do = AdminLoginLogController
 				/admin/menu.do = MenuSysController
+				/admin/tattooist.do = TattooistController
 			</value>
 		</property>
 	</bean>
@@ -59,5 +60,23 @@
 	<bean id="MenuSysController" class="com.yena.shop.admin.controller.MenuSysController">
 		<property name="methodNameResolver" ref="methodNameResolver" />
 		<property name="menuService" ref="menuService" />
+	</bean>
+	
+	<!-- 타투이스트 담당자 관리 -->
+	<bean id="TattooistController" class="com.yena.shop.admin.controller.TattooistController">
+		<property name="methodNameResolver" ref="methodNameResolver" />
+		<property name="tattooistService" ref="tattooistService" />
+	</bean>
+	
+	
+	<!-- Service -->	
+	<!-- 타투이스트 담당자 관리  -->
+	<bean id="tattooistService" class="com.yena.shop.service.TattooistService">
+		<property name="tattooistDao" ref="tattooistDao" />
+	</bean>
+
+	<!-- Dao -->	 
+	<!-- 타투이스트 담당자 관리  -->	 
+	<bean id="tattooistDao" class="com.yena.shop.dao.TattooistDaoImpl">
 	</bean>
 </beans>
