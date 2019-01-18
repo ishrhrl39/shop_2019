@@ -1,11 +1,11 @@
-package com.yena.shop.dao;
+package com.yena.shop.tattoo.service;
 
 import java.util.List;
 
 import com.yena.shop.model.Menu;
 import com.yena.shop.model.SubMenu;
 
-public interface TattooistDao {
+public interface TattooistService {
 
 	// 타투 담당자 목록 조회
 	public List selectTattooist();

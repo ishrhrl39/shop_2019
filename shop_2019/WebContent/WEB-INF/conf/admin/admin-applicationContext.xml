@@ -71,12 +71,12 @@
 	
 	<!-- Service -->	
 	<!-- 타투이스트 담당자 관리  -->
-	<bean id="tattooistService" class="com.yena.shop.service.TattooistService">
+	<bean id="tattooistService" class="com.yena.shop.tattoo.service.TattooistServiceImpl">
 		<property name="tattooistDao" ref="tattooistDao" />
 	</bean>
 
 	<!-- Dao -->	 
 	<!-- 타투이스트 담당자 관리  -->	 
-	<bean id="tattooistDao" class="com.yena.shop.dao.TattooistDaoImpl">
+	<bean id="tattooistDao" class="com.yena.shop.tattoo.dao.TattooistDaoImpl">
 	</bean>
 </beans>
