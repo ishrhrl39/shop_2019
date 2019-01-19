@@ -121,8 +121,8 @@
 	</definition>
 	
 	<!-- 타투 상품 내용 미리보기 -->
-	<definition name="tattoo_preview" extends="blank_layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/tattoo_preview.jsp" />
+	<definition name="tattoo_detail" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/tattoo_detail.jsp" />
 	</definition>
 	
 </tiles-definitions>

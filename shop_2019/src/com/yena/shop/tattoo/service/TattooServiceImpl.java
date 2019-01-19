@@ -49,4 +49,13 @@ public class TattooServiceImpl implements TattooService {
 		return tattooDao.selectTattooOne(id);
 	}
 	
+	// 타투 상품 삭제
+	@Override
+	public void deleteGoods(int id) {
+		 tattooDao.deleteGoods(id);
+		
+	}
+	
+	
+	
 }

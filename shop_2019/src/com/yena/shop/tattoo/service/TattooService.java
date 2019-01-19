@@ -25,4 +25,7 @@ public interface TattooService {
 	// 타투 상품 단품 상세보기
 	public Tattoo selectTattooOne(int id);
 
+	// 타투 상품 삭제
+	public void deleteGoods(int id);
+
 }

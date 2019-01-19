@@ -24,4 +24,7 @@ public interface TattooDao {
 
 	// 타투 전체 개수
 	public int selectTotalTattoo(Page pageVo);
+
+	// 타투 상품 삭제
+	public void deleteGoods(int id);
 }

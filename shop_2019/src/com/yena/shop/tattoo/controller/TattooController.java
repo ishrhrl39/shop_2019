@@ -156,4 +156,17 @@ public class TattooController extends MultiActionController{
 		out.flush();
 	}
 	
+	// 상품 삭제
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String checkData = StringUtils.defaultString(request.getParameter("data"), "");
+		String[] check = checkData.split(",");
+		
+		for(String id : check){
+			tattooService.deleteGoods(Integer.parseInt(id));
+		}
+		
+		return new ModelAndView("jsonView");
+	}
+	
 }

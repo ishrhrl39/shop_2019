@@ -15,6 +15,7 @@
 			<input type="hidden" name="goods" id="goods" value="${goods }" />
 			<input type="hidden" name="tmpSearchValue" id="tmpSearchValue" value="${searchValue }" />
 			<input type="hidden" name="tmpSearchKey" id="tmpSearchKey" value="${searchKey }" />
+<%-- 			<input type="hidden" name="id" id="id" value="${id }" /> --%>
 			<center>
 				<table>
 					<thead>
@@ -22,6 +23,7 @@
 							<td colspan="3" align="right">
 								상품명 : <input name="nm" id="nm" type="text" size="20" maxlength="50" />
 								<button type="button" id="searchBtn" >검색</button>
+								<button type="button" id="allSelectBtn" >전체보기</button>
 							</td>
 						</tr>
 					</thead>
@@ -29,7 +31,8 @@
 						<tr>
 							<td colspan="3"  align="right">
 								<c:if test="${loginUser.id == 'admin'}">
-									<button type="button" id="goInsertGoodsBtn" class="btn btn-success">상품등록</button>
+									<button type="button" id="goInsertGoodsBtn" class="btn btn-success">상품 등록</button>
+									<button type="button" id="goDeleteGoodsBtn" class="btn btn-success">상품 삭제</button>
 								</c:if>
 							</td>
 						</tr>
@@ -43,7 +46,10 @@
 									<tr>
 										<td colspan="2">
 											<div class="imgGellery">
-												<img src = "${result.image}" width="100%"/>
+												<c:if test="${loginUser.id == 'admin'}">
+													<input type="checkbox" id="checkGoods" name="checkGoods" value="${result.id}"/>
+												</c:if>
+												<img src = "${result.image}" width="100%" style="cursor:pointer" onclick="moveDetail(${result.id})"/>
 											</div>
 										</td>
 									</tr>

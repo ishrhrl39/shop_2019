@@ -129,10 +129,13 @@
 			SALE_END_DT,
 			CONTENT,
 			REG_DTM,
-			UPD_DTM,
-			DEL_YN
+			UPD_DTM
 		FROM TATTOO 
 			WHERE
 				ID = #id#		
 	</select>
+	
+	<delete id="deleteGoods" parameterClass="int" >
+		DELETE FROM TATTOO WHERE ID = #id#
+	</delete>
 </sqlMap>

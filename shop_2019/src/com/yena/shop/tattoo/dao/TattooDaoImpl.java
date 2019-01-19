@@ -52,4 +52,12 @@ public class TattooDaoImpl extends SqlMapClientDaoSupport implements TattooDao {
 	public int selectTotalTattoo(Page pageVo) {
 		return (int) getSqlMapClientTemplate().queryForObject(namespace + "selectTotalTattoo", pageVo);
 	}
+
+	
+	// 타투 삭제
+	@Override
+	public void deleteGoods(int id) {
+		getSqlMapClientTemplate().delete(namespace + "deleteGoods", id);
+		
+	}
 }

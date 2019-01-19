@@ -25,7 +25,7 @@
 		<property name="mappings">
 			<value>
 				/tattoo/list.do = TattooController
-				/tattoo/preview.do = PreviewController
+				/tattoo/detail.do = DetailTattooController
 			</value>
 		</property>
 	</bean>
@@ -38,9 +38,10 @@
 	    <property name="pageLimit" value="${tattoo.account.page.limit}" />
 	</bean>
 	
-	<!-- 타투 내용 미리보기 -->
-	<bean id="PreviewController" class="com.yena.shop.tattoo.controller.PreviewController">
+	<!-- 타투 내용 자세히보기 -->
+	<bean id="DetailTattooController" class="com.yena.shop.tattoo.controller.DetailTattooController">
 		<property name="methodNameResolver" ref="methodNameResolver" />
+	  	<property name="tattooService" ref="tattooService" />
 	</bean>
 	
 	<!-- Service -->
