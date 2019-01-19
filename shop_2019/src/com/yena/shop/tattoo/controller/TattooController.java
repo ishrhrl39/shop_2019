@@ -1,15 +1,14 @@
 package com.yena.shop.tattoo.controller;
 
 import java.io.File;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,10 +20,12 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.yena.shop.tattoo.model.Page;
 import com.yena.shop.tattoo.model.Tattoo;
+import com.yena.shop.tattoo.service.TattooColorService;
 import com.yena.shop.tattoo.service.TattooService;
 
 public class TattooController extends MultiActionController{
 	
+	private TattooColorService tattooColorService;
 	private TattooService tattooService;
 	private String imageUploadPath;
 	private int pageLimit;
@@ -41,6 +42,9 @@ public class TattooController extends MultiActionController{
 		this.tattooService = tattooService;
 	}
 	
+	public void setTattooColorService(TattooColorService tattooColorService) {
+		this.tattooColorService = tattooColorService;
+	}
 
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map returnData = new HashMap();
@@ -48,7 +52,6 @@ public class TattooController extends MultiActionController{
 		String nm = StringUtils.defaultString(request.getParameter("nm"), "");
 		String tmpSearchValue = StringUtils.defaultString(request.getParameter("tmpSearchValue"), "");
 		String tmpSearchKey = StringUtils.defaultString(request.getParameter("tmpSearchKey"), "");
-		
 		int page = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("page"), "1"));
 		
 		Page pageVo = new Page();
@@ -115,6 +118,8 @@ public class TattooController extends MultiActionController{
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map returnData = new HashMap();
 		Map param = new HashMap();
+		ArrayList colorList = (ArrayList) tattooColorService.selectTattooColor();
+		returnData.put("colorList", colorList);
 		returnData.put("goods", StringUtils.defaultString(request.getParameter("goods")));
 		return new ModelAndView("tattoo_insert", returnData);
 	}
