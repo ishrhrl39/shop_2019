@@ -39,12 +39,9 @@
 									<th> 색깔 </th>
 									<td> 
 										<select id="color" name="color"  class="form-control" >
-											<option value="rd">Red</option>
-											<option value="yl">Yellow</option>
-											<option value="gr">Green</option>
-											<option value="bl">Blue</option>
-											<option value="bk">Black</option>
-											<option value="wt">White</option>
+											<c:forEach items="${tattooColorList }" var="tattooColor">
+												<option value="${tattooColor.SEQ }">${tattooColor.COLOR }</option>												
+											</c:forEach>
 										</select>
 								 	</td>
 								</tr>
@@ -67,6 +64,11 @@
 								<tr>
 									<th> 타투이스트  </th>
 									<td>
+										<select id="tattooist" name="tattooist"  class="form-control" >
+											<c:forEach items="${tattooistList }" var="tattooist">
+												<option value="${tattooist.SEQ }">${tattooist.NAME }</option>												
+											</c:forEach>
+										</select>
 									</td>
 								</tr>
 							</tbody>

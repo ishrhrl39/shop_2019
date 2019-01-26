@@ -43,6 +43,8 @@
 	<bean id="DetailTattooController" class="com.yena.shop.tattoo.controller.DetailTattooController">
 		<property name="methodNameResolver" ref="methodNameResolver" />
 	  	<property name="tattooService" ref="tattooService" />
+	  	<property name="tattooistService" ref="tattooistService" />
+	  	<property name="tattooColorService" ref="tattooColorService" />
 	</bean>
 	
 	<!-- Service -->
