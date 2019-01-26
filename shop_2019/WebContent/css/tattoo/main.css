@@ -1,11 +1,10 @@
 .imgGellery{
 	width:250px;
-	height:250px;
-	max-width:250px;
-	max-height:250px;
+	height:auto;
 	padding:5px;
 	border: 1px solid #BDBDBD;
 }
+
 
 .tattoo_goods_table{
 	margin: 10px;

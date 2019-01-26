@@ -44,12 +44,12 @@
 							<td>
 								<table class="tattoo_goods_table"> 
 									<tr>
-										<td colspan="2">
+										<td colspan="2" >
 											<div class="imgGellery">
 												<c:if test="${loginUser.id == 'admin'}">
 													<input type="checkbox" id="checkGoods" name="checkGoods" value="${result.id}"/>
 												</c:if>
-												<img src = "${result.image}" width="100%" style="cursor:pointer" onclick="moveDetail(${result.id})"/>
+												<img src = "${result.image}" width="100%"  style="cursor:pointer" onclick="moveDetail(${result.id})"/>
 											</div>
 										</td>
 									</tr>

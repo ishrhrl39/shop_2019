@@ -2,7 +2,10 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="SqlMapAccount">
-	<typeAlias alias="user" type="com.yena.shop.model.User" />	
+	<typeAlias alias="user" type="com.yena.shop.model.User" />
+	<typeAlias alias="withDraw" type="com.yena.shop.model.WithDraw" />
+	<typeAlias alias="WithDrawLog" type="com.yena.shop.model.WithDrawLog" />
+		
 	
 	<!-- 회원가입  -->
 	<insert id="insertUser" parameterClass="user">
@@ -135,8 +138,12 @@
 			<isNotNull property="name">
 				AND BIRTH = #birth#
 			</isNotNull>
+			<isNotNull property="email">
+				AND EMAIL = #email#
+			</isNotNull>
 	</select>
 	
+	<!-- 회원정보 수정  -->
 	<update id="updateUser" parameterClass="user">
 		UPDATE
 			USER
@@ -149,4 +156,36 @@
 		WHERE
 			ID = #id#
 	</update>
+	
+	<!-- 회원 탈퇴사유 조회 -->
+	<select id="selectWithDraw" resultClass="withDraw">
+		SELECT 
+			WITHDRAW_CD,
+			WITHDRAW_COMMENT
+		FROM
+			WITHDRAW
+				ORDER BY WITHDRAW_CD
+	</select> 
+	
+	<!-- 회원 탈퇴사유 로그 남기기 -->
+	<insert id="insertWithdrawLog" parameterClass="WithDrawLog">
+		INSERT INTO 
+			WITHDRAW_LOG
+		(
+			WITHDRAW_CD,
+			ID,
+			WITHDRAW_DTM
+		) 
+		VALUES 
+		(
+			#withdraw_cd#,
+			#id#,
+			DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')
+		)
+	</insert>
+	
+	
+	<select id="findUserById" parameterClass="java.lang.String" resultClass="user">
+		SELECT * FROM USER WHERE ID = #id#
+	</select>
 </sqlMap>
