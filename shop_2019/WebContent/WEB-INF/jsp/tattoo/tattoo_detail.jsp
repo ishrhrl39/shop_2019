@@ -14,6 +14,7 @@
 			<input type="hidden" name="tattooName" value="${one.nm}"/>
 			<input type="hidden" name="tattoPrice" value="${one.prcie}"/>
 			<input type="hidden" name="tattooId" value="${one.id}"/>
+			<input type="hidden" name="tattooImage" value="${one.image}"/>
 			<table>
 				<tbody>
 					<tr>	

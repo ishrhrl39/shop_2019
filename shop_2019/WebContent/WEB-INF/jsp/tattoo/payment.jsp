@@ -4,9 +4,26 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
 	</head>
 	<body>
-	
+		<form>
+			<h3> 주문리스트 </h3>
+			<table>
+				
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<tr>
+						<td>
+							
+						</td>
+					</tr>
+				
+				</tbody>
+			</table>
+		</form>
 	</body>
 </html>
