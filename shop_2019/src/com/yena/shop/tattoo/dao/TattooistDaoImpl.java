@@ -14,6 +14,7 @@ import com.yena.shop.model.WithDraw;
 import com.yena.shop.model.WithDrawLog;
 import com.yena.shop.tattoo.model.Page;
 import com.yena.shop.tattoo.model.Tattoo;
+import com.yena.shop.tattoo.model.Tattooist;
 
 public class TattooistDaoImpl extends SqlMapClientDaoSupport implements TattooistDao {
 	
@@ -30,23 +31,23 @@ public class TattooistDaoImpl extends SqlMapClientDaoSupport implements Tattoois
 	}
 
 	@Override
-	public Menu selectTattooistOne(Menu menu) {
-		return (Menu) getSqlMapClientTemplate().queryForObject(namespace + "selectTattooistOne", menu);
+	public Tattooist selectTattooistOne(Tattooist tattooist) {
+		return (Tattooist) getSqlMapClientTemplate().queryForObject(namespace + "selectTattooistOne", tattooist);
 	}
 
 	@Override
-	public int updateTattooist(Menu menu) {
-		return getSqlMapClientTemplate().update(namespace + "updateTattooist", menu);
+	public int updateTattooist(Tattooist tattooist) {
+		return getSqlMapClientTemplate().update(namespace + "updateTattooist", tattooist);
 	}
 
 	@Override
-	public void deleteTattooist(int menuCd) {
-		getSqlMapClientTemplate().delete(namespace + "deleteTattooist", menuCd);
+	public void deleteTattooist(String seq) {
+		getSqlMapClientTemplate().delete(namespace + "deleteTattooist", seq);
 	}
 
 	@Override
-	public void insertTattooist(SubMenu subMenu) {
-		getSqlMapClientTemplate().insert(namespace + "insertTattooist", subMenu);
+	public void insertTattooist(Tattooist tattooist) {
+		getSqlMapClientTemplate().insert(namespace + "insertTattooist", tattooist);
 	}
 		
 

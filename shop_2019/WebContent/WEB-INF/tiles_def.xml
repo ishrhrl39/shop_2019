@@ -62,6 +62,13 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_tattooist.jsp" />
 	</definition>
 	
+	<!-- 관리자 - 타투 색상 관리 -->
+	<definition name="admin_tattoo_color" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_tattoo_color.jsp" />
+	</definition>
+	
+	
+	
 	<!-- 회원가입 -->
 	<definition name="join" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/account/join.jsp" />

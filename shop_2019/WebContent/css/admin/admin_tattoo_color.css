@@ -1,0 +1,17 @@
+#tattoist_list_layer table{
+	width:100%;
+}
+
+#tattoist_list_layer table thead th{
+	border:1px solid #BDBDBD;
+	border-top:2px solid black;
+	padding:7px;
+	text-align: center;
+	background-color: #EAEAEA;
+}
+
+#tattoist_list_layer table tbody td{
+	border:1px solid #BDBDBD;	
+	padding:7px;
+	text-align: center;
+}

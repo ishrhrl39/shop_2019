@@ -34,6 +34,7 @@
 	<bean id="TattooController" class="com.yena.shop.tattoo.controller.TattooController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
 	    <property name="tattooService" ref="tattooService" />
+		<property name="tattooColorService" ref="tattooColorService" />
 	    <property name="imageUploadPath" value="${image.upload.path}" />
 	    <property name="pageLimit" value="${tattoo.account.page.limit}" />
 	</bean>

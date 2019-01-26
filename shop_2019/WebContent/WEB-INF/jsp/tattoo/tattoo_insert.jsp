@@ -43,12 +43,9 @@
 						<input type="radio" name="sale_option" checked="checked" value="all" />ALL 
 						<input type="radio" name="sale_option" value="op" />OPTION
 						<select id="color" name="color" size="8" multiple="multiple" class="form-control" >
-							<option value="rd">Red</option>
-							<option value="yl">Yellow</option>
-							<option value="gr">Green</option>
-							<option value="bl">Blue</option>
-							<option value="bk">Black</option>
-							<option value="wt">White</option>
+							<c:forEach items="${colorList }" var="tattooColor">
+								<option value="${tattooColor.SEQ }">${tattooColor.COLOR }</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
