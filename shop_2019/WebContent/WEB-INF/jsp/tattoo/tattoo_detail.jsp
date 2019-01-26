@@ -10,72 +10,80 @@
 		<script src="/js/tattoo/tattoo_detail.js"></script>
 	</head>
 	<body>
-		<table>
-			<tbody>
-				<tr>	
-					<td>
-						<img src = "${one.image}" width="50%" />
-					</td>
-					<td>
-						<table>
-							<tbody>
-								<tr>
-									<th> 타투명 </th>
-									<td> ${one.nm} </td>
-								</tr>
-								<tr>
-									<th> 가격 </th>
-									<c:choose>
-										<c:when test="${one.sale == ''}">
-											<td> ${one.price}</td>			
-										</c:when>
-										<c:otherwise>
-											<td> ${one.price}(<fmt:formatNumber value="${one.price- one.price*one.sale/100}" pattern="#,###" />)</td>					
-										</c:otherwise>
-									</c:choose>
-								
-								</tr>
-								<tr>
-									<th> 색깔 </th>
-									<td> 
-										<select id="color" name="color"  class="form-control" >
-											<c:forEach items="${tattooColorList }" var="tattooColor">
-												<option value="${tattooColor.SEQ }">${tattooColor.COLOR }</option>												
-											</c:forEach>
-										</select>
-								 	</td>
-								</tr>
-								<tr>
-									<th> 세일 기간 </th>
-									<td> ${one.sale_start_dt} ~ ${one.sale_end_dt}</td>
-								</tr>
-								<tr>
-									<th> 상세 설명 </th>
-									<td> ${one.content} </td>
-								</tr>
-								<tr>
-									<th> 등록일자 </th>
-									<td> ${fn:substring(one.reg_dtm,0,8)} </td>
-								</tr>
-								<tr>
-									<th> 수정일자 </th>
-									<td> ${fn:substring(one.upd_dtm,0,8)}</td>
-								</tr>
-								<tr>
-									<th> 타투이스트  </th>
-									<td>
-										<select id="tattooist" name="tattooist"  class="form-control" >
-											<c:forEach items="${tattooistList }" var="tattooist">
-												<option value="${tattooist.SEQ }">${tattooist.NAME }</option>												
-											</c:forEach>
-										</select>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<form id="reserveForm" action="/tattoo/payment.do">
+			<input type="hidden" name="tattooName" value="${one.nm}"/>
+			<input type="hidden" name="tattoPrice" value="${one.prcie}"/>
+			<input type="hidden" name="tattooId" value="${one.id}"/>
+			<table>
+				<tbody>
+					<tr>	
+						<td>
+							<img src = "${one.image}" width="50%" />
+						</td>
+						<td>
+							<table>
+								<tbody>
+									<tr>
+										<th> 타투명 </th>
+										<td> ${one.nm} </td>
+									</tr>
+									<tr>
+										<th> 가격 </th>
+										<c:choose>
+											<c:when test="${one.sale == ''}">
+												<td> ${one.price}</td>			
+											</c:when>
+											<c:otherwise>
+												<td> ${one.price}(할인가:<fmt:formatNumber value="${one.price- one.price*one.sale/100}" pattern="#,###" />)</td>					
+											</c:otherwise>
+										</c:choose>
+									
+									</tr>
+									<tr>
+										<th> 색깔 </th>
+										<td> 
+											<select id="color" name="color"  class="form-control" >
+												<c:forEach items="${tattooColorList }" var="tattooColor">
+													<option value="${tattooColor.SEQ }">${tattooColor.COLOR }</option>												
+												</c:forEach>
+											</select>
+									 	</td>
+									</tr>
+									<tr>
+										<th> 세일 기간 </th>
+										<td> ${one.sale_start_dt} ~ ${one.sale_end_dt}</td>
+									</tr>
+									<tr>
+										<th> 상세 설명 </th>
+										<td> ${one.content} </td>
+									</tr>
+									<tr>
+										<th> 등록일자 </th>
+										<td> ${fn:substring(one.reg_dtm,0,8)} </td>
+									</tr>
+									<tr>
+										<th> 수정일자 </th>
+										<td> ${fn:substring(one.upd_dtm,0,8)}</td>
+									</tr>
+									<tr>
+										<th> 타투이스트  </th>
+										<td>
+											<select id="tattooist" name="tattooist"  class="form-control" >
+												<c:forEach items="${tattooistList }" var="tattooist">
+													<option value="${tattooist.SEQ }">${tattooist.NAME }</option>												
+												</c:forEach>
+											</select>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div>
+								<button type ="button" id="reserveBtn" name="reserve"> 예약하기 </button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 	</body>
 </html>
