@@ -60,7 +60,7 @@
 		<property name="tattooDao" ref="tattooDao" />
 	</bean>
 	
-	<!-- 타투 구매하기   -->
+	<!-- 타투 구매하기  -->
 	<bean id="PaymentService" class="com.yena.shop.tattoo.service.PaymentServiceImpl">
 	  	<property name="paymentDao" ref="PaymentDao" />
 	</bean>
