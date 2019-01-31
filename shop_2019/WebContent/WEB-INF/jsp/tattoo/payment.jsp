@@ -6,11 +6,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
+<<<<<<< HEAD
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" href="/css/tattoo/main.css">
 		<script src="/js/mypage/payment.js"></script>
+=======
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+>>>>>>> refs/remotes/origin/master
 	</head>
 	<body>
+<<<<<<< HEAD
 		<form action="/mypage/myInfo.do?cmd=payment" method="post" id="paymentForm">
 			<input type="hidden" name="tattoo_nm" id="tattoo_nm" value="${tattoo_nm }" />
 			<input type="hidden" name="tmpSearchValue" id="tmpSearchValue" value="${searchValue }" />
@@ -74,6 +79,25 @@
 						</td>
 					</tr>
 				</tfoot>
+=======
+		<form>
+			<h3> 주문리스트 </h3>
+			<table>
+				
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<tr>
+						<td>
+							
+						</td>
+					</tr>
+				
+				</tbody>
+>>>>>>> refs/remotes/origin/master
 			</table>
 		</form>
 	</body>
