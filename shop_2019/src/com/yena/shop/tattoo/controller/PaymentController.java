@@ -17,15 +17,24 @@ public class PaymentController extends MultiActionController{
 		this.paymentService = paymentService;
 	}
 	
+	// 구매하기 메인페이지
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		int id = Integer.parseInt(StringUtils.defaultString(request.getParameter("id"), "1"));
-
-//		Tattoo tattoo = tattooService.selectTattooOne(id);
-//		mav.addObject("one", tattoo);
-//		mav.addObject("tattooistList", tattooistService.selectTattooist());
-//		mav.addObject("tattooColorList", tattooColorService.selectTattooColor());
-		mav.setViewName("tattoo_detail");
+		int tattooId = Integer.parseInt(StringUtils.defaultString(request.getParameter("tattooId"), "1"));
+		String tattooName = StringUtils.defaultString(request.getParameter("tattooName"), "");
+		String tattoPrice = StringUtils.defaultString(request.getParameter("tattoPrice"), "");
+		String color = StringUtils.defaultString(request.getParameter("color"), "");
+		String tattooist = StringUtils.defaultString(request.getParameter("tattooist"), "");
+		String tattooImage = StringUtils.defaultString(request.getParameter("tattooImage"), "");
+		
+		mav.addObject("tattooId", tattooId);
+		mav.addObject("tattooName", tattooName);
+		mav.addObject("tattoPrice", tattoPrice);
+		mav.addObject("color", color);
+		mav.addObject("tattooist", tattooist);
+		mav.addObject("tattooImage", tattooImage);
+		
+		mav.setViewName("tattoo_payment");
 		return mav;
 	}
 
