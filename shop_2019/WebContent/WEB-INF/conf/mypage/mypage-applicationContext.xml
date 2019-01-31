@@ -36,6 +36,7 @@
 	<bean id="MyPageController" class="com.yena.shop.controller.MyPageController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
  	 	<property name="accountService" ref="AccountService" />
+ 	 	<property name="paymentService" ref="PaymentService" />
 	</bean>
 	
 	<!-- Service -->

@@ -11,8 +11,16 @@ public class Page {
 	private String searchKey;
 	private String searchValue;
 	private String goods;
+	private String userId;
 	
 	
+	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getGoods() {
 		return goods;
 	}

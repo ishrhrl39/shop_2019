@@ -5,11 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.yena.shop.tattoo.model.Tattoo;
 import com.yena.shop.tattoo.service.PaymentService;
 
-public class PaymentController {
+public class PaymentController extends MultiActionController{
 	private PaymentService paymentService;
 
 	public void setPaymentService(PaymentService paymentService) {

@@ -62,7 +62,6 @@
 	
 	<!-- 타투 구매하기  -->
 	<bean id="PaymentService" class="com.yena.shop.tattoo.service.PaymentServiceImpl">
-		<property name="methodNameResolver" ref="methodNameResolver" />
 	  	<property name="paymentDao" ref="PaymentDao" />
 	</bean>
 	

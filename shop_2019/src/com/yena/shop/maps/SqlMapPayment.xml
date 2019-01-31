@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SqlMapPayment">
+	<typeAlias alias="Payment" type="com.yena.shop.tattoo.model.Payment" />
+	<typeAlias alias="Page" type="com.yena.shop.tattoo.model.Page" />
+
+	<!-- 구매이력 목록 조회 -->
+	<select id="selectPaymentList" resultClass="Payment" parameterClass="Page">
+		SELECT 
+			PAYMENT_SN,
+			USER_ID,
+			TATTOO_ID,
+			TATTOO_NM,
+			PRICE,
+			COLOR,
+			TATTOOIST_NAME,
+			PAYMENT_CMPL_YN,
+			REG_DTM,
+			UPD_DTM
+		FROM
+			PAYMENT
+		WHERE
+			USER_ID = #userId#
+			<isEqual property="searchKey" compareValue="TATTOO_NM">
+				AND TATTOO_NM LIKE CONCAT(#searchValue#, '%')
+			</isEqual>
+			
+			ORDER BY REG_DTM ASC
+			LIMIT #limit# OFFSET #offset# 
+	</select>
+
+	<!-- 구매 이력 1건 조회 -->
+	<select id="selectPayment" parameterClass="int" resultClass="Payment">
+		SELECT 
+			PAYMENT_SN,
+			USER_ID,
+			TATTOO_ID,
+			TATTOO_NM,
+			PRICE,
+			COLOR,
+			TATTOOIST_NAME,
+			PAYMENT_CMPL_YN,
+			REG_DTM,
+			UPD_DTM
+		FROM
+			PAYMENT
+		WHERE
+			PAYMENT_SN = #PAYMENT_SN#
+	</select>
+		
+	<!-- 구매 이력 삭제 -->
+	<delete id="deletePayment" parameterClass="int">
+		DELETE FROM PAYMENT WHERE PAYMENT_SN = #PAYMENT_SN#
+	</delete>
+	
+	<!-- 구매 이력 등록 -->
+	<insert id="insertPayment" parameterClass="Payment">
+		INSERT INTO 
+			PAYMENT
+			(
+				USER_ID,
+				TATTOO_ID,
+				TATTOO_NM,
+				PRICE,
+				COLOR,
+				TATTOOIST_NAME,
+				PAYMENT_CMPL_YN,
+				REG_DTM,
+				UPD_DTM
+			)
+			VALUES
+			(
+				#USER_ID#,
+				#TATTOO_ID#,
+				#TATTOO_NM#,
+				#PRICE#,
+				#COLOR#,
+				#TATTOOIST_NAME#,
+				#PAYMENT_CMPL_YN#,
+				#REG_DTM#,
+				#UPD_DTM#
+			)
+	</insert>
+	
+	<!-- 구매 이력 모두 조회 -->
+	<select id="selectTotalPayment" resultClass="int" parameterClass="Page">
+		SELECT 
+		 	COUNT(*) AS CNT
+	 	  FROM PAYMENT
+	 	  WHERE
+	 	  	USER_ID = #userId#
+			<isEqual property="searchKey" compareValue="TATTOO_NM">
+				AND TATTOO_NM LIKE CONCAT(#searchValue#, '%')
+			</isEqual>
+	</select>	
+</sqlMap>

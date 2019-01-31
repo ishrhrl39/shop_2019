@@ -109,6 +109,11 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/shopBasket.jsp" />
 	</definition>
 	
+	<!-- 마이페이지 - 구매이력 -->
+	<definition name="myInfo_payment" extends="mypage_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/payment.jsp" />
+	</definition>
+	
 	<!-- 마이페이지 - 회원탈퇴 -->
 	<definition name="account_drop" extends="mypage_layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/account_drop.jsp" />
@@ -131,5 +136,6 @@
 	<definition name="tattoo_detail" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/tattoo_detail.jsp" />
 	</definition>
+	
 	
 </tiles-definitions>
