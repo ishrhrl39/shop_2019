@@ -7,6 +7,10 @@
 <html>
 	<head>
 		<script src="/js/tattoo/tattoo_payment.js"></script>
+		<meta charset="EUC-KR">
+		<link rel="stylesheet" href="/css/tattoo/main.css">
+		<script src="/js/mypage/payment.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
 		<form id="orderForm">
@@ -17,29 +21,7 @@
 			<input type="hidden" id="tattooist" name="tattooist" value="${tattooist}"/>
 			
 			<h2> Order </h2>
-			<p>주문리스트</p>
-			<table width="100%" border=1px>
-				<thead>
-					<tr>
-						<th>이미지</th>
-						<th>타투명</th>
-						<th>터투 색깔</th>
-						<th>가격</th>
-						<th>타투이스트</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>${tattooImage}</td>
-						<td>${tattooName} </td>
-						<td>${color} </td>
-						<td>${tattoPrice} </td>
-						<td>${tattooist} </td>
-					</tr>
-				</tbody>
-			</table>
-			
-			<p>예약자정보</p>
+			<h3> 주문리스트 </h3>
 			<table>
 				<tbody>
 					<tr>
@@ -111,8 +93,10 @@
 			</table>
 			<table>
 				<tbody>	
-					<th> 최종 결제금액 </th>
-					<td>${tattoPrice} 원 </td>
+					<tr>
+						<th> 최종 결제금액 </th>
+						<td>${tattoPrice} 원 </td>
+					</tr>
 				</tbody>
 			</table>
 		</form>
