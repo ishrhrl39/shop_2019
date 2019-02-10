@@ -1,21 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
 	<head>
-<<<<<<< HEAD
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" href="/css/tattoo/main.css">
 		<script src="/js/mypage/payment.js"></script>
-=======
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
->>>>>>> refs/remotes/origin/master
 	</head>
 	<body>
-<<<<<<< HEAD
 		<form action="/mypage/myInfo.do?cmd=payment" method="post" id="paymentForm">
 			<input type="hidden" name="tattoo_nm" id="tattoo_nm" value="${tattoo_nm }" />
 			<input type="hidden" name="tmpSearchValue" id="tmpSearchValue" value="${searchValue }" />
@@ -24,20 +20,20 @@
 				<thead>
 					<tr>
 						<td colspan="3" align="right">
-							상품명 : <input name="nm" id="nm" type="text" size="20" maxlength="50" />
-							<button type="button" id="searchBtn" >검색</button>
-							<button type="button" id="allSelectBtn" >전체보기</button>
+							占쏙옙품占쏙옙 : <input name="nm" id="nm" type="text" size="20" maxlength="50" />
+							<button type="button" id="searchBtn" >占싯삼옙</button>
+							<button type="button" id="allSelectBtn" >占쏙옙체占쏙옙占쏙옙</button>
 						</td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th>구매번호</th>
-						<th>상품명</th>
-						<th>구매가격</th>
-						<th>상품색상</th>
-						<th>담당자</th>
-						<th>구매일자</th>
+						<th>占쏙옙占신뱄옙호</th>
+						<th>占쏙옙품占쏙옙</th>
+						<th>占쏙옙占신곤옙占쏙옙</th>
+						<th>占쏙옙품占쏙옙占쏙옙</th>
+						<th>占쏙옙占쏙옙占�</th>
+						<th>占쏙옙占쏙옙占쏙옙占쏙옙</th>
 					</tr>
 					<c:forEach var="result" items="${list}" varStatus="status">
 						<tr>
@@ -55,8 +51,8 @@
 						<td align="center" colspan="3">
 							<br/>
 							<c:if test="${pageVo.nowPage > 1 }">
-								<a href="#" onclick="go('/mypage/myInfo.do?cmd=payment&page=1')">[◀◀]</a>
-								<a href="#" onclick="go('/mypage/myInfo.do?cmd=payment&page=${pageVo.nowPage - 1}')">[◀]</a>
+								<a href="#" onclick="go('/mypage/myInfo.do?cmd=payment&page=1')">[占쏙옙占쏙옙]</a>
+								<a href="#" onclick="go('/mypage/myInfo.do?cmd=payment&page=${pageVo.nowPage - 1}')">[占쏙옙]</a>
 							</c:if>
 							<c:forEach begin="${pageVo.start }" end="${pageVo.end }" step="1" var="num">
 								<c:choose>
@@ -69,17 +65,16 @@
 								</c:choose>
 							</c:forEach>
 							<c:if test="${pageVo.nowPage < pageVo.maxPage }">
-								<a href="#" onclick="go('/mypage/myInfo.do?cmd=payment&page=${pageVo.nowPage + 1}')">[▶]</a>
+								<a href="#" onclick="go('/mypage/myInfo.do?cmd=payment&page=${pageVo.nowPage + 1}')">[占쏙옙]</a>
 							</c:if>
 							
 							<c:if test="${pageVo.nowPage < pageVo.maxPage }">
-								<a href="#" onclick="go('/mypage/myInfo.do?cmd=payment&page=${pageVo.maxPage}')">[▶▶]</a>
+								<a href="#" onclick="go('/mypage/myInfo.do?cmd=payment&page=${pageVo.maxPage}')">[占쏙옙占쏙옙]</a>
 							</c:if>
 							<br/><br/>&nbsp;
 						</td>
 					</tr>
 				</tfoot>
-=======
 		<form>
 			<h3> 二쇰Ц由ъ뒪�듃 </h3>
 			<table>
@@ -97,7 +92,6 @@
 					</tr>
 				
 				</tbody>
->>>>>>> refs/remotes/origin/master
 			</table>
 		</form>
 	</body>

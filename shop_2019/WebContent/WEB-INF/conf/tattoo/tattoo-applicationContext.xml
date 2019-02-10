@@ -64,6 +64,11 @@
 	<bean id="PaymentService" class="com.yena.shop.tattoo.service.PaymentServiceImpl">
 	  	<property name="paymentDao" ref="PaymentDao" />
 	</bean>
+
+	<!-- 무통장 -->
+	<bean id="stlService" class="com.yena.shop.tattoo.service.StlServiceImpl">
+	  	<property name="stlDao" ref="stlDao" />
+	</bean>
 	
 	<!-- Dao -->	
 	<!-- 타투 상품 관리-->	 
@@ -73,5 +78,7 @@
 	<!-- 타투 구매하기  -->
 	<bean id="PaymentDao" class="com.yena.shop.tattoo.dao.PaymentDaoImpl">
 	</bean>
+	
+	
 	
 </beans>

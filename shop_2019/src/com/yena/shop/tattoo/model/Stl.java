@@ -6,14 +6,23 @@ package com.yena.shop.tattoo.model;
  *
  */
 public class Stl {
-	private int STL_NO;		// 결제번호
-	private int PAYMENT_SN;	// 구매번호
-	private String USER_ID;	// 사용자 ID
-	private String TEL;		// 연락처
-	private int STL_MONEY;	// 결제금액
-	private String STL_DTM;	// 결제신청일자
+	private int STL_NO;
+	private int PAYMENT_SN;
+	private String USER_ID;
+	private String NAME;
+	private String TEL;
+	private String EMAIL;
+	private int STL_MONEY;
+	private String STL_DTM;
+	private String PAYMENT_CMPL_YN;	// 결제확정여부(N: 미확정, Y:확정)
 	
 	
+	public String getPAYMENT_CMPL_YN() {
+		return PAYMENT_CMPL_YN;
+	}
+	public void setPAYMENT_CMPL_YN(String pAYMENT_CMPL_YN) {
+		PAYMENT_CMPL_YN = pAYMENT_CMPL_YN;
+	}
 	public int getSTL_NO() {
 		return STL_NO;
 	}
@@ -32,11 +41,23 @@ public class Stl {
 	public void setUSER_ID(String uSER_ID) {
 		USER_ID = uSER_ID;
 	}
+	public String getNAME() {
+		return NAME;
+	}
+	public void setNAME(String nAME) {
+		NAME = nAME;
+	}
 	public String getTEL() {
 		return TEL;
 	}
 	public void setTEL(String tEL) {
 		TEL = tEL;
+	}
+	public String getEMAIL() {
+		return EMAIL;
+	}
+	public void setEMAIL(String eMAIL) {
+		EMAIL = eMAIL;
 	}
 	public int getSTL_MONEY() {
 		return STL_MONEY;
@@ -50,6 +71,7 @@ public class Stl {
 	public void setSTL_DTM(String sTL_DTM) {
 		STL_DTM = sTL_DTM;
 	}
+	
 	
 	
 }

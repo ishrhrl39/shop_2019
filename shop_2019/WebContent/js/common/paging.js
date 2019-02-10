@@ -6,6 +6,9 @@ function goLocByPaging(page){
 	var url = getDefaultUrl();
 	location.href = (url.substring(0, url.indexOf("?"))) + "?page=" + page;
 }
+function goLocByPaging(url, page){
+	location.href = url + "&page=" + page;
+}
 
 function getDefaultUrl(){
 	return location.href.replace("#", "");

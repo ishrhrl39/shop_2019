@@ -67,6 +67,11 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_tattoo_color.jsp" />
 	</definition>
 	
+	<!-- 관리자 - 무통장 이력 -->
+	<definition name="admin_stl" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_stl.jsp" />
+	</definition>
+	
 	
 	
 	<!-- 회원가입 -->
@@ -137,12 +142,9 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/tattoo_detail.jsp" />
 	</definition>
 	
-<<<<<<< HEAD
-=======
 		<!-- 타투 상품 내용 미리보기 -->
 	<definition name="tattoo_payment" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/payment.jsp" />
 	</definition>
->>>>>>> refs/remotes/origin/master
 	
 </tiles-definitions>

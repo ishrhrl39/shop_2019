@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SqlMapStl">
+	<typeAlias alias="Stl" type="com.yena.shop.tattoo.model.Stl" />
+	<typeAlias alias="Page" type="com.yena.shop.tattoo.model.Page" />
+
+	<!-- 구매이력 목록 조회 -->
+	<select id="selectStlList" resultClass="Stl" parameterClass="Page">
+		SELECT 
+			A.PAYMENT_SN AS PAYMENT_SN
+			,A.USER_ID AS USER_ID
+			,A.NAME AS NAME
+			,A.TEL AS TEL
+			,A.EMAIL AS EMAIL
+			,A.STL_MONEY AS STL_MONEY
+			,A.STL_DTM AS STL_DTM
+			,B.PAYMENT_CMPL_YN AS PAYMENT_CMPL_YN
+		FROM 
+			STL A LEFT JOIN PAYMENT B ON (A.PAYMENT_SN = B.PAYMENT_SN)
+		WHERE
+			1=1
+			<isEqual property="searchKey" compareValue="USER_ID">
+				AND A.USER_ID LIKE CONCAT(#searchValue#, '%')
+			</isEqual>
+			<isEqual property="searchKey" compareValue="NAME">
+				AND A.NAME LIKE CONCAT(#searchValue#, '%')
+			</isEqual>
+			
+			ORDER BY A.STL_DTM ASC
+			LIMIT #limit# OFFSET #offset# 
+	</select>
+
+	<!-- 구매 이력 1건 조회 -->
+	<select id="selectStlOne" parameterClass="int" resultClass="Stl">
+		SELECT 
+			A.PAYMENT_SN AS PAYMENT_SN
+			,A.USER_ID AS USER_ID
+			,A.NAME AS NAME
+			,A.TEL AS TEL
+			,A.EMAIL AS EMAIL
+			,A.STL_MONEY AS STL_MONEY
+			,A.STL_DTM AS STL_DTM
+			,B.PAYMENT_CMPL_YN AS PAYMENT_CMPL_YN
+		FROM 
+			STL A LEFT JOIN PAYMENT B ON (A.PAYMENT_SN = B.PAYMENT_SN)
+		WHERE
+			A.STL_NO = #STL_NO#
+	</select>
+		
+	<!-- 무통장 이력 삭제 -->
+	<delete id="deleteStl" parameterClass="int">
+		DELETE FROM STL WHERE STL_NO = #STL_NO#
+	</delete>
+	
+	<!-- 무통장 이력 등록 -->
+	<insert id="insertStl" parameterClass="Stl">
+		INSERT INTO 
+			STL
+			(
+				PAYMENT_SN
+				,USER_ID
+				,NAME
+				,TEL
+				,EMAIL
+				,STL_MONEY
+				,STL_DTM
+			)
+			VALUES
+			(
+				#PAYMENT_SN#
+				,#USER_ID#
+				,#NAME#
+				,#TEL#
+				,#EMAIL#
+				,#STL_MONEY#
+				,#STL_DTM#
+			)
+	</insert>
+	
+	<!-- 무통장 이력 모두 조회 -->
+	<select id="selectTotalStl" resultClass="int" parameterClass="Page">
+		SELECT 
+		 	COUNT(*) AS CNT
+	 	  FROM STL
+	 	  WHERE
+	 	  	1=1
+			<isEqual property="searchKey" compareValue="USER_ID">
+				AND USER_ID LIKE CONCAT(#searchValue#, '%')
+			</isEqual>
+			<isEqual property="searchKey" compareValue="NAME">
+				AND NAME LIKE CONCAT(#searchValue#, '%')
+			</isEqual>
+	</select>	
+</sqlMap>
