@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	loadPreview();
+//	loadPreview();
 	
 	$("#reserveBtn").click(function(){
 		reserve();
@@ -7,9 +7,9 @@ $(document).ready(function(){
 });
 
 
-function loadPreview(){
-	$("#preview_layout").html($(opener.document).find("#content").val());
-}
+//function loadPreview(){
+//	$("#preview_layout").html($(opener.document).find("#content").val());
+//}
 
 // 예약하기
 function reserve(){

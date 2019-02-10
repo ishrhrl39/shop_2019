@@ -49,6 +49,7 @@
 												<c:if test="${loginUser.id == 'admin'}">
 													<input type="checkbox" id="checkGoods" name="checkGoods" value="${result.id}"/>
 												</c:if>
+												
 												<img src = "${result.image}" width="100%"  style="cursor:pointer" onclick="moveDetail(${result.id})"/>
 											</div>
 										</td>

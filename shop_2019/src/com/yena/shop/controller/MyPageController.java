@@ -57,7 +57,7 @@ public class MyPageController extends MultiActionController{
 		
 		user = accountService.selectUserOne(user);
 		// 이름 복호화
-		user.setName(Aria.decrypt(user.getName(), secretKey));  
+		user.setName(Aria.decrypt(user.getName(), secretKey)); 
 		mav.addObject("user", user);
 		mav.setViewName("jsonView");
 		
