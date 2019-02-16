@@ -1,0 +1,64 @@
+#orderForm{
+	padding:20px;
+	padding-left:150px;
+}
+
+.title{
+	font-family: 'Cardo', 'Jeju Myeongjo', serif;
+    color: #333;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+}
+
+.header{
+	position: relative;
+    padding: 15px 0 5px 13px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.orderTable{
+	color:#333;
+	margin-bottom:70px;
+	width:100%;
+}
+
+
+.orderTable tbody td{
+	border-top: 1px solid #edebe8;
+	border-bottom: 1px solid #edebe8;
+	padding:10px;
+}
+
+.fc-red{
+	color:#f7413b;
+	font-weight: bold;
+}
+
+#totalPriceTable{
+	background:#fcfaf7 !important;
+}
+
+#totalPriceTable td{
+	padding: 18px 7px;
+}
+
+#orderBtn{
+	    display: inline-block;
+    padding: 16px 100px;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    font-weight: normal;
+        border: 1px solid #525150;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 2.5px;
+    font-family: 'Raleway', 'Open Sans', 'Noto Sans KR', 'Nanum Gothic', sans-serif;
+    background: #525150;
+}
+}

@@ -32,9 +32,11 @@ public class MyPageController extends MultiActionController{
 	public void setPaymentService(PaymentService paymentService) {
 		this.paymentService = paymentService;
 	}
-
-
-
+	public void setPageLimit(int pageLimit) {
+		this.pageLimit = pageLimit;
+	}
+	
+	
 	public ModelAndView list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return new ModelAndView("myInfo");
 	}
@@ -132,9 +134,8 @@ public class MyPageController extends MultiActionController{
 	// 구매이력
 	public ModelAndView payment(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map returnData = new HashMap();
-		String tmpSearchValue = StringUtils.defaultString(request.getParameter("tmpSearchValue"), "");
-		String tmpSearchKey = StringUtils.defaultString(request.getParameter("tmpSearchKey"), "");
-		String tattoo_nm = StringUtils.defaultString(request.getParameter("tattoo_nm"), "");
+		String searchColumn = StringUtils.defaultString(request.getParameter("searchColumn"), "");
+		String searchValue = StringUtils.defaultString(request.getParameter("searchValue"), "");
 		int page = Integer.parseInt(StringUtils.defaultIfEmpty(request.getParameter("page"), "1"));
 		
 		Page pageVo = new Page();
@@ -162,12 +163,9 @@ public class MyPageController extends MultiActionController{
 		end = start + pageVo.getPageNumCnt() - 1;
 		
 		// 검색어가 들어왔으니 검색모드
-		if(!tattoo_nm.equals("")){
-			pageVo.setSearchKey("TATTOO_NM");
-			pageVo.setSearchValue(tattoo_nm);
-		}else if(!tmpSearchValue.equals("")){
-			pageVo.setSearchKey(tmpSearchKey);
-			pageVo.setSearchValue(tmpSearchValue);
+		if(!searchValue.equals("")){
+			pageVo.setSearchKey(searchColumn);
+			pageVo.setSearchValue(searchValue);
 		}
 		
 		// 전체 목록 및 개수 
@@ -196,7 +194,6 @@ public class MyPageController extends MultiActionController{
 		
 
 		returnData.put("pageVo", pageVo);
-		returnData.put("tattoo_nm", tattoo_nm);
 		returnData.put("list", paymentList);
 		return new ModelAndView("myInfo_payment", returnData);
 	}

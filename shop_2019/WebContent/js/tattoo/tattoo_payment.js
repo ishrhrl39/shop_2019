@@ -6,6 +6,19 @@ $(document).ready(function(){
 
 
 function order(){
+	if(!$("#orderAgree").is(":checked")){
+		alert("주문 동의를 체크하여 주십시오.");
+		return;
+	}else if($("#name").val() == ""){
+		alert("예약자 이름을 입력하십시오.");
+		return;
+	}else if($("#email").val() == ""){
+		alert("예약자 이메일을 입력하십시오.");
+		return;
+	}else if($("#phone").val() == ""){
+		alert("예약자 연락처를 입력하십시오.");
+		return;
+	}
 	
 	$.ajax({
 		type: "POST",

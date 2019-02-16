@@ -116,6 +116,14 @@
 	 		<mvc:mapping path="/tattoo/*" />
 	 		<bean class="com.yena.shop.util.SessionCheckInterceptor"/>
  		</mvc:interceptor>
+ 		<mvc:interceptor>
+	 		<mvc:mapping path="/mypage/*" />
+	 		<bean class="com.yena.shop.util.SessionCheckInterceptor"/>
+ 		</mvc:interceptor>
+ 		<mvc:interceptor>
+	 		<mvc:mapping path="/admin/*" />
+	 		<bean class="com.yena.shop.util.SessionCheckInterceptor"/>
+ 		</mvc:interceptor>
 	</mvc:interceptors> 
 	
 	<import resource="/conf/admin/admin-applicationContext.xml"/>

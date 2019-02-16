@@ -31,6 +31,7 @@
 				/admin/menu.do = MenuSysController
 				/admin/tattooist.do = TattooistController
 				/admin/tattoo_color.do = TattooColorController
+				/admin/stl.do = StlController
 			</value>
 		</property>
 	</bean>
@@ -75,6 +76,12 @@
 		<property name="tattooColorService" ref="tattooColorService" />
 	</bean>
 	
+	<!-- 무통장 관리 -->
+	<bean id="StlController" class="com.yena.shop.admin.controller.StlController">	
+		<property name="methodNameResolver" ref="methodNameResolver" />
+		<property name="stlService" ref="stlService" />
+		<property name="pageLimit" value="${payment.page.limit}" />
+	</bean>
 	
 	
 	
@@ -87,6 +94,11 @@
 	<bean id="tattooColorService" class="com.yena.shop.tattoo.service.TattooColorServiceImpl">
 		<property name="tattooColorDao" ref="tattooColorDao" />
 	</bean>
+	
+	<!-- 무통장 관리 -->
+	<bean id="stlService" class="com.yena.shop.tattoo.service.StlServiceImpl">
+		<property name="stlDao" ref="stlDao" />
+	</bean>
 
 	<!-- Dao -->	 
 	<!-- 타투이스트 담당자 관리  -->	 
@@ -94,5 +106,9 @@
 	</bean>
 	
 	<bean id="tattooColorDao" class="com.yena.shop.tattoo.dao.TattooColorDaoImpl">
+	</bean>
+	
+	<!-- 무통장 관리  -->
+	<bean id="stlDao" class="com.yena.shop.tattoo.dao.StlDaoImpl">
 	</bean>
 </beans>

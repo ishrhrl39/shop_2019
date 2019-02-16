@@ -27,6 +27,7 @@
 				/mypage/myInfo.do = MyPageController
 				/mypage/pwdUpdate.do = MyPageController
 				/mypage/drop.do = MyPageController
+				/mypage/basket.do = BasketController
 <!-- 				/mypage/shopBasket.do = ShopBasketController -->
 			</value>
 		</property>
@@ -37,6 +38,11 @@
 	    <property name="methodNameResolver" ref="methodNameResolver" />
  	 	<property name="accountService" ref="AccountService" />
  	 	<property name="paymentService" ref="PaymentService" />
+ 	 	<property name="pageLimit" value="${payment.page.limit}" />
+	</bean>
+	
+	<!-- 마이페이지 - 장바구니 -->
+	<bean id="BasketController" class="com.yena.shop.controller.BasketController">
 	</bean>
 	
 	<!-- Service -->
@@ -49,5 +55,6 @@
 	<!-- 마이페이지  - 내 정보관리-->	 
 	<bean id="AccountDao" class="com.yena.shop.dao.AccountDaoImpl">
 	</bean>
+	
 	
 </beans>

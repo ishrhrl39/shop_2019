@@ -8,7 +8,7 @@
 	<head>
 		<script src="/js/tattoo/tattoo_payment.js"></script>
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" href="/css/tattoo/main.css">
+		<link rel="stylesheet" href="/css/tattoo/payment.css">
 		<script src="/js/mypage/payment.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
@@ -20,88 +20,119 @@
 			<input type="hidden" id="tattooName" name="tattooName" value="${tattooName}"/>
 			<input type="hidden" id="tattooist" name="tattooist" value="${tattooist}"/>
 			
-			<h2> Order </h2>
-			<h3> 주문리스트 </h3>
-			<table>
-				<tbody>
-					<tr>
-						<th>이름</th>
-						<td><input type="text" id="name" name="name" value="${name}"/></td>
-					</tr>
-					<tr>
-						<th>이메일</th>
-						<td><input type="text" id="email" name="email" value="${email}"/></td>
-					</tr>
-					<tr>
-						<th>연락처</th>
-						<td><input type="text" id="phone" name="phone" value="${phone}"/></td>
-					</tr>
-					<tr>
-						<th>예약 날짜</th>
-						<td><input type="text" name="reserve_dt" id="datepicker1" class="datepicker" readonly="readonly"></td>
-						<th>예약 시간</th>
-						<td><input type="text" name="reserve_tm" id="reserve_tm" /></td>
-					</tr>
-				</tbody>
-			</table>
-			
-			<p>예약상품 할인적용</p>
-			<table>
+			<b class="title"> Order </b>
+			<p class="header">주문리스트</p>
+			<table style="width:100%"  class="orderTable">
 				<thead>
 					<tr>
-						<th>상품금액</th>
-						<th>할인금액</th>
-						<th>결제 예정금액</th>
+						
+
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>${realTattooPrice}</td>
-						<td>-</td>
-						<td>${salePrice}</td>
-						<td>=</td>
-						<td>${tattoPrice}</td>
+						<td><img src="${tattooImage}" width="80" /></td>
+						<td>${tattooName} </td>
+						<td>${colorName} </td>
+						<td>${tattoPrice} </td>
+						<td>${tattooist} </td>
 					</tr>
 				</tbody>
 			</table>
 			
-			<p>예약 정보</p>
-			<table>
+			<p class="header">예약자정보</p>
+			<table class="orderTable">
 				<tbody>
 					<tr>
-						<th>결제 방법</th>
+						<td>이름</td>
+						<td><input type="text" id="name" name="name" value="${name}"/></td>
+					</tr>
+					<tr>
+						<td>이메일</td>
+						<td><input type="text" id="email" name="email" value="${email}"/></td>
+					</tr>
+					<tr>
+						<td>연락처</td>
+						<td><input type="text" id="phone" name="phone" value="${phone}"/></td>
+					</tr>
+					<tr>
+						<td>예약 날짜</td>
+						<td><input type="text" name="reserve_dt" id="datepicker1" class="datepicker" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>예약 시간</td>
+						<td>
+							<select name="reserve_tm" id="reserve_tm">
+								<c:forEach begin="0" end="23" var="h">
+									<option value="${h }">${h }</option>
+								</c:forEach>
+							</select>시
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<p class="header">예약상품 할인적용</p>
+			<table class="orderTable">
+				<thead>
+					<tr>
+						<td>상품금액</td>
+						<td>&nbsp;</td>
+						<td>할인금액</td>
+						<td>&nbsp;</td>
+						<td>결제 예정금액</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>${realTattooPrice}원</td>
+						<td><img src="/images/common/bul_h23_minus.png"/></td>
+						<td><span class="fc-red">${salePrice}</span>원</td>
+						<td><img src="/images/common/bul_h23_equal.png"/></td>
+						<td><span class="fc-red">${tattoPrice}</span>원</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<p class="header">예약 정보</p>
+			<table class="orderTable">
+				<tbody>
+					<tr>
+						<td>결제방법</td>
 						<td>무통장입금(기업은행:111-11-111111 예금주:한예나)</td>
 					</tr>
 					<tr>
-						<td>
-							· 선택된 입금계좌로 인터넷 뱅킹, 은행 방문 등을 통해 입금해 주세요.  
-							· 반드시 입금 기한 내에 정확한 결제금액을 입금해 주세요.
+						<td colspan="2">
+							· 선택된 입금계좌로 인터넷 뱅킹, 은행 방문 등을 통해 입금해 주세요. <br/>
+							· 반드시 입금 기한 내에 정확한 결제금액을 입금해 주세요.<br/>
 							· 입금 기한이 지나면 주문은 자동취소됩니다.
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			
-			<p>예약자 동의</p>
-			<table>
+			<p class="header">예약자 동의</p>
+			<table class="orderTable">
 				<tbody>
 					<tr>
-						<th>주문동의</th>
+						<td>주문동의</td>
 						<td><input type="checkbox" id="orderAgree" value="Y"/>상기 결제정보를 확인하였으며, 구매진행에 동의합니다.</td>
 					</tr>
 				</tbody>
 			</table>
-			<table>
+			
+			<table class="orderTable" id="totalPriceTable">
 				<tbody>	
 					<tr>
-						<th> 최종 결제금액 </th>
-						<td>${tattoPrice} 원 </td>
+						<td width="20%">최종 결제금액 </td>
+						<td align="left"><span class="fc-red">${tattoPrice}</span> 원 </td>
 					</tr>
 				</tbody>
 			</table>
+			<center>
+				<button type="button" id="orderBtn" name="orderBtn">예약하기</button>
+			</center>
 		</form>
-		<div>
-			<button type="button" id="orderBtn" name="orderBtn">예약하기</button>
-		</div>
+		
 	</body>
 </html>

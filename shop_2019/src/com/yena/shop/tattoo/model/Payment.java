@@ -6,23 +6,39 @@ package com.yena.shop.tattoo.model;
  *
  */
 public class Payment {
-	private int PAYMENT_SN;			// 구매번호
+	private String PAYMENT_SN;			// 구매번호
 	private String USER_ID;			// 사용자 id
 	private int TATTOO_ID;    		// 상품 번호
 	private String TATTOO_NM;		// 상품명
 	private int PRICE;				// 가격
 	private String COLOR;			// 상품 색상
+	private String COLOR_NAME;		// 상품명
+	private String RESERVED_DT; 	// 예약일시
 	private String TATTOOIST_NAME;	// 담당자명
 	private String PAYMENT_CMPL_YN;	// 결제확정여부(N: 미확정, Y:확정)
 	private String REG_DTM;			// 구매등록날짜
 	private String UPD_DTM;			// 구매수정날짜
 	
-	public int getPAYMENT_SN() {
+	
+	public String getPAYMENT_SN() {
 		return PAYMENT_SN;
 	}
-	public void setPAYMENT_SN(int pAYMENT_SN) {
+	public void setPAYMENT_SN(String pAYMENT_SN) {
 		PAYMENT_SN = pAYMENT_SN;
 	}
+	public String getRESERVED_DT() {
+		return RESERVED_DT;
+	}
+	public void setRESERVED_DT(String rESERVED_DT) {
+		RESERVED_DT = rESERVED_DT;
+	}
+	public String getCOLOR_NAME() {
+		return COLOR_NAME;
+	}
+	public void setCOLOR_NAME(String cOLOR_NAME) {
+		COLOR_NAME = cOLOR_NAME;
+	}
+	
 	public String getUSER_ID() {
 		return USER_ID;
 	}

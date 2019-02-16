@@ -9,7 +9,7 @@
 		<ul id="leftMenu">
 			<li><a href='/index.do'>메인 페이지</a></li>
 			<li><a href='/mypage/myInfo.do'>내 정보 관리</a></li>
-			<li><a href='/mypage/shopBasekt.do'>장바구니</a></li>
+			<li><a href='/mypage/basket.do'>장바구니</a></li>
 			<li><a href='/mypage/myInfo.do?cmd=payment'>구매 이력</a></li>
 			<li><a href='/mypage/myInfo.do?cmd=drop'>회원탈퇴</a></li>
 		</ul>

@@ -52,6 +52,8 @@
 	<bean id="PaymentController" class="com.yena.shop.tattoo.controller.PaymentController">
 		<property name="methodNameResolver" ref="methodNameResolver" />
 	  	<property name="paymentService" ref="PaymentService" />
+	  	<property name="stlService" ref="stlService" />
+	  	<property name="tattooColorService" ref="tattooColorService" />
 	</bean>
 	
 	<!-- Service -->
@@ -64,7 +66,7 @@
 	<bean id="PaymentService" class="com.yena.shop.tattoo.service.PaymentServiceImpl">
 	  	<property name="paymentDao" ref="PaymentDao" />
 	</bean>
-	
+
 	<!-- Dao -->	
 	<!-- 타투 상품 관리-->	 
 	<bean id="tattooDao" class="com.yena.shop.tattoo.dao.TattooDaoImpl">
@@ -73,5 +75,7 @@
 	<!-- 타투 구매하기  -->
 	<bean id="PaymentDao" class="com.yena.shop.tattoo.dao.PaymentDaoImpl">
 	</bean>
+	
+	
 	
 </beans>
