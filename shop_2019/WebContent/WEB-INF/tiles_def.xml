@@ -153,9 +153,10 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/tattoo_detail.jsp" />
 	</definition>
 	
-		<!-- 타투 상품 내용 미리보기 -->
+	<!-- 타투 예약하기-->
 	<definition name="tattoo_payment" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/tattoo/payment.jsp" />
 	</definition>
 	
+
 </tiles-definitions>

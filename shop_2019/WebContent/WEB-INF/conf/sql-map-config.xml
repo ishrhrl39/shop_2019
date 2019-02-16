@@ -20,5 +20,6 @@
 	<sqlMap resource="com/yena/shop/maps/SqlMapStl.xml"/>
 	<sqlMap resource="com/yena/shop/maps/SqlMapSchedule.xml"/>
 	<sqlMap resource="com/yena/shop/maps/SqlMapFaq.xml"/>
+	<sqlMap resource="com/yena/shop/maps/SqlMapBasket.xml"/>
 	 
 </sqlMapConfig>

@@ -1,0 +1,34 @@
+.title{
+	font-family: 'Cardo', 'Jeju Myeongjo', serif;
+    color: #333;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 0.6px;
+}
+
+.backetTable{
+	margin-top:15px;
+	font-size: 12px;
+    font-family: 'Open Sans', 'Noto Sans KR', 'Nanum Gothic', sans-serif;
+}
+
+.backetTable th, .backetTable td{
+	text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #edebe8;
+    border-bottom: 1px solid #edebe8;
+    color: #555;
+    vertical-align: middle;
+    font-weight: bold;
+    background: #fff;
+    letter-spacing: 0.5px;
+}
+
+
+.backetTable .option{
+	text-align: left;
+	padding-left: 100px;
+}
+.backetTable .option .subOption{
+	padding-left: 48px;
+}

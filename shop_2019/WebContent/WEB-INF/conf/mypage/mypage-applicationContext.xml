@@ -43,6 +43,10 @@
 	
 	<!-- 마이페이지 - 장바구니 -->
 	<bean id="BasketController" class="com.yena.shop.controller.BasketController">
+		<property name="methodNameResolver" ref="methodNameResolver" />
+		<property name="basketService" ref="BasketService" />
+		<property name="stlService" ref="stlService" />
+	  	<property name="tattooColorService" ref="tattooColorService" />
 	</bean>
 	
 	<!-- Service -->
@@ -51,10 +55,18 @@
 		<property name="accountDao" ref="AccountDao" />
 	</bean>
 	
+	<!-- 마이페이지 - 장바구니 -->
+	<bean id="BasketService" class="com.yena.shop.service.BasketServiceImpl">
+		<property name="basketDao" ref="BasketDao" />
+	</bean>
+	
 	<!-- Dao -->	
 	<!-- 마이페이지  - 내 정보관리-->	 
 	<bean id="AccountDao" class="com.yena.shop.dao.AccountDaoImpl">
 	</bean>
 	
+	<!-- 마이페이지 - 장바구니 -->
+	<bean id="BasketDao" class="com.yena.shop.dao.BasketDaoImpl">
+	</bean>
 	
 </beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap  namespace="SqlMapBasket">
+	<typeAlias alias="Basket" type="com.yena.shop.model.Basket" />
+	<insert id="insertBasket" parameterClass="Basket">
+		INSERT INTO 
+			BASKET
+			(
+				BASKET_SN, 
+				USER_ID, 
+				TATTOO_ID, 
+				COLOR, 
+				TATTOOIST_NAME, 
+				REG_DTM, 
+				UPD_DTM
+			)
+			VALUES(
+				NULL,
+				#USER_ID#,
+				#TATTOO_ID#,
+				#COLOR#,
+				#TATTOOIST_NAME#,
+				#REG_DTM#,
+				#UPD_DTM#
+			)
+	</insert>
+	
+	<select id="selectBasket" parameterClass="java.lang.String" resultClass="Basket">
+		SELECT 
+			A.COLOR, A.TATTOOIST_NAME, B.IMAGE, B.PRICE, B.NM
+		FROM BASKET A JOIN TATTOO B ON A.TATTOO_ID = B.ID
+			WHERE A.USER_ID = #id#
+	</select>
+
+</sqlMap>
