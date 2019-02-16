@@ -25,17 +25,20 @@
 			<table style="width:100%"  class="orderTable">
 				<thead>
 					<tr>
-						
-
+						<th><center>사진</center></th>
+						<th><center>도안명</center></th>
+						<th><center>타투색상</center></th>
+						<th><center>가격</center></th>
+						<th><center>타투이스트</center></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><img src="${tattooImage}" width="80" /></td>
-						<td>${tattooName} </td>
-						<td>${colorName} </td>
-						<td>${tattoPrice}원 </td>
-						<td>${tattooist} </td>
+						<td align="center"><img src="${tattooImage}" width="80" /></td>
+						<td align="center">${tattooName} </td>
+						<td align="center">${colorName} </td>
+						<td align="center">${tattoPrice}원 </td>
+						<td align="center">${tattooist} </td>
 					</tr>
 				</tbody>
 			</table>
