@@ -124,10 +124,4 @@ public class PaymentController extends MultiActionController{
 	}
 	
 
-	public static void main(String[] args) throws Exception {
-		String str = "한예나";
-		Aria.setCharset("UTF-8");
-		System.out.println(Aria.encrypt(str, Aria.getSecretKey()) );
-	}
-
 }

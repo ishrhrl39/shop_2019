@@ -72,6 +72,17 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_stl.jsp" />
 	</definition>
 	
+	<!-- 관리자 - 타투이스트 스케줄 관리 -->
+	<definition name="admin_schedule" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_schedule.jsp" />
+	</definition>
+	
+	<!-- 관리자 - FAQ 관리 -->
+	<definition name="admin_faq" extends="admin_layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/admin_faq.jsp" />
+	</definition>
+	
+	
 	
 	
 	<!-- 회원가입 -->

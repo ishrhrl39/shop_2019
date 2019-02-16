@@ -44,4 +44,6 @@ public interface PaymentDao {
 	 * @param payment
 	 */
 	public void updatePaymentCmplYn(Payment payment);
+	
+	public void updatePaymentReservedDt(Payment payment);
 }

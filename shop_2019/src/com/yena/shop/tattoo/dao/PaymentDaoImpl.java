@@ -46,4 +46,9 @@ public class PaymentDaoImpl extends SqlMapClientDaoSupport implements PaymentDao
 	public void updatePaymentCmplYn(Payment payment) {
 		getSqlMapClientTemplate().update(namespace + "updatePaymentCmplYn", payment);
 	}
+
+	@Override
+	public void updatePaymentReservedDt(Payment payment) {
+		getSqlMapClientTemplate().update(namespace + "updatePaymentReservedDt", payment);
+	}
 }

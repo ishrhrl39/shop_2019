@@ -18,5 +18,7 @@
 	<sqlMap resource="com/yena/shop/maps/SqlMapTattooColor.xml"/>
 	<sqlMap resource="com/yena/shop/maps/SqlMapPayment.xml"/>
 	<sqlMap resource="com/yena/shop/maps/SqlMapStl.xml"/>
+	<sqlMap resource="com/yena/shop/maps/SqlMapSchedule.xml"/>
+	<sqlMap resource="com/yena/shop/maps/SqlMapFaq.xml"/>
 	 
 </sqlMapConfig>

@@ -20,10 +20,10 @@
 				<table>
 					<thead>
 						<tr>
-							<td colspan="3" align="right">
+							<td colspan="3" align="right" style="padding-bottom:20px;">
 								상품명 : <input name="nm" id="nm" type="text" size="20" maxlength="50" />
-								<button type="button" id="searchBtn" >검색</button>
-								<button type="button" id="allSelectBtn" >전체보기</button>
+								<button type="button" id="searchBtn" class="btn btn-default" >검색</button>
+								<button type="button" id="allSelectBtn" class="btn btn-default" >전체보기</button>
 							</td>
 						</tr>
 					</thead>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SqlMapSchedule">
+	<typeAlias alias="TattooSchedule" type="com.yena.shop.tattoo.model.TattooSchedule" />
+	
+	<insert id="insertSchedule" parameterClass="TattooSchedule">
+		INSERT INTO
+			TATTOO_SCHEDULE
+		(
+			RESERVED_DATE,
+			RESERVED_HOUR,
+			TATTOO_NAME,
+			PAYMENT_SN
+		)
+		VALUES
+		(
+			#RESERVED_DATE#,
+			#RESERVED_HOUR#,
+			#TATTOO_NAME#,
+			#PAYMENT_SN#
+		)
+	</insert>
+	
+	<delete id="deleteSchedule"  parameterClass="TattooSchedule">
+		DELETE FROM TATTOO_SCHEDULE
+			WHERE
+				RESERVED_DATE = #RESERVED_DATE#
+				AND RESERVED_HOUR = #RESERVED_HOUR#
+				AND TATTOO_NAME = #TATTOO_NAME#
+	</delete>
+	
+
+	<select id="selectScheduleList" resultClass="TattooSchedule" parameterClass="java.util.HashMap">
+		SELECT 
+			A.RESERVED_DATE AS RESERVED_DATE,
+			A.RESERVED_HOUR AS RESERVED_HOUR,
+			A.TATTOO_NAME AS TATTOO_NAME,
+			A.PAYMENT_SN AS PAYMENT_SN,
+			B.NAME AS NAME,
+			B.TEL AS TEL
+		FROM 
+			TATTOO_SCHEDULE A INNER JOIN STL B ON (A.PAYMENT_SN = B.PAYMENT_SN)
+		WHERE
+			1=1
+			<isNotNull property="searchKey">
+				<isEqual property="searchKey" compareValue="TATTOOIST_NAME">
+					AND A.TATTOO_NAME LIKE CONCAT(#searchValue#, '%')
+				</isEqual>
+				<isEqual property="searchKey" compareValue="RESERVED_DATE">
+					AND A.RESERVED_DATE = #searchValue#
+				</isEqual>
+			</isNotNull>
+			ORDER BY A.RESERVED_DATE DESC, A.RESERVED_HOUR ASC
+	</select>
+
+	<select id="selectScheduleOne" parameterClass="TattooSchedule" resultClass="TattooSchedule">
+		SELECT 
+			RESERVED_DATE,
+			RESERVED_HOUR,
+			TATTOO_NAME,
+			PAYMENT_SN
+		FROM 
+			TATTOO_SCHEDULE
+		WHERE
+			RESERVED_DATE = #RESERVED_DATE#
+			AND RESERVED_HOUR = #RESERVED_HOUR#
+			AND TATTOO_NAME = #TATTOO_NAME#
+	</select>
+		
+</sqlMap>

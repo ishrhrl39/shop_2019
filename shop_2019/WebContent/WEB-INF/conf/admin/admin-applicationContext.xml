@@ -32,12 +32,19 @@
 				/admin/tattooist.do = TattooistController
 				/admin/tattoo_color.do = TattooColorController
 				/admin/stl.do = StlController
+				/admin/schedule.do = ScheduleController
+				/admin/faqList.do = AdminFaqController
 			</value>
 		</property>
 	</bean>
 	
 	<bean id="AdminIndexController" class="com.yena.shop.admin.controller.AdminIndexController">
 	    <property name="methodNameResolver" ref="methodNameResolver" />
+	</bean>
+	
+	<bean id="AdminFaqController" class="com.yena.shop.admin.controller.AdminFaqController">
+	    <property name="methodNameResolver" ref="methodNameResolver" />
+	    <property name="faqService" ref="faqService" />
 	</bean>
 	
 	<bean id="AdminUserListController" class="com.yena.shop.admin.controller.AdminUserListController">
@@ -81,9 +88,15 @@
 		<property name="methodNameResolver" ref="methodNameResolver" />
 		<property name="stlService" ref="stlService" />
 		<property name="paymentService" ref="PaymentService" />
+		<property name="scheduleService" ref="scheduleService" />
 		<property name="pageLimit" value="${payment.page.limit}" />
 	</bean>
 	
+	<!-- 타투이스트 스케줄 관리 -->
+	<bean id="ScheduleController" class="com.yena.shop.admin.controller.ScheduleController">
+		<property name="methodNameResolver" ref="methodNameResolver" />
+		<property name="scheduleService" ref="scheduleService" />
+	</bean>
 	
 	
 	<!-- Service -->	
@@ -100,6 +113,16 @@
 	<bean id="stlService" class="com.yena.shop.tattoo.service.StlServiceImpl">
 		<property name="stlDao" ref="stlDao" />
 	</bean>
+	
+	<!-- 타투이스트 스케줄 관리 -->
+	<bean id="scheduleService" class="com.yena.shop.tattoo.service.ScheduleServiceImpl">
+		<property name="scheduleDao" ref="scheduleDao" />
+	</bean>
+	
+	<!-- FAQ 관리 -->
+	<bean id="faqService" class="com.yena.shop.service.FaqServiceImpl">
+		<property name="faqDao" ref="faqDao" />
+	</bean>
 
 	<!-- Dao -->	 
 	<!-- 타투이스트 담당자 관리  -->	 
@@ -111,5 +134,13 @@
 	
 	<!-- 무통장 관리  -->
 	<bean id="stlDao" class="com.yena.shop.tattoo.dao.StlDaoImpl">
+	</bean>
+	
+	<!-- 타투이스트 스케줄 관리 -->
+	<bean id="scheduleDao" class="com.yena.shop.tattoo.dao.ScheduleDaoImpl">
+	</bean>
+	
+	<!-- FAQ 관리 -->
+	<bean id="faqDao" class="com.yena.shop.dao.FaqDaoImpl">
 	</bean>
 </beans>

@@ -110,4 +110,13 @@
 		WHERE
 			PAYMENT_SN = #PAYMENT_SN#
 	</update>	
+	
+	<update id="updatePaymentReservedDt" parameterClass="Payment">
+		UPDATE
+			PAYMENT
+		SET
+			RESERVED_DT = #RESERVED_DT#
+		WHERE
+			PAYMENT_SN = #PAYMENT_SN#
+	</update>	
 </sqlMap>

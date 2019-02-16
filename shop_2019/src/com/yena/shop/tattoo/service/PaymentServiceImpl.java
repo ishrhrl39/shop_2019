@@ -50,4 +50,9 @@ public class PaymentServiceImpl implements PaymentService {
 	public void updatePaymentCmplYn(Payment payment) {
 		paymentDao.updatePaymentCmplYn(payment);
 	}
+
+	@Override
+	public void updatePaymentReservedDt(Payment payment) {
+		paymentDao.updatePaymentReservedDt(payment);
+	}
 }

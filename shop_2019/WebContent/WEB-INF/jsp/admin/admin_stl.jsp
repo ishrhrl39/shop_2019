@@ -76,8 +76,8 @@
 						<td>
 							<c:choose>
 								<c:when test="${stl.PAYMENT_CMPL_YN == 'N'}">
-									<button type="button" class="btn btn-default" onclick="updateStlSts('${stl.PAYMENT_SN}','Y')">결제처리</button>
-									<button type="button" class="btn btn-default" onclick="updateStlSts('${stl.PAYMENT_SN}','X')">결제취소</button>
+									<button type="button" class="btn btn-default" onclick="updateStlSts('${stl.PAYMENT_SN}','Y', '${stl.TATTOOIST_NAME }', '${stl.RESERVED_DT}')">결제처리</button>
+									<button type="button" class="btn btn-default" onclick="updateStlSts('${stl.PAYMENT_SN}','X', '${stl.TATTOOIST_NAME }', '${stl.RESERVED_DT}')">결제취소</button>
 								</c:when>
 								<c:when test="${stl.PAYMENT_CMPL_YN == 'X'}">
 									<font color='red'>결제취소</font>
@@ -135,6 +135,43 @@
 			</tfoot>
 		</table>
 	</form>
+	
+	<div class="modal fade" id="reservation_popup" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="scheduleForm" action="#" method="post">
+					<div class="modal-body">
+						<input type="hidden" name="payment_sn" id="payment_sn" />
+						<input type="hidden" name="tattooist_name" id="tattooist_name" />
+						<table>
+							<tr>
+								<td>예약 날짜</td>
+								<td><input type="text" name="reserve_dt" id="reserve_dt" maxlength="8"></td>
+							</tr>
+							<tr>
+								<td colspan="2" height=10>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>예약 시간</td>
+								<td>
+									<select name="reserve_tm" id="reserve_tm">
+										<c:forEach begin="0" end="23" var="h">
+											<option value="${h }">${h }</option>
+										</c:forEach>
+									</select>시
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="updateScheduleBtn">스케줄 수정 후 결제</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
 	
 </body>
 </html>

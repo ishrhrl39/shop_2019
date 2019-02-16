@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SqlMapFaq">
+	<typeAlias alias="Faq" type="com.yena.shop.model.Faq" />
+	
+	<insert id="insertFaq" parameterClass="Faq">
+		INSERT INTO FAQ (TITLE, CONTENT)
+			VALUES (#TITLE#, #CONTENT#)
+	</insert>
+
+	<update id="updateFaq" parameterClass="Faq">
+		UPDATE
+			FAQ
+		SET
+			TITLE = #TITLE#,
+			CONTENT = #CONTENT#
+		WHERE
+			NO = #NO#
+	</update>	
+	
+	<delete id="deleteFaq" parameterClass="int">
+		DELETE FROM FAQ
+			WHERE
+				NO = #NO#
+	</delete>
+	
+	<select id="selectFaqOne" parameterClass="int" resultClass="Faq">
+		SELECT
+			NO, 
+			TITLE,
+			CONTENT
+		FROM FAQ
+			WHERE
+				NO = #NO#
+	</select>
+	
+	<select id="selectFaqList" resultClass="Faq">
+		SELECT
+			NO, 
+			TITLE,
+			CONTENT
+		FROM FAQ
+	</select>
+	
+</sqlMap>

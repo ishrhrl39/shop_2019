@@ -18,17 +18,23 @@ import com.yena.shop.security.Aria;
 import com.yena.shop.service.AccountService;
 import com.yena.shop.tattoo.model.Page;
 import com.yena.shop.tattoo.model.Payment;
+import com.yena.shop.tattoo.model.TattooSchedule;
 import com.yena.shop.tattoo.service.PaymentService;
+import com.yena.shop.tattoo.service.ScheduleService;
 import com.yena.shop.tattoo.service.StlService;
 
 public class StlController extends MultiActionController{
 	
 	private StlService stlService;
 	private PaymentService paymentService;
+	private ScheduleService scheduleService;
 	private String secretKey = Aria.getSecretKey();
 	private int pageLimit;
 	
 	
+	public void setScheduleService(ScheduleService scheduleService) {
+		this.scheduleService = scheduleService;
+	}
 	public void setPaymentService(PaymentService paymentService) {
 		this.paymentService = paymentService;
 	}
@@ -109,11 +115,63 @@ public class StlController extends MultiActionController{
 	public ModelAndView updateStlSts(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map returnData = new HashMap();
 		String paymentSn = StringUtils.defaultString(request.getParameter("paymentSn"), "");
+		String reservedDtm = StringUtils.defaultString(request.getParameter("reservedDtm"), "");
+		String tattooistNm = StringUtils.defaultString(request.getParameter("tattooistNm"), "");
+		
 		Payment payment = new Payment();
 		payment.setPAYMENT_SN(paymentSn);
 		payment.setPAYMENT_CMPL_YN(StringUtils.defaultString(request.getParameter("cmpl_yn"), "N").toUpperCase());
 		
-		paymentService.updatePaymentCmplYn(payment);
+		TattooSchedule schedule = new TattooSchedule();
+		schedule.setPAYMENT_SN(paymentSn);
+		schedule.setRESERVED_DATE(reservedDtm.substring(0, 8));
+		schedule.setRESERVED_HOUR(reservedDtm.substring(8,10));
+		schedule.setTATTOO_NAME(tattooistNm);
+		
+		System.out.println("schedule => " + scheduleService.selectScheduleOne(schedule));
+		if(scheduleService.selectScheduleOne(schedule) == null) {
+			paymentService.updatePaymentCmplYn(payment);
+			scheduleService.insertSchedule(schedule);
+			returnData.put("result", "OK");
+		}else {
+			returnData.put("result", "EXIST");
+		}
+		
+		return new ModelAndView("jsonView", returnData);
+	}
+	
+	
+	
+	public ModelAndView updateSchedule(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Map returnData = new HashMap();
+		String payment_sn = StringUtils.defaultString(request.getParameter("payment_sn"), "");
+		String reserve_dt = StringUtils.defaultString(request.getParameter("reserve_dt"), "").replaceAll("-", "");
+		String reserve_tm = StringUtils.defaultString(request.getParameter("reserve_tm"), "");
+		String tattooist_name = StringUtils.defaultString(request.getParameter("tattooist_name"), "");
+		
+		if(reserve_tm.length() == 1) {
+			reserve_tm = "0" + reserve_tm;
+		}
+		
+		TattooSchedule schedule = new TattooSchedule();
+		schedule.setPAYMENT_SN(payment_sn);
+		schedule.setRESERVED_DATE(reserve_dt);
+		schedule.setRESERVED_HOUR(reserve_tm);
+		schedule.setTATTOO_NAME(tattooist_name);
+		
+		System.out.println("schedule => " + scheduleService.selectScheduleOne(schedule));
+		if(scheduleService.selectScheduleOne(schedule) == null) {
+			Payment payment = new Payment();
+			payment.setPAYMENT_SN(payment_sn);
+			payment.setPAYMENT_CMPL_YN("Y");
+			payment.setRESERVED_DT(schedule.getRESERVED_DATE() + schedule.getRESERVED_HOUR() + "0000");
+			paymentService.updatePaymentCmplYn(payment);
+			paymentService.updatePaymentReservedDt(payment);
+			scheduleService.insertSchedule(schedule);
+			returnData.put("result", "OK");
+		}else {
+			returnData.put("result", "EXIST");
+		}
 		
 		return new ModelAndView("jsonView", returnData);
 	}
