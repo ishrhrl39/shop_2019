@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="/css/tattoo/tattoo_detail.css">
 	</head>
 	<body>
-		<form id="reserveForm" action="/tattoo/payment.do" method="post">
+		<form id="reserveForm" action="#" method="post">
 			<input type="hidden" name="tattooName" value="${one.nm}"/>
 			<input type="hidden" name="tattoPrice" value="<fmt:formatNumber value="${one.price- one.price*one.sale/100}" pattern="#,###" />"/>
 			<input type="hidden" name="tattooId" value="${one.id}"/>
@@ -77,11 +77,13 @@
 													<option value="${tattooist.NAME }">${tattooist.NAME }</option>												
 												</c:forEach>
 											</select>
+										
 										</td>
 									</tr>
 									<tr>
 										<td colspan="2" align="center">
 											<button type ="button" id="reserveBtn" name="reserve" class="btn btn-default"> 예약하기 </button>
+											<button type ="button" id="basketBtn" name="basket" class="btn btn-default"> 장바구니 </button>
 										</td>
 									</tr>
 								</tbody>
