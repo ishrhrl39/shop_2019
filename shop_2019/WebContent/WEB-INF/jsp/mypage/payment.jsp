@@ -70,7 +70,7 @@
 						<td>
 							<c:choose>
 								<c:when test="${payment.PAYMENT_CMPL_YN == 'N'}">
-									결제진행 중
+									<a href="#" data-toggle="modal" data-target="#stlPopup">결제진행 중</a>
 								</c:when>
 								<c:when test="${payment.PAYMENT_CMPL_YN == 'X'}">
 									결제취소
@@ -139,5 +139,22 @@
 			</tfoot>
 		</table>
 	</form>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="stlPopup" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>무통장입금(기업은행:111-11-111111 예금주:한예나)</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>

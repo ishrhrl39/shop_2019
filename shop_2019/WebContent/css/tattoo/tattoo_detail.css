@@ -1,0 +1,39 @@
+#container{
+	width:100%;
+}
+
+#detail_table{
+	width:50%;
+	text-align: center;
+	margin:auto;
+}
+
+#detail_table .image{
+	width:40%;
+	border: 2px solid #EEE;
+	padding:14px;
+}
+
+
+#detail_table .image img{
+	width:100%;
+}
+
+#detail_table .sub_layer{
+	padding:9px;
+	vertical-align: top;
+}
+
+#detail_table #sub_table{
+	width: 100%;
+}
+
+#detail_table #sub_table th{
+	text-align: center;
+	
+}
+
+#detail_table #sub_table td, #detail_table #sub_table th{
+	border-top:1px solid #edebe8;
+	padding:10px;
+}

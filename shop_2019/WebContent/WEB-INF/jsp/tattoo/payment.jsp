@@ -34,7 +34,7 @@
 						<td><img src="${tattooImage}" width="80" /></td>
 						<td>${tattooName} </td>
 						<td>${colorName} </td>
-						<td>${tattoPrice} </td>
+						<td>${tattoPrice}원 </td>
 						<td>${tattooist} </td>
 					</tr>
 				</tbody>

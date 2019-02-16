@@ -39,4 +39,10 @@ public interface PaymentService {
 	 */
 	public int selectTotalPayment(Page pageVo);
 	
+	/**
+	 * 구매 이력 정보 수정
+	 * @param payment
+	 */
+	public void updatePaymentCmplYn(Payment payment);
+	
 }

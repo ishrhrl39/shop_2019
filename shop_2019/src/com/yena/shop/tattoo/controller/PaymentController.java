@@ -94,6 +94,10 @@ public class PaymentController extends MultiActionController{
 		int price = Integer.parseInt(tattoPrice.replaceAll(",", ""));
 		
 		
+		if(reserve_tm.length() == 1) {
+			reserve_tm = "0" + reserve_tm;
+		}
+		
 		Payment payment = new Payment();
 		payment.setPAYMENT_SN(paymentSn);
 		payment.setUSER_ID(user.getId());

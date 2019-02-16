@@ -80,6 +80,7 @@
 	<bean id="StlController" class="com.yena.shop.admin.controller.StlController">	
 		<property name="methodNameResolver" ref="methodNameResolver" />
 		<property name="stlService" ref="stlService" />
+		<property name="paymentService" ref="PaymentService" />
 		<property name="pageLimit" value="${payment.page.limit}" />
 	</bean>
 	

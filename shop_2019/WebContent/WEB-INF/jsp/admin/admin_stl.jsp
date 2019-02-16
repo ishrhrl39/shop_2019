@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="/js/mypage/payment.js"></script>
+<script type="text/javascript" src="/js/admin/stl.js"></script>
 <link rel="stylesheet" href="/css/admin/account_list.css">
 <title></title>
 
@@ -45,6 +45,10 @@
 					<th>회원명</th>
 					<th>연락처</th>
 					<th>이메일</th>
+					<th>결제상품</th>
+					<th>색상</th>
+					<th>예약일자</th>
+					<th>타투이스트</th>
 					<th>결제금액</th>
 					<th>결제날짜</th>
 					<th>-</th>
@@ -57,18 +61,26 @@
 						<td>${stl.NAME }</td>
 						<td>${stl.TEL }</td>
 						<td>${stl.EMAIL }</td>
+						<td><a target="_blank" href="/tattoo/detail.do?id=${stl.TATTOO_ID }">${stl.TATTOO_NM }</a></td>
+						<td>${stl.COLOR }</td>
+						<td>
+							<fmt:parseDate value="${stl.RESERVED_DT}" var="reservedDt" pattern="yyyyMMddHHmmss"/>
+							<fmt:formatDate value="${reservedDt}" pattern="yyyy-MM-dd HH:mm:ss"/>
+						</td>
+						<td>${stl.TATTOOIST_NAME }</td>
 						<td><fmt:formatNumber value="${stl.STL_MONEY }" pattern="#,###"/>원</td>
 						<td>
-							<fmt:parseDate value="${payment.STL_DTM}" var="stlDtm" pattern="yyyyMMddHHmmss"/>
+							<fmt:parseDate value="${stl.STL_DTM}" var="stlDtm" pattern="yyyyMMddHHmmss"/>
 							<fmt:formatDate value="${stlDtm}" pattern="yyyy-MM-dd HH:mm:ss"/>
 						</td>
 						<td>
 							<c:choose>
 								<c:when test="${stl.PAYMENT_CMPL_YN == 'N'}">
-									<button type="button">결제처리</button>
+									<button type="button" class="btn btn-default" onclick="updateStlSts('${stl.PAYMENT_SN}','Y')">결제처리</button>
+									<button type="button" class="btn btn-default" onclick="updateStlSts('${stl.PAYMENT_SN}','X')">결제취소</button>
 								</c:when>
-								<c:when test="${payment.PAYMENT_CMPL_YN == 'X'}">
-									결제취소
+								<c:when test="${stl.PAYMENT_CMPL_YN == 'X'}">
+									<font color='red'>결제취소</font>
 								</c:when>
 								<c:otherwise>
 									결제완료
@@ -80,7 +92,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="7" align="center">
+					<td colspan="11" align="center">
 						<div id="paging">
 							<!-- 맨 앞으로 가기 -->
 							<c:if test="${pageVo.nowPage != 1}">
@@ -123,5 +135,6 @@
 			</tfoot>
 		</table>
 	</form>
+	
 </body>
 </html>

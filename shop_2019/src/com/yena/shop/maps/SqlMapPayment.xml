@@ -100,5 +100,14 @@
 			<isEqual property="searchKey" compareValue="TATTOO_NM">
 				AND TATTOO_NM LIKE CONCAT(#searchValue#, '%')
 			</isEqual>
-	</select>	
+	</select>
+	
+	<update id="updatePaymentCmplYn" parameterClass="Payment">
+		UPDATE
+			PAYMENT
+		SET
+			PAYMENT_CMPL_YN = #PAYMENT_CMPL_YN#
+		WHERE
+			PAYMENT_SN = #PAYMENT_SN#
+	</update>	
 </sqlMap>

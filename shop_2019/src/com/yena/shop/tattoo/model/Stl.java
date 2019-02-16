@@ -9,7 +9,7 @@ package com.yena.shop.tattoo.model;
  * @author 한예나
  *
  */
-public class Stl {
+public class Stl extends Payment{
 	private int STL_NO;
 	private String PAYMENT_SN;
 	private String USER_ID;
@@ -18,15 +18,7 @@ public class Stl {
 	private String EMAIL;
 	private int STL_MONEY;
 	private String STL_DTM;
-	private String PAYMENT_CMPL_YN;	// 결제확정여부(N: 미확정, Y:확정)
-	
-	
-	public String getPAYMENT_CMPL_YN() {
-		return PAYMENT_CMPL_YN;
-	}
-	public void setPAYMENT_CMPL_YN(String pAYMENT_CMPL_YN) {
-		PAYMENT_CMPL_YN = pAYMENT_CMPL_YN;
-	}
+
 	public int getSTL_NO() {
 		return STL_NO;
 	}

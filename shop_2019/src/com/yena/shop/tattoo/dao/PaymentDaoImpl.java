@@ -41,4 +41,9 @@ public class PaymentDaoImpl extends SqlMapClientDaoSupport implements PaymentDao
 	public int selectTotalPayment(Page pageVo) {
 		return (int) getSqlMapClientTemplate().queryForObject(namespace + "selectTotalPayment", pageVo);
 	}
+
+	@Override
+	public void updatePaymentCmplYn(Payment payment) {
+		getSqlMapClientTemplate().update(namespace + "updatePaymentCmplYn", payment);
+	}
 }

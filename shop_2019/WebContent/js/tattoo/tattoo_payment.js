@@ -27,7 +27,8 @@ function order(){
 		data : $("#orderForm").serialize(),
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		success: function(data){
-			location.href ="/index.do";
+			alert("구매 완료되었습니다.");
+			location.href ="/mypage/myInfo.do?cmd=payment";
 			
 		}
 	});

@@ -17,15 +17,21 @@ import com.yena.shop.model.WithDrawLog;
 import com.yena.shop.security.Aria;
 import com.yena.shop.service.AccountService;
 import com.yena.shop.tattoo.model.Page;
+import com.yena.shop.tattoo.model.Payment;
 import com.yena.shop.tattoo.service.PaymentService;
 import com.yena.shop.tattoo.service.StlService;
 
 public class StlController extends MultiActionController{
 	
 	private StlService stlService;
+	private PaymentService paymentService;
 	private String secretKey = Aria.getSecretKey();
 	private int pageLimit;
 	
+	
+	public void setPaymentService(PaymentService paymentService) {
+		this.paymentService = paymentService;
+	}
 	public void setStlService(StlService stlService) {
 		this.stlService = stlService;
 	}
@@ -99,4 +105,16 @@ public class StlController extends MultiActionController{
 		return new ModelAndView("admin_stl", returnData);
 	}
 	
+	
+	public ModelAndView updateStlSts(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Map returnData = new HashMap();
+		String paymentSn = StringUtils.defaultString(request.getParameter("paymentSn"), "");
+		Payment payment = new Payment();
+		payment.setPAYMENT_SN(paymentSn);
+		payment.setPAYMENT_CMPL_YN(StringUtils.defaultString(request.getParameter("cmpl_yn"), "N").toUpperCase());
+		
+		paymentService.updatePaymentCmplYn(payment);
+		
+		return new ModelAndView("jsonView", returnData);
+	}
 }

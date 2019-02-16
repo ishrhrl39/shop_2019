@@ -8,24 +8,24 @@
 	<head>
 		<meta charset="EUC-KR">
 		<script src="/js/tattoo/tattoo_detail.js"></script>
+		<link rel="stylesheet" href="/css/tattoo/tattoo_detail.css">
 	</head>
 	<body>
-		<form id="reserveForm" action="/tattoo/payment.do">
+		<form id="reserveForm" action="/tattoo/payment.do" method="post">
 			<input type="hidden" name="tattooName" value="${one.nm}"/>
 			<input type="hidden" name="tattoPrice" value="<fmt:formatNumber value="${one.price- one.price*one.sale/100}" pattern="#,###" />"/>
 			<input type="hidden" name="tattooId" value="${one.id}"/>
 			<input type="hidden" name="tattooImage" value="${one.image}"/>
 			<input type="hidden" name="realTattooPrice" value="${one.price}"/>
 			<input type="hidden" name="salePrice" value="<fmt:formatNumber value="${one.price*one.sale/100}" pattern="#,###" />"/>
-			
-			<table>
+			<table id="detail_table">
 				<tbody>
 					<tr>	
-						<td>
-							<img src = "${one.image}" width="50%" />
+						<td class="image">
+							<img src = "${one.image}" />
 						</td>
-						<td>
-							<table>
+						<td class="sub_layer">
+							<table id="sub_table">
 								<tbody>
 									<tr>
 										<th> 타투명 </th>
@@ -79,11 +79,13 @@
 											</select>
 										</td>
 									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<button type ="button" id="reserveBtn" name="reserve" class="btn btn-default"> 예약하기 </button>
+										</td>
+									</tr>
 								</tbody>
 							</table>
-							<div>
-								<button type ="button" id="reserveBtn" name="reserve"> 예약하기 </button>
-							</div>
 						</td>
 					</tr>
 				</tbody>

@@ -45,4 +45,9 @@ public class PaymentServiceImpl implements PaymentService {
 	public int selectTotalPayment(Page pageVo) {
 		return paymentDao.selectTotalPayment(pageVo);
 	}
+
+	@Override
+	public void updatePaymentCmplYn(Payment payment) {
+		paymentDao.updatePaymentCmplYn(payment);
+	}
 }
