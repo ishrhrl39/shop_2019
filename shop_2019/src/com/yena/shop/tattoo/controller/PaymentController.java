@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.yena.shop.model.User;
 import com.yena.shop.security.Aria;
+import com.yena.shop.service.BasketService;
 import com.yena.shop.tattoo.model.Payment;
 import com.yena.shop.tattoo.model.Stl;
 import com.yena.shop.tattoo.model.Tattoo;
@@ -26,7 +27,12 @@ public class PaymentController extends MultiActionController{
 	private TattooColorService tattooColorService;
 	private StlService stlService;
 	private String secretKey = Aria.getSecretKey();
+	private BasketService basketService;
+	
 
+	public void setBasketService(BasketService basketService) {
+		this.basketService = basketService;
+	}
 	public void setPaymentService(PaymentService paymentService) {
 		this.paymentService = paymentService;
 	}
@@ -56,6 +62,7 @@ public class PaymentController extends MultiActionController{
 		String tattooImage = StringUtils.defaultString(request.getParameter("tattooImage"), "");
 		String realTattooPrice = StringUtils.defaultString(request.getParameter("realTattooPrice"), "");
 		String salePrice = StringUtils.defaultString(request.getParameter("salePrice"), "");
+		String basketSn = StringUtils.defaultString(request.getParameter("basketSn"), "");
 
 		tattooColor.setSEQ(Integer.parseInt(color));
 		mav.addObject("tattooId", tattooId);
@@ -71,6 +78,7 @@ public class PaymentController extends MultiActionController{
 		mav.addObject("realTattooPrice", realTattooPrice);
 		mav.addObject("salePrice", salePrice);
 		
+		mav.addObject("basketSn", basketSn);
 		mav.setViewName("tattoo_payment");
 		return mav;
 	}
@@ -81,6 +89,7 @@ public class PaymentController extends MultiActionController{
 		User user = (User) session.getAttribute("loginUser"); // session 가져옴
 		ModelAndView mav = new ModelAndView();
 		int tattooId = Integer.parseInt(StringUtils.defaultString(request.getParameter("tattooId"), "1"));
+		String basketSn = StringUtils.defaultString(request.getParameter("basketSn"), "");
 		String tattooName = StringUtils.defaultString(request.getParameter("tattooName"), "");
 		String tattoPrice = StringUtils.defaultString(request.getParameter("tattoPrice"), "");
 		String color = StringUtils.defaultString(request.getParameter("color"), "");
@@ -118,6 +127,10 @@ public class PaymentController extends MultiActionController{
 		stl.setTEL(tel);
 		stl.setSTL_MONEY(price);
 		stlService.insertStl(stl);
+		
+		if(!basketSn.equals("")) {
+			basketService.deleteBasket(basketSn);
+		}
 		
 		mav.setViewName("jsonView");
 		return mav;

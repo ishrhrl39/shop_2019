@@ -16,7 +16,7 @@
 			<input type="hidden" name="tattoPrice" value="<fmt:formatNumber value="${one.price- one.price*one.sale/100}" pattern="#,###" />"/>
 			<input type="hidden" name="tattooId" value="${one.id}"/>
 			<input type="hidden" name="tattooImage" value="${one.image}"/>
-			<input type="hidden" name="realTattooPrice" value="${one.price}"/>
+			<input type="hidden" name="realTattooPrice" value="<fmt:formatNumber value="${one.price}" pattern="#,###" />"/>
 			<input type="hidden" name="salePrice" value="<fmt:formatNumber value="${one.price*one.sale/100}" pattern="#,###" />"/>
 			<table id="detail_table">
 				<tbody>

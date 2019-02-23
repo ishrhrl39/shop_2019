@@ -9,11 +9,11 @@
 		<script src="/js/tattoo/tattoo_payment.js"></script>
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" href="/css/tattoo/payment.css">
-		<script src="/js/mypage/payment.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
 		<form id="orderForm">
+			<input type="hidden" id="basketSn" name="basketSn" value="${basketSn}" />
 			<input type="hidden" id="tattooId" name="tattooId" value="${tattooId}"/>
 			<input type="hidden" id="tattoPrice" name="tattoPrice" value="${tattoPrice}"/>
 			<input type="hidden" id="color" name="color" value="${color}"/>

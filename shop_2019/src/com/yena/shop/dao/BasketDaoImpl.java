@@ -28,6 +28,21 @@ public class BasketDaoImpl extends SqlMapClientDaoSupport implements BasketDao {
 		return getSqlMapClientTemplate().queryForList(namespace + "selectBasket", id);
 		
 	}
+
+	// 장바구니 삭제
+	@Override
+	public void deleteBasket(String item) {
+		 getSqlMapClientTemplate().delete(namespace + "deleteBasket", item);
+		
+	}
+
+	// 장바구니 단건 조회
+	@Override
+	public Basket selectBasketOne(Basket basket) {
+		return (Basket) getSqlMapClientTemplate().queryForObject(namespace + "selectBasketOne", basket);
+	}
+	
+	
 	
 	
 	

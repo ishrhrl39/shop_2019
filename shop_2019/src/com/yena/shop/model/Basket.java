@@ -1,6 +1,10 @@
 package com.yena.shop.model;
 
+import java.net.URLEncoder;
+import java.text.DecimalFormat;
+
 import com.yena.shop.tattoo.model.Tattoo;
+import com.yena.shop.tattoo.model.TattooColor;
 
 /**
  * 장바구니 내역
@@ -15,7 +19,16 @@ public class Basket extends Tattoo{
 	private String TATTOOIST_NAME;
 	private String REG_DTM;
 	private String UPD_DTM;
+	private int COLOR_SEQ;
 	
+	
+	
+	public int getCOLOR_SEQ() {
+		return COLOR_SEQ;
+	}
+	public void setCOLOR_SEQ(int cOLOR_SEQ) {
+		COLOR_SEQ = cOLOR_SEQ;
+	}
 	public String getBASKET_SN() {
 		return BASKET_SN;
 	}
@@ -60,6 +73,23 @@ public class Basket extends Tattoo{
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		int price = getPrice();
+		int sale = getSale();
+		DecimalFormat df = new DecimalFormat("#,###");
+		sb.append("?tattooId="+ getId());
+		sb.append("&tattooName=" + getNm());
+		sb.append("&tattoPrice=" + df.format(price - price * sale / 100));
+		sb.append("&color=" + getCOLOR_SEQ());
+		sb.append("&tattooist=" + getTATTOOIST_NAME());
+		sb.append("&tattooImage=" + getImage().replace("\\", "/"));
+//		sb.append("&tattooImage=test");
+		sb.append("&realTattooPrice=" + df.format(price));
+		sb.append("&salePrice=" + df.format(price*sale/100));
+		sb.append("&basketSn=" + getBASKET_SN());
+		return  sb.toString();
+	}
 	
 }

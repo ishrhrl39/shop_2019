@@ -1,5 +1,7 @@
 package com.yena.shop.controller;
 
+import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.yena.shop.model.Basket;
 import com.yena.shop.model.User;
@@ -55,6 +58,9 @@ public class BasketController extends MultiActionController{
 		
 		List<Basket> list = basketService.selectBasket(id);
 		System.out.println("사이즈 : " +list.size());
+		for(Basket b : list) {
+			System.out.println("basketNo => " + b.getBASKET_SN());
+		}
 		mav.addObject("list", list);
 		mav.setViewName("shopBasket");
 		
@@ -91,6 +97,45 @@ public class BasketController extends MultiActionController{
 		mav.setViewName("jsonView");
 		return mav;
 	}
+	
+	public ModelAndView deleteBasket(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		String value = StringUtils.defaultString(request.getParameter("data"), "");
+		String[] deleteItem = value.split(",");
+		
+		for(String item : deleteItem) { // 삭제
+			System.out.println("item :" + item);
+			basketService.deleteBasket(item);
+		}
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
+	
+	
+	public ModelAndView sendReserve(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String sn = StringUtils.defaultString(request.getParameter("basketSn"), "0");
+		HttpSession session = request.getSession(); // session 객체 가져오기
+		User user = (User) session.getAttribute("loginUser");// session 가져옴
+		
+		String id = user.getId();
+		Basket basket = new Basket();
+		System.out.println(sn);
+		basket.setBASKET_SN(sn);
+		basket.setUSER_ID(id);
+		basket = basketService.selectBasketOne(basket);
+		
+		TattooColor tattooColor = new TattooColor();
+		tattooColor.setCOLOR(basket.getCOLOR());
+		basket.setCOLOR_SEQ(tattooColorService.selectTattooColorOne(tattooColor).getSEQ());
+		System.out.println("redirect:/tattoo/payment.do" + URLEncoder.encode(basket.toString(), "UTF-8"));
+//		mav.setViewName("redirect:/tattoo/payment.do" + URLEncoder.encode(basket.toString(), "UTF-8"));
+		mav.setViewName("redirect:/tattoo/payment.do" + basket.toString());
+		return mav;
+	}
+	
 	
 //	public static void main(String[] args) {
 //		Map returnData = new HashMap();
