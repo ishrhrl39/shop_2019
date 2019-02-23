@@ -29,8 +29,8 @@ public class FaqDaoImpl extends SqlMapClientDaoSupport implements FaqDao {
 	}
 
 	@Override
-	public void deteleFaq(int no) {
-		getSqlMapClientTemplate().insert(namespace + "deteleFaq", no);
+	public void deleteFaq(int no) {
+		getSqlMapClientTemplate().insert(namespace + "deleteFaq", no);
 	}
 
 	@Override

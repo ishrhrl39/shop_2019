@@ -16,7 +16,7 @@ public interface FaqService {
 	public void updateFaq(Faq faq);
 	
 	// FAQ 삭제
-	public void deteleFaq(int no);
+	public void deleteFaq(int no);
 	
 	// FAQ 조회
 	public Faq selectFaqOne(int no);

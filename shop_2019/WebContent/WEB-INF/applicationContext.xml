@@ -131,4 +131,5 @@
 	<import resource="/conf/menu/menu-applicationContext.xml"/>
 	<import resource="/conf/mypage/mypage-applicationContext.xml"/>
 	<import resource="/conf/tattoo/tattoo-applicationContext.xml"/>
+	<import resource="/conf/faq/faq-applicationContext.xml"/>
 </beans>

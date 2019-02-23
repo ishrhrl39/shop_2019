@@ -83,7 +83,10 @@
 	</definition>
 	
 	
-	
+	<!-- FAQ -->
+	<definition name="faq" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/faq/faq.jsp" />
+	</definition>
 	
 	<!-- 회원가입 -->
 	<definition name="join" extends="layout">

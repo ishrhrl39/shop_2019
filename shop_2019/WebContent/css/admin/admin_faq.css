@@ -5,3 +5,18 @@
 #addFaqBtn{
 	margin-top:10px;
 }
+
+.faq{
+	width:100%;
+	border:1px solid #EEE;
+	padding:15px;
+}
+.faq .content{
+	margin:5px;
+	border:1px solid #EEE;
+	padding:10px;
+}
+
+#btnList{
+	float:right;
+}

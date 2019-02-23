@@ -7,7 +7,16 @@
 <meta charset="EUC-KR">
 <link rel="stylesheet" href="/css/tattoo/tattoo_insert.css">
 <script src="/js/tattoo/tattoo_insert.js"></script>
-
+<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=os0yrpga0flzo6qubjpyaz714soim54cd5m0cmb1rcwilpw7"></script>
+<script type="text/javascript">
+	tinymce.init({
+		   selector: 'textarea',
+		   plugins: 'a11ychecker advcode formatpainter linkchecker media mediaembed pageembed permanentpen powerpaste tinycomments tinydrive tinymcespellchecker',
+		   toolbar: 'a11ycheck code formatpainter insertfile pageembed permanentpen tinycomments',
+		   tinycomments_mode: 'embedded',
+		   tinycomments_author: 'Author name'
+		});
+</script>
 </head>
 <body>
 	<form id="insertTattooFrm" method="post" enctype="multipart/form-data" action="/tattoo/list.do?cmd=insertProc">

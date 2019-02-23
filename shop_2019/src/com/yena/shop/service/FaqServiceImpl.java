@@ -30,8 +30,8 @@ public class FaqServiceImpl implements FaqService {
 	}
 
 	@Override
-	public void deteleFaq(int no) {
-		faqDao.deteleFaq(no);
+	public void deleteFaq(int no) {
+		faqDao.deleteFaq(no);
 	}
 
 	@Override

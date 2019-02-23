@@ -23,6 +23,7 @@ $(document).ready(function() {
 				});
 				html += "</li>";
 			});
+			html += "<li class='current-menu-item'><a href='/faq.do'>FAQ</a></li>";
 			$("#main-menu").html(html);
 		}
 	});	

@@ -36,7 +36,7 @@ public class AdminFaqController extends MultiActionController{
 		Map returnData = new HashMap();
 		Faq faq = new Faq();
 		faq.setTITLE(StringUtils.defaultString(request.getParameter("title"), ""));
-		faq.setCONTENT(StringUtils.defaultString(request.getParameter("content"), ""));
+		faq.setCONTENT(StringUtils.defaultString(request.getParameter("content"), "").replaceAll("\r\n", "<br/>"));
 		faqService.insertFaq(faq);
 		return new ModelAndView("jsonView", returnData);
 	}
@@ -51,10 +51,35 @@ public class AdminFaqController extends MultiActionController{
 		return new ModelAndView("jsonView", returnData);
 	}
 	
-	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView deleteFaq(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map returnData = new HashMap();
+		String[] faqList = request.getParameterValues("faqNo");
+		
+		for(String f : faqList) {
+			if(f.equals("")) continue;
+			int faqNo = Integer.parseInt(f);
+			faqService.deleteFaq(faqNo);
+		}
+		return new ModelAndView("jsonView", returnData);
+	}
+	
+	public ModelAndView updateFaq(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Map returnData = new HashMap();
+		int paramNo = Integer.parseInt(request.getParameter("paramNo"));
+		
+		System.out.println("update.faq.No => " + paramNo);
+		String title = StringUtils.defaultString(request.getParameter("title_" + paramNo));
+		String content = StringUtils.defaultString(request.getParameter("content_" + paramNo));
+		
+		System.out.println("update.title => " + title);
+		System.out.println("update.content => " + content);
+		
 		Faq faq = new Faq();
-		faqService.deteleFaq(Integer.parseInt(StringUtils.defaultString(request.getParameter("no"), "0")));
+		faq.setNO(paramNo);
+		faq.setTITLE(title);
+		faq.setCONTENT(content);
+		faqService.updateFaq(faq);
+		
 		return new ModelAndView("jsonView", returnData);
 	}
 	
@@ -63,6 +88,4 @@ public class AdminFaqController extends MultiActionController{
 		returnData.put("faq", faqService.selectFaqOne(Integer.parseInt(StringUtils.defaultString(request.getParameter("no"), "0"))));
 		return new ModelAndView("jsonView", returnData);
 	}
-	
-	
 }
