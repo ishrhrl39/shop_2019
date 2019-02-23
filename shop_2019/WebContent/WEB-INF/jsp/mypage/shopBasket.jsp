@@ -9,7 +9,8 @@
 		<script src="/js/mypage/basket.js"></script>
 	</head>
 	<body>
-		<form>
+		<form id="basketForm" method="post" >
+			<input type="hidden" id="basketSn" name="basketSn" />
 			<b class="title"> Cart </b>
 			<table style="width:100%"  class="backetTable">
 				<thead>
@@ -23,10 +24,11 @@
 				<tbody>
 					<c:forEach items="${list}" var="basket">
 						<tr>
-							<td><img src="${basket.image}" width="80" /></td>
+							<td><img src="${basket.image}" width="80" />
+							    <a href = "#" onclick="onBasketSubmit('${basket.BASKET_SN}')">예약하기</a></td>
 							<td>${basket.nm} </td>
 							<td>${basket.price}원 </td>
-							<td><input type="checkbox"  id="basketCheck" name="basketCheck"/></td>
+							<td><input type="checkbox"  class="basketCheck" name="basketCheck" value="${basket.BASKET_SN}"/></td>
 						</tr>
 						<tr>
 							<td colspan="4" class="option"  >
@@ -42,7 +44,7 @@
 				<tfoot>
 					<tr>
 						<td colspan="4" align="center">
-							<button type="button" id="basketDel" name="basketDel" class="btn btn-default">장바구니 비우기</button>
+							<button type="button" id="basketDelBtn" name="basketDelBtn" class="btn btn-default">장바구니 비우기</button>
 							<button type="button" id="goMain" name="goMain" class="btn btn-default">계속 쇼핑하기</button>
 						</td>
 					</tr>

@@ -54,6 +54,8 @@
 	  	<property name="paymentService" ref="PaymentService" />
 	  	<property name="stlService" ref="stlService" />
 	  	<property name="tattooColorService" ref="tattooColorService" />
+	  	<property name="basketService" ref="BasketService" />
+	  	
 	</bean>
 	
 	<!-- Service -->

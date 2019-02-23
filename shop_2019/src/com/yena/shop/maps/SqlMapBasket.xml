@@ -28,9 +28,24 @@
 	
 	<select id="selectBasket" parameterClass="java.lang.String" resultClass="Basket">
 		SELECT 
-			A.COLOR, A.TATTOOIST_NAME, B.IMAGE, B.PRICE, B.NM
+			A.BASKET_SN AS BASKET_SN, A.COLOR, A.TATTOOIST_NAME, B.IMAGE, B.PRICE, B.NM, B.SALE, B.ID
 		FROM BASKET A JOIN TATTOO B ON A.TATTOO_ID = B.ID
 			WHERE A.USER_ID = #id#
 	</select>
+	
+	<select id="selectBasketOne" parameterClass="Basket" resultClass="Basket">
+		SELECT 
+			A.BASKET_SN AS BASKET_SN,  A.COLOR, A.TATTOOIST_NAME, B.IMAGE, B.PRICE, B.NM, B.SALE, B.ID
+		FROM BASKET A JOIN TATTOO B ON A.TATTOO_ID = B.ID
+			WHERE A.USER_ID = #USER_ID#
+			AND A.BASKET_SN = #BASKET_SN#
+	</select>
+	
+	
+	<delete id="deleteBasket" parameterClass="java.lang.String" >
+		DELETE
+			FROM BASKET
+			WHERE BASKET_SN = #item#
+	</delete>
 
 </sqlMap>

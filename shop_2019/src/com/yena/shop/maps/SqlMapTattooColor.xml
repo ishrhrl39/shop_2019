@@ -21,8 +21,13 @@
 			COLOR
 		FROM
 			TATTOOCOLOR
-		WHERE
-			SEQ = #SEQ#
+		WHERE 1=1
+			<isNotEqual property="SEQ" compareValue="0">
+				AND SEQ = #SEQ#
+			</isNotEqual>
+			<isNotNull property="COLOR">
+				AND COLOR = #COLOR#
+			</isNotNull>
 	</select>
 		
 	<!-- 타투 담당자 삭제 -->

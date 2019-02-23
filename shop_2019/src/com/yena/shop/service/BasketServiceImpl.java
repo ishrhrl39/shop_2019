@@ -24,6 +24,17 @@ public class BasketServiceImpl implements BasketService {
 	public List<Basket> selectBasket(String id) {
 		return basketDao.selectBasket(id);
 	}
+
+	// 장바구니 삭제
+	@Override
+	public void deleteBasket(String item) {
+		basketDao.deleteBasket(item);
+	}
+	
+	// 장바구니 단건 조회
+	public Basket selectBasketOne(Basket basket) {
+		return basketDao.selectBasketOne(basket);
+	}
 	
 	
 	
