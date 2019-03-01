@@ -1,5 +1,6 @@
 package com.yena.shop.tattoo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,5 +28,11 @@ public interface TattooService {
 
 	// 타투 상품 삭제
 	public void deleteGoods(int id);
+
+	// 할인 진행 중인 상품 베스트
+	public ArrayList<Tattoo> selectBestSalePayment();
+
+	// 신상품 최신 목록
+	public ArrayList<Tattoo> selectNewTattoo();
 
 }

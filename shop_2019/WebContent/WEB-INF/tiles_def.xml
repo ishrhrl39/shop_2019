@@ -114,27 +114,27 @@
 	</definition>
 	
 	<!-- 마이페이지 - 내 정보 관리 -->
-	<definition name="myInfo" extends="mypage_layout">
+	<definition name="myInfo" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myInfo.jsp" />
 	</definition>
 	
 	<!-- 비밀번호 변경   -->
-	<definition name="pwdUpdatePage" extends="mypage_layout">
+	<definition name="pwdUpdatePage" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/pwdUpdatePage.jsp" />
 	</definition>
 	
 	<!-- 마이페이지 - 장바구니 -->
-	<definition name="shopBasket" extends="mypage_layout">
+	<definition name="shopBasket" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/shopBasket.jsp" />
 	</definition>
 	
 	<!-- 마이페이지 - 구매이력 -->
-	<definition name="myInfo_payment" extends="mypage_layout">
+	<definition name="myInfo_payment" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/payment.jsp" />
 	</definition>
 	
 	<!-- 마이페이지 - 회원탈퇴 -->
-	<definition name="account_drop" extends="mypage_layout">
+	<definition name="account_drop" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/account_drop.jsp" />
 	</definition>
 	

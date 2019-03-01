@@ -104,6 +104,46 @@
 			LIMIT #limit# OFFSET #offset# 
 	</select>
 	
+	
+	<select id="selectBestSalePayment" resultClass="Tattoo">
+		SELECT
+			ID,
+			NM,
+			IMAGE,
+			PRICE,
+			COLOR,
+			SALE,
+			SALE_START_DT,
+			SALE_END_DT,
+			CONTENT,
+			REG_DTM,
+			UPD_DTM,
+			DEL_YN
+		FROM TATTOO
+			<![CDATA[ WHERE SALE_END_DT >= DATE_FORMAT(SYSDATE(), '%Y%m%d') ]]>
+		ORDER BY SALE DESC
+		LIMIT 10
+	</select>
+	
+	<select id="selectNewTattoo" resultClass="Tattoo">
+		SELECT
+			ID,
+			NM,
+			IMAGE,
+			PRICE,
+			COLOR,
+			SALE,
+			SALE_START_DT,
+			SALE_END_DT,
+			CONTENT,
+			REG_DTM,
+			UPD_DTM,
+			DEL_YN
+		FROM TATTOO
+		ORDER BY REG_DTM DESC
+		LIMIT 10
+	</select>
+	
 	<!-- 타투 전체 개수  -->
 	<select id="selectTotalTattoo" resultClass="int" parameterClass="Page">
 		SELECT 

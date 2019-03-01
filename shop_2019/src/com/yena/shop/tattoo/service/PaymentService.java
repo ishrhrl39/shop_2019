@@ -46,5 +46,7 @@ public interface PaymentService {
 	public void updatePaymentCmplYn(Payment payment);
 
 	public void updatePaymentReservedDt(Payment payment);
+
+	public List selectBestPayment();
 	
 }

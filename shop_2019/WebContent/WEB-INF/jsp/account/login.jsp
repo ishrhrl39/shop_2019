@@ -8,23 +8,26 @@
 		<link rel="stylesheet" href="/css/account/login.css">
 	</head>
 	<body>
-		<form id="loginForm" action="/account/login.do?cmd=login" method="post">
-			<div>
-				<center>
-					<table>
-						<tbody>
-							<tr>
-								<td style="padding-bottom:5px;">
-									<input type="text" id="id" name="id" placeholder="id" class="form-control" value="${cookieId}" />
-								</td> 
-							</tr>
-							<tr>
-								<td>
-									<input type="password" id="pass_wd" name="pass_wd" placeholder="Password" class="form-control"/>
-								</td> 
-							</tr>
-							<tr>
-								<td align="left">
+		<form id="loginForm" action="/account/login.do?cmd=login" method="post" style="margin-top:-40px">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 mx-auto">
+						<div id="first">
+							<div class="myform form ">
+								<div class="logo mb-3">
+									<div class="col-md-6 text-center">
+										<h1>Login</h1>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="id">ID</label> 
+									<input type="text" name="id" class="form-control" id="id" placeholder="Enter Id">
+								</div>
+								<div class="form-group">
+									<label for="pass_wd">Password</label>
+									<input type="password" name="pass_wd" id="pass_wd" class="form-control" placeholder="Enter Password">
+								</div>
+								<div class="form-group">
 									<c:choose>
 										<c:when test="${cookieId != ''}">
 											<input type="checkbox" id="saveSession" name="saveSession" value="y" checked="checked" />
@@ -34,22 +37,23 @@
 										</c:otherwise>
 									</c:choose>
 									 아이디 저장
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<button type="button" id="login" class="btn btn-default btn-md">Login</button>
-									<button type="button" id="joinUs" class="btn btn-default btn-md">Join Us!</button>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<a href="/account/account.do?cmd=findlist">아이디/비밀번호 찾기</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</center>
+								</div>
+								<div class="col-md-12 text-center ">
+										<div class="btn-group" role="group">
+											<button type="button" id="login" class="btn btn-default btn-md">Login</button>
+											<button type="button" id="joinUs" class="btn btn-default btn-md">Join Us!</button>
+										</div>
+								</div>
+								
+								<div class="col-md-6 mb-3">
+									<p class="text-center">
+										<a href="/account/account.do?cmd=findlist">아이디/비밀번호 찾기</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</form>
 	</body>

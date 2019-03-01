@@ -1,51 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/tattoo/tattoo_insert.css">
 <script src="/js/tattoo/tattoo_insert.js"></script>
 <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=os0yrpga0flzo6qubjpyaz714soim54cd5m0cmb1rcwilpw7"></script>
 <script type="text/javascript">
 	tinymce.init({
 		   selector: 'textarea',
-		   plugins: 'a11ychecker advcode formatpainter linkchecker media mediaembed pageembed permanentpen powerpaste tinycomments tinydrive tinymcespellchecker',
-		   toolbar: 'a11ycheck code formatpainter insertfile pageembed permanentpen tinycomments',
+// 		   plugins: 'a11ychecker advcode formatpainter linkchecker media mediaembed pageembed permanentpen powerpaste tinycomments tinydrive tinymcespellchecker',
+// 		   toolbar: 'a11ycheck code formatpainter insertfile pageembed permanentpen tinycomments',
+ 		   toolbar: 'code',
 		   tinycomments_mode: 'embedded',
 		   tinycomments_author: 'Author name'
 		});
 </script>
 </head>
 <body>
-	<form id="insertTattooFrm" method="post" enctype="multipart/form-data" action="/tattoo/list.do?cmd=insertProc">
-		<h1 id="title">»óÇ° µî·Ï</h1>
+	<form id="insertTattooFrm" name="insertTattooFrm" method="post" enctype="multipart/form-data" action="/tattoo/list.do?cmd=insertProc" accept-charset="UTF-8">
+		<h1 id="title">ìƒí’ˆ ë“±ë¡</h1>
 		<div id="insertTattooLayout" align="center" >
 			<input type="hidden" name="goods" id="goods" value="${goods }" />
 			<table id="tattooTable">
 				<tr>
-					<th>»óÇ°¸í</th>
-					<td><input type="text" name="nm" id="nm" class="form-control" maxlength="50" placeHolder="»óÇ°¸íÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À." /></td>
+					<th>ìƒí’ˆëª…</th>
+					<td><input type="text" name="nm" id="nm" class="form-control" maxlength="50" placeHolder="ìƒí’ˆëª…ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤." /></td>
 				</tr>
 				<tr>
-					<th>»óÇ° ¸ŞÀÎÀÌ¹ÌÁö</th>
+					<th>ìƒí’ˆ ë©”ì¸ì´ë¯¸ì§€</th>
 					<td>
 						<div class="box">
 							<span class="filetype">
 							<input type="text" class="file-text" readonly="readonly" />
-							<span class="file-btn">Ã£¾Æº¸±â</span>
-							<span class="file-select"><input type="file" id="image" name="image" class="input-file" size="3"></span>
+							<span class="file-btn">ì°¾ì•„ë³´ê¸°</span>
+							<span class="file-select"><input type="file" id="image" name="image" class="input-file" ></span>
 							</span>
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<th>»óÇ° °¡°İ</th>
-					<td><input type="text" name="price" id="price" maxlength="8"  placeHolder="»óÇ° °¡°İÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À." />¿ø</td>
+					<th>ìƒí’ˆ ê°€ê²©</th>
+					<td><input type="text" name="price" id="price" maxlength="8"  placeHolder="ìƒí’ˆ ê°€ê²©ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤." />ì›</td>
 				</tr>
 				<tr>
-					<th>»óÇ° »ö»ó</th>
+					<th>ìƒí’ˆ ìƒ‰ìƒ</th>
 					<td>
 						<input type="hidden" id="color_list" name="color_list" value="all"  />
 						
@@ -59,17 +60,17 @@
 					</td>
 				</tr>
 				<tr>
-					<th>ÇÒÀÎ·ü</th>
+					<th>í• ì¸ë¥ </th>
 					<td>
 						<select id="sale" name="sale" class="form-control" >
-							<c:forEach begin="10" end="100" step="10" var="percent">
+							<c:forEach begin="0" end="100" step="10" var="percent">
 								<option value="${percent }">${percent }%</option>
 							</c:forEach>
 						</select>
 					</td>
 				</tr>
 				<tr>
-					<th>ÇÒÀÎ ±â°£</th>
+					<th>í• ì¸ ê¸°ê°„</th>
 					<td>
 						<!-- sale_start_dt, sale_end_dt -->
 						<input type="text" name="sale_start_dt" id="datepicker1" class="datepicker" readonly="readonly"> ~
@@ -77,20 +78,37 @@
 					</td>
 				</tr>
 				<tr>
-					<th>»óÇ°³»¿ë</th>
+					<th>ìƒí’ˆë‚´ìš©</th>
 					<td>
 						<textarea id="content" name="content"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<button type="button" id="insertBtn" class="btn btn-primary">»óÇ°µî·Ï</button>
-						<button type="button" id="previewContentBtn" class="btn btn-default">¹Ì¸®º¸±â</button>
-						<button type="button" id="cancelInsertBtn" class="btn btn-default">¸ñ·Ïº¸±â</button>
+						<button type="button" id="insertBtn" class="btn btn-primary">ìƒí’ˆë“±ë¡</button>
+						<button type="button" id="previewContentBtn" class="btn btn-default">ë¯¸ë¦¬ë³´ê¸°</button>
+						<button type="button" id="cancelInsertBtn" class="btn btn-default">ëª©ë¡ë³´ê¸°</button>
 					</td>
 				</tr>
 			</table>
 		</div>
 	</form>
+	
+	<!-- ë¯¸ë¦¬ë³´ê¸° íŒì—… -->
+	<div id="previewPopup" style="position: absolute; top:10%; left:30%;display: none;z-index:9999">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					ì„¤ëª… ë¬¸êµ¬ ë¯¸ë¦¬ë³´ê¸°
+				</div>
+				<div class="modal-body" id="previewContent" style="max-height:500px;height:500px;overflow-y:scroll;">
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="closePreviewBtn" class="btn btn-default">ë‹«ê¸°</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

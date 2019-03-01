@@ -1,17 +1,19 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
-
 a {
 	text-decoration: none;
 }
 
 a:hover {
+	
 }
+
 ol, ul {
 	list-style: none;
-	padding:0px;
-	margin:0px;
+	padding: 0px;
+	margin: 0px;
 }
+
 #wrap {
 	margin: 0 auto;
 }
@@ -35,65 +37,25 @@ ol, ul {
 }
 
 /* HEADER */
-#wrap > header {
+#wrap>header {
 	background-color: #333;
 	padding-bottom: 20px;
 }
+
 .logo {
 	display: inline-block;
 	font-size: 0;
 }
+
 #navigation {
 	position: absolute;
-	top:0px;
+	top: 0px;
 	left: 0px;
 }
 
 #menu-toggle {
 	display: none;
 	float: right;
-}
-
-/* HEADER > MENU */
-#main-menu {
-	float: right;
-	font-size: 0;
-	margin: 15px 0 0 0;
-}
-
-#main-menu > li {
-	display: inline-block;
-	margin-left: 30px;
-	padding: 2px 0;
-}
-
-#main-menu > li.parent {
-	background-image: url(../images/plus-gray.png);
-	background-size: 7px 7px;
-	background-repeat: no-repeat;
-	background-position: left center;
-}
-
-#main-menu > li.parent > a {
-	padding-left: 14px;
-}
-
-#main-menu > li > a {
-	color: #eee;
-	font-size: 14px;
-	line-height: 14px;
-	padding: 20px 0 20px 0;
-	text-decoration:none;
-}
-
-#main-menu > li:hover > a,
-#main-menu > li.current-menu-item > a {
-	color: #23dbdb;
-}
-
-/* HEADER > MENU > DROPDOWN */
-#main-menu li {
-	position: relative;
 }
 
 ul.sub-menu { /* level 2 */
@@ -113,7 +75,7 @@ ul.sub-menu ul.sub-menu { /* level 3+ */
 	top: 0px;
 }
 
-ul.sub-menu > li > a {
+ul.sub-menu>li>a {
 	background-color: #333;
 	border: 1px solid #444;
 	border-top: none;
@@ -124,65 +86,58 @@ ul.sub-menu > li > a {
 	padding: 10px 12px;
 }
 
-ul.sub-menu > li > a:hover {
-	background-color: #2a2a2a; 
+ul.sub-menu>li>a:hover {
+	background-color: #2a2a2a;
 	color: #fff;
 }
 
-ul.sub-menu > li:first-child {
+ul.sub-menu>li:first-child {
 	border-top: 3px solid #23dbdb;
 }
 
-ul.sub-menu ul.sub-menu > li:first-child {
+ul.sub-menu ul.sub-menu>li:first-child {
 	border-top: 1px solid #444;
 }
 
-ul.sub-menu > li:last-child > a {
+ul.sub-menu>li:last-child>a {
 	border-radius: 0 0 2px 2px;
 }
 
-ul.sub-menu > li > a.parent {
+ul.sub-menu>li>a.parent {
 	background-image: url(../images/arrow.png);
 	background-size: 5px 9px;
 	background-repeat: no-repeat;
 	background-position: 95% center;
 }
 
-#main-menu li:hover > ul.sub-menu {
+#main-menu li:hover>ul.sub-menu {
 	display: block; /* show the submenu */
 }
 
 @media all and (max-width: 700px) {
-
 	#navigation {
 		position: static;
 		margin-top: 20px;
 	}
-
 	#menu-toggle {
 		display: block;
 	}
-
 	#main-menu {
 		display: none;
 		float: none;
 	}
-
 	#main-menu li {
 		display: block;
 		margin: 0;
 		padding: 0;
 	}
-
-	#main-menu > li {
+	#main-menu>li {
 		margin-top: -1px;
 	}
-
-	#main-menu > li:first-child {
+	#main-menu>li:first-child {
 		margin-top: 0;
 	}
-
-	#main-menu > li > a {
+	#main-menu>li>a {
 		background-color: #333;
 		border: 1px solid #444;
 		color: #bbb;
@@ -191,22 +146,17 @@ ul.sub-menu > li > a.parent {
 		padding: 12px !important;
 		padding: 0;
 	}
-
-	#main-menu li > a:hover {
-		background-color: #444; 
+	#main-menu li>a:hover {
+		background-color: #444;
 	}
-
-	#main-menu > li.parent {
+	#main-menu>li.parent {
 		background: none !important;
 		padding: 0;
 	}
-
-	#main-menu > li:hover > a,
-	#main-menu > li.current-menu-item > a {
+	#main-menu>li:hover>a, #main-menu>li.current-menu-item>a {
 		border: 1px solid #444 !important;
 		color: #fff !important;
 	}
-
 	ul.sub-menu {
 		display: block;
 		margin-top: -1px;
@@ -215,12 +165,64 @@ ul.sub-menu > li > a.parent {
 		padding: 0;
 		width: inherit;
 	}
-
-	ul.sub-menu > li:first-child {
+	ul.sub-menu>li:first-child {
 		border-top: 1px solid #444 !important;
 	}
-
-	ul.sub-menu > li > a.parent {
+	ul.sub-menu>li>a.parent {
 		background: #333 !important;
 	}
+}
+
+.title{
+	font-weight: bold;	
+	margin-left:13px;
+}
+
+.index_layout{
+	border:1px solid #BDBDBD;
+	height:auto;
+	overflow:auto;
+	padding:10px;
+}
+
+.index_layout:hover{
+	background-color:#EEEEEE;
+}
+
+.index_layout .payment_item:hover{
+	background-color:#EEEEEE;
+}
+
+.index_layout a{
+	text-decoration: none;
+}
+
+.index_layout .payment_item{
+	width:100%;
+	border:1px solid #BDBDBD;
+	height:350px;
+	padding:10px;
+	cursor: pointer;
+	text-decoration: none;
+	color:black;
+	background-color:white;
+}
+
+.index_layout .payment_item .rank{
+	padding:3px;
+	border-right:1px solid #BDBDBD;
+	border-bottom:1px solid #BDBDBD;
+}
+
+.index_layout .payment_item img{
+	margin-top:3px;
+}
+
+.index_layout .payment_item .content{
+	margin:7px;
+}
+
+.cancel_price{
+	text-decoration:line-through;
+	color:#BDBDBD;
 }

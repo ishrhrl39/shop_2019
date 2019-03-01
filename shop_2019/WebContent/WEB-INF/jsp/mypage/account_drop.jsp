@@ -5,14 +5,19 @@
 <html>
 	<head>
 		<script type="text/javascript" src="/js/mypage/account_drop.js"></script>
+		<style type="text/css">
+			#accountCheckTable td{
+				height:40px;
+			}
+		</style>
 	</head>
 	<body>
 		<center>
 			<form id="withDrawFrm">
 				<div id="withDraw_layout">
 					<div id="alert_message">
-						- 회원탈퇴와 동시에 '포인트'는 자동소멸되며, 재가입을 하더라도 복구되지 않습니다.<br/>
-						- 그 동안 홈페이지를 이용해 주신 분들께 감사의 말씀을 전해드립니다.
+						<b>회원탈퇴와 동시에 '포인트'는 자동소멸되며, 재가입을 하더라도 복구되지 않습니다.</b><br/>
+						그 동안 홈페이지를 이용해 주신 분들께 감사의 말씀을 전해드립니다.
 					</div>
 					<table id="accountCheckTable">
 						<tr>

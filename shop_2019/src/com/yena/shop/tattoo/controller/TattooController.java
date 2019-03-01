@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -125,6 +128,9 @@ public class TattooController extends MultiActionController{
 	}
 	
 	public void insertProc(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		request.setCharacterEncoding("UTF-8");
+		
 		Map returnData = new HashMap();
 		Map param = new HashMap();
 		// 파일 크기 15MB로 제한
@@ -140,9 +146,21 @@ public class TattooController extends MultiActionController{
 		}
 		Tattoo tattoo = new Tattoo();
 		
-		// 참조 : http://zero-gravity.tistory.com/168
-		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-		String fileName = multi.getFilesystemName("image");
+		System.out.println("image upload path => " + savePath);
+		String fileName = "";
+		MultipartHttpServletRequest multi = (MultipartHttpServletRequest) request;
+		Iterator<String> iterator = multi.getFileNames();
+		while(iterator.hasNext()){
+			MultipartFile multipartFile = multi.getFile(iterator.next());
+			if(!multipartFile.isEmpty()){
+				fileName = multipartFile.getOriginalFilename();
+				File file = new File(savePath + "/" + fileName);
+				multipartFile.transferTo(file);
+			}
+		}
+		
+//		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+		
 		tattoo.setGoods(StringUtils.defaultString(multi.getParameter("goods")));
 		tattoo.setNm(StringUtils.defaultString(multi.getParameter("nm")));
 		tattoo.setImage(dirName + "/" + fileName);
@@ -153,6 +171,7 @@ public class TattooController extends MultiActionController{
 		tattoo.setSale_end_dt(StringUtils.defaultString(multi.getParameter("sale_end_dt")).replaceAll("-", ""));
 		tattoo.setContent(StringUtils.defaultString(multi.getParameter("content"), ""));
 		tattooService.insertTattoo(tattoo);
+		
 		
 		String url = "/tattoo/list.do?cmd=insert&goods=" + tattoo.getGoods();
 		response.setContentType("text/html; charset=UTF-8");

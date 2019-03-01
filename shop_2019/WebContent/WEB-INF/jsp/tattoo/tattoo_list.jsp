@@ -41,7 +41,7 @@
 							<c:if test="${status.index % 3 == 0 }">
 								<tr>
 							</c:if>
-							<td>
+							<td valign="top">
 								<table class="tattoo_goods_table"> 
 									<tr>
 										<td colspan="2" >
@@ -50,7 +50,7 @@
 													<input type="checkbox" id="checkGoods" name="checkGoods" value="${result.id}"/>
 												</c:if>
 												
-												<img src = "${result.image}" width="100%"  style="cursor:pointer" onclick="moveDetail(${result.id})"/>
+												<img src = "${result.image}" width="100%" height="200" style="cursor:pointer" onclick="moveDetail(${result.id})"/>
 											</div>
 										</td>
 									</tr>
@@ -61,7 +61,16 @@
 									<tr>
 										<th>가격</th>
 										<td>
-											<fmt:formatNumber value="${result.price}" pattern="#,###" />원
+											<c:choose>
+												<c:when test="${result.sale == 0 }">
+													<fmt:formatNumber value="${result.price}" pattern="#,###" />원
+												</c:when>
+												<c:otherwise>
+													<span class="cancel_price"><fmt:formatNumber value="${result.price}" pattern="#,###" />원</span><br/>
+													<fmt:formatNumber value="${result.price- result.price*result.sale/100}" pattern="#,###" />원
+												</c:otherwise>
+											</c:choose>
+<%-- 											<fmt:formatNumber value="${result.price}" pattern="#,###" />원 --%>
 										</td>
 									</tr>
 								</table>

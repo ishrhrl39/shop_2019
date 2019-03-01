@@ -4,7 +4,12 @@ $(document).ready(function(){
 	});
 	
 	$("#previewContentBtn").click(function(){
-		window.open("/tattoo/preview.do", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=650,height=800");
+		$("#previewPopup").show();
+		$("#previewPopup #previewContent").html(tinymce.activeEditor.getContent());
+	});
+	
+	$("#closePreviewBtn").click(function(){
+		$("#previewPopup").hide();
 	});
 	
 	$("#cancelInsertBtn").click(function(){
@@ -19,14 +24,13 @@ $(document).ready(function(){
 		}else{
 			$("#color_list").val('');
 			$("#color").attr("disabled", false);
-			
 		}
 	});
 });
 
 // 타투 상품 등록
 function insertTattoo(){
-
+	$("#content").val(tinymce.activeEditor.getContent());
 	var arr = new Array();
 	var nm = $("#nm").val();
 	var image = $("#image").val();

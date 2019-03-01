@@ -1,5 +1,6 @@
 package com.yena.shop.tattoo.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +59,15 @@ public class TattooDaoImpl extends SqlMapClientDaoSupport implements TattooDao {
 	@Override
 	public void deleteGoods(int id) {
 		getSqlMapClientTemplate().delete(namespace + "deleteGoods", id);
-		
+	}
+	
+	// 할인 진행 중인 상품 베스트
+	public ArrayList<Tattoo> selectBestSalePayment(){
+		return (ArrayList<Tattoo>) getSqlMapClientTemplate().queryForList(namespace + "selectBestSalePayment");
+	}
+
+	@Override
+	public ArrayList<Tattoo> selectNewTattoo() {
+		return (ArrayList<Tattoo>) getSqlMapClientTemplate().queryForList(namespace + "selectNewTattoo");
 	}
 }

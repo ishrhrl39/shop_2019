@@ -6,25 +6,31 @@ $(document).ready(function() {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		success: function(data){
-			var html = "<li class='current-menu-item'><a href='/index.do'>Home</a></li>";
+			var html = "";
 			$(data.menuList).each(function(index, menu){
-				html += "<li class='parent'>";
-				html += "<a href='" + menu.link_url + "'>" + menu.menu_nm + "</a>";
-				$(menu.subMenuList).each(function(index2, subMenu){
-					if(index2 == 0){
-						html += "<ul class='sub-menu'>";
-					}
-					
-					html += "<li><a href='" + subMenu.link_url + "'> " + subMenu.sub_menu_nm + "</a></li>";
-					
-					if(index2 == menu.subMenuList.length - 1){
-						html += "</ul>";
-					}
-				});
+				
+				if($(menu.subMenuList).length > 0){
+					$(menu.subMenuList).each(function(index2, subMenu){
+						if(index2 == 0){
+							html += "<li class='dropdown'>";
+							html += "<a href='" + menu.link_url + "' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>" + menu.menu_nm + "</a>";
+							html += "<ul class='dropdown-menu'>";
+						}
+						
+						html += "<li><a href='" + subMenu.link_url + "'> " + subMenu.sub_menu_nm + "</a></li>";
+						
+						if(index2 == menu.subMenuList.length - 1){
+							html += "</ul>";
+						}
+					});
+				}else{
+					html += "<li>";
+					html += "<a href='" + menu.link_url + "' >" + menu.menu_nm + "</a>";
+				}
 				html += "</li>";
 			});
-			html += "<li class='current-menu-item'><a href='/faq.do'>FAQ</a></li>";
-			$("#main-menu").html(html);
+			html += "<li><a href='/faq.do'>FAQ</a></li>";
+			$(".navbar-left").prepend(html);
 		}
 	});	
 	

@@ -118,7 +118,7 @@
 			<table class="orderTable">
 				<tbody>
 					<tr>
-						<td>주문동의</td>
+						<td width="25%">주문동의</td>
 						<td><input type="checkbox" id="orderAgree" value="Y"/>상기 결제정보를 확인하였으며, 구매진행에 동의합니다.</td>
 					</tr>
 				</tbody>
@@ -127,7 +127,7 @@
 			<table class="orderTable" id="totalPriceTable">
 				<tbody>	
 					<tr>
-						<td width="20%">최종 결제금액 </td>
+						<td width="25%">최종 결제금액 </td>
 						<td align="left"><span class="fc-red">${tattoPrice}</span> 원 </td>
 					</tr>
 				</tbody>

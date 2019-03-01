@@ -31,7 +31,7 @@ $(document).ready(function() {
 		findId();
 	});
 	
-	// 비밀번ㅌ호 찾기
+	// 비밀번호 찾기
 	$("#findPwd").click(function(){
 		findPwd();
 	});

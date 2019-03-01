@@ -55,4 +55,9 @@ public class PaymentServiceImpl implements PaymentService {
 	public void updatePaymentReservedDt(Payment payment) {
 		paymentDao.updatePaymentReservedDt(payment);
 	}
+
+	@Override
+	public List selectBestPayment() {
+		return paymentDao.selectBestPayment();
+	}
 }

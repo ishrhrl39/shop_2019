@@ -1,6 +1,7 @@
 package com.yena.shop.tattoo.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +57,13 @@ public class TattooServiceImpl implements TattooService {
 		
 	}
 	
+	// 할인 진행 중인 상품 베스트
+	public ArrayList<Tattoo> selectBestSalePayment(){
+		return tattooDao.selectBestSalePayment();
+	}
 	
-	
+	// 신상품 최신 목록
+	public ArrayList<Tattoo> selectNewTattoo(){
+		return tattooDao.selectNewTattoo();
+	}
 }

@@ -118,5 +118,18 @@
 			RESERVED_DT = #RESERVED_DT#
 		WHERE
 			PAYMENT_SN = #PAYMENT_SN#
-	</update>	
+	</update>
+	
+	<select id="selectBestPayment" resultClass="Payment">
+		SELECT 
+			TATTOO_ID,
+			COUNT(*) AS CNT 
+		FROM PAYMENT 
+			WHERE
+			   	REG_DTM BETWEEN CONCAT(DATE_FORMAT(DATE_ADD(SYSDATE(), INTERVAL -7 DAY), '%Y%m%d'),'000000') AND CONCAT(DATE_FORMAT(SYSDATE(), '%Y%m%d'),'235959')
+		   	GROUP BY TATTOO_ID 
+		   ORDER BY CNT DESC
+		   LIMIT 10
+	</select>
+	
 </sqlMap>

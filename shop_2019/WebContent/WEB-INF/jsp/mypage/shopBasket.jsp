@@ -25,6 +25,7 @@
 					<c:forEach items="${list}" var="basket">
 						<tr>
 							<td><img src="${basket.image}" width="80" />
+								<br/>
 							    <a href = "#" onclick="onBasketSubmit('${basket.BASKET_SN}')">예약하기</a></td>
 							<td>${basket.nm} </td>
 							<td>${basket.price}원 </td>

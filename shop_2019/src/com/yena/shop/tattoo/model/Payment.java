@@ -18,8 +18,15 @@ public class Payment {
 	private String PAYMENT_CMPL_YN;	// 결제확정여부(N: 미확정, Y:확정)
 	private String REG_DTM;			// 구매등록날짜
 	private String UPD_DTM;			// 구매수정날짜
+	private int CNT;				// 구매개수
 	
 	
+	public int getCNT() {
+		return CNT;
+	}
+	public void setCNT(int cNT) {
+		CNT = cNT;
+	}
 	public String getPAYMENT_SN() {
 		return PAYMENT_SN;
 	}
